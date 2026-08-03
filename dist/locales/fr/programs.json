@@ -1,0 +1,54 @@
+{
+  "seo": {
+    "title": "Nos Programmes — Isôoko Community Development",
+    "description": "Isôooko mène cinq programmes : Autonomisation des Femmes (MWU), Jeunes (IZI), Sports, Numérique, et Tûuza Mubyeyi."
+  },
+  "hero": {
+    "title": "Nos Programmes",
+    "subtitle": "Cinq piliers du développement communautaire inclusif"
+  },
+  "overview": {
+    "title": "Ce Que Nous Faisons",
+    "subtitle": "Des programmes intégrés pour un impact durable"
+  },
+  "womenEmpowerment": {
+    "acronym": "Mutima W'urugo (MWU)",
+    "title": "Autonomisation des Femmes",
+    "subtitle": "Mutima W'urugo (MWU)",
+    "desc": "Donner aux femmes vulnérables les moyens d'être des agents de changement.",
+    "intro": "Nous croyons que l'élévation d'une femme est l'élévation d'une communauté.",
+    "offerings": ["Connaissance de soi et définition d'objectifs", "Groupes d'épargne et accès au financement", "Nutrition et hygiène", "Santé maternelle et infantile", "Parcours entrepreneurial", "Formation professionnelle"]
+  },
+  "youthEmpowerment": {
+    "acronym": "Imbaraga z' Isôoko (IZI)",
+    "title": "Autonomisation des Jeunes",
+    "subtitle": "Imbaraga z' Isôoko (IZI)",
+    "desc": "Développer le leadership et les compétences des jeunes à Masoro.",
+    "intro": "Le secteur de Masoro est une zone minière. Les jeunes font face à un accès limité à l'éducation et à l'emploi. Le programme IZI relève ces défis.",
+    "offerings": ["Connaissance de soi et objectifs", "Groupes d'épargne et entrepreneuriat", "Santé sexuelle et reproductive", "Accès au financement", "Formation professionnelle", "Placement professionnel", "Club d'anglais"]
+  },
+  "sportsWellness": {
+    "acronym": "",
+    "title": "Sports et Bien-être",
+    "subtitle": "Bien-être physique et mental",
+    "desc": "Un centre pour le sport, le bien-être et la santé mentale.",
+    "intro": "Le Centre Communautaire Isôoko est un lieu de bien-être et d'engagement communautaire à travers le sport et la santé mentale.",
+    "offerings": ["Yoga et pleine conscience", "Compétitions sportives", "Sensibilisation à la santé mentale", "Formation aux premiers secours", "Activités récréatives"]
+  },
+  "digitalLiteracy": {
+    "acronym": "",
+    "title": "Services Numériques et d'Alphabétisation",
+    "subtitle": "Compétences pour l'ère numérique",
+    "desc": "Apprentissage du numérique et de l'alphabétisation.",
+    "intro": "Le Centre Communautaire Isôoko offre des opportunités d'apprentissage numérique et d'alphabétisation.",
+    "offerings": ["Compétences informatiques", "Bibliothèque et lecture", "Club d'anglais", "Alphabétisation numérique", "Soutien scolaire"]
+  },
+  "tuuzaMubyeyi": {
+    "acronym": "",
+    "title": "Projet Tûuza Mubyeyi",
+    "subtitle": "Garde d'enfants pour les mères",
+    "desc": "Garderie permettant aux mères de se concentrer sur leur transformation économique.",
+    "intro": "Le projet Tûuza Mubyeyi soutient les mères vulnérables en offrant une garde d'enfants de qualité pendant qu'elles participent aux programmes.",
+    "offerings": ["Activités de développement de la petite enfance", "Environnement sûr et bienveillant", "Soutien nutritionnel", "Préparation à l'école", "Éducation parentale"]
+  }
+}

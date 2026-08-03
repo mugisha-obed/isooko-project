@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "programs": "Programs",
+    "impact": "Impact",
+    "getInvolved": "Get Involved",
+    "newsEvents": "News & Events",
+    "contact": "Contact"
+  },
+  "btn": {
+    "learnMore": "Learn More",
+    "readMore": "Read More",
+    "donate": "Donate",
+    "volunteer": "Volunteer",
+    "viewAll": "View All",
+    "submit": "Submit",
+    "back": "Back",
+    "home": "Go Home",
+    "getInvolved": "Get Involved"
+  },
+  "footer": {
+    "tagline": "Empowering youth and women in Masoro, Rwanda.",
+    "quickLinks": "Quick Links",
+    "connect": "Connect",
+    "address": "Masoro Sector, Rulindo District, Northern Province, Rwanda",
+    "email": "info@isookocommunity.org",
+    "phone": "+250 788 000 000",
+    "copyright": "© {{year}} Isôoko Community Development. All rights reserved."
+  },
+  "loading": "Loading...",
+  "notFound": "Page not found.",
+  "getInvolved": {
+    "title": "Want to Make a Difference?",
+    "desc": "Join us in empowering youth and women in Masoro through literacy, health access, and entrepreneurship programs."
+  }
+}

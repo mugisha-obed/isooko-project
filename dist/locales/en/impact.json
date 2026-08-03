@@ -1,0 +1,46 @@
+{
+  "seo": {
+    "title": "Our Impact — Isôoko Community Development",
+    "description": "See the measurable impact of Isôoko's programs in Masoro, Rwanda — 11,971+ beneficiaries reached."
+  },
+  "hero": {
+    "title": "Our Impact",
+    "subtitle": "Measurable change in Masoro communities"
+  },
+  "stats": {
+    "title": "Impact in Numbers",
+    "subtitle": "Since 2019"
+  },
+  "testimonials": {
+    "title": "Voices from the Community",
+    "subtitle": "Hear from those we serve",
+    "t1": {
+      "quote": "I started saving just 200 RWF through the program. Today, I own my own shop in Musizi Center. Isôoko gave me the confidence to believe in myself.",
+      "role": "MWU Beneficiary, Masoro"
+    },
+    "t2": {
+      "quote": "The English Club has changed my life. I can now speak confidently and help my younger siblings with their homework.",
+      "role": "IZI Youth Participant, Masoro"
+    },
+    "t3": {
+      "quote": "While I was learning tailoring, the Tûuza Mubyeyi project took care of my child. I can now earn an income and provide for my family.",
+      "role": "MWU Beneficiary, Masoro"
+    }
+  },
+  "gallery": {
+    "title": "Photo Gallery",
+    "subtitle": "Moments from our programs and community center",
+    "alt1": "Women participants at a saving group meeting",
+    "alt2": "Youth engaged in sports activities at the community center",
+    "alt3": "Computer lab session at Isôoko Community Center",
+    "alt4": "First aid training with Rwanda Red Cross",
+    "alt5": "Vocational training - tailoring class",
+    "alt6": "Community yoga and wellness session"
+  },
+  "stats.beneficiaries": "Beneficiaries Reached",
+  "stats.women": "Women Beneficiaries",
+  "stats.youth": "Youth Beneficiaries",
+  "stats.ecd": "Children in ECD",
+  "stats.businesses": "Businesses Created",
+  "stats.wellness": "Access to Mental Health & Wellness"
+}

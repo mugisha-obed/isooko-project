@@ -1,0 +1,411 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "Create package.json, vite.config.ts, tsconfig files, index.html": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247659023
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247697633
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248143655
+      }
+    ],
+    "Create CSS tokens, global styles, typography": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247659314
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248153230
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248289230
+      }
+    ],
+    "src/i18n.ts": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247660514
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248309791
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248353970
+      }
+    ],
+    "src/main.tsx": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247660719
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248368131
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248393211
+      }
+    ],
+    "src/router.tsx": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247661013
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248402350
+      }
+    ],
+    "src/App.tsx": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247661167
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248414470
+      }
+    ],
+    "Custom hooks (useIntersectionObserver, useCounter, useFocusTrap)": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247661361
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248437476
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248626256
+      }
+    ],
+    "impactStats.ts": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247661530
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248635836
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248832709
+      }
+    ],
+    "programs.ts": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247661747
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248840050
+      }
+    ],
+    "teamMembers.ts": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247661911
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248840460
+      }
+    ],
+    "blogPosts.ts": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247662059
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248841126
+      }
+    ],
+    "events.ts": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247662317
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248841864
+      }
+    ],
+    "galleryImages.ts": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247662581
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248842520
+      }
+    ],
+    "testimonials.ts": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247662719
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248843253
+      }
+    ],
+    "SEOHead, Spinner": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247662912
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248852788
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785249116638
+      }
+    ],
+    "Navbar + LanguageSwitcher": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247663061
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248853570
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785249117080
+      }
+    ],
+    "Footer": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247663233
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248854451
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785249117924
+      }
+    ],
+    "HeroBanner": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247663397
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248855552
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785249120798
+      }
+    ],
+    "ImpactCounter": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247663793
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785248856810
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785249122981
+      }
+    ],
+    "ProgramCard, NewsCard, TeamMemberCard": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247663938
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785249139847
+      },
+      {
+        "executionId": "4b707951-d4b3-4992-be07-0222f21118cf",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785250363368
+      }
+    ],
+    "PhotoGallery + Lightbox": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247664065
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785249141009
+      },
+      {
+        "executionId": "4b707951-d4b3-4992-be07-0222f21118cf",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785250364413
+      }
+    ],
+    "ContactForm, VolunteerForm": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247664211
+      },
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785249143439
+      },
+      {
+        "executionId": "4b707951-d4b3-4992-be07-0222f21118cf",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785250365151
+      }
+    ],
+    "Home, About, Programs": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247664351
+      },
+      {
+        "executionId": "4b707951-d4b3-4992-be07-0222f21118cf",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785250365498
+      }
+    ],
+    "Impact, GetInvolved, NewsEvents": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247664543
+      },
+      {
+        "executionId": "4b707951-d4b3-4992-be07-0222f21118cf",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785250365816
+      }
+    ],
+    "BlogPost, Contact, NotFound": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247664663
+      },
+      {
+        "executionId": "4b707951-d4b3-4992-be07-0222f21118cf",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785250366164
+      }
+    ],
+    "English (en) — all 8 namespaces": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247664784
+      },
+      {
+        "executionId": "4b707951-d4b3-4992-be07-0222f21118cf",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785250366528
+      }
+    ],
+    "Kinyarwanda (rw) — all 8 namespaces": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247665394
+      },
+      {
+        "executionId": "4b707951-d4b3-4992-be07-0222f21118cf",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785250366806
+      }
+    ],
+    "French (fr) — all 8 namespaces": [
+      {
+        "executionId": "3da61bc8-0eeb-4f8d-8532-dd750f00db50",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785247665544
+      },
+      {
+        "executionId": "4b707951-d4b3-4992-be07-0222f21118cf",
+        "chatSessionId": "sess_481ef56a-a5f4-4c82-9dcc-1deda0dad7d1",
+        "timestamp": 1785250367159
+      }
+    ]
+  }
+}

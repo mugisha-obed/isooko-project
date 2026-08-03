@@ -1,0 +1,27 @@
+{
+  "seo": {
+    "title": "Contact Us — Isôoko Community Development",
+    "description": "Get in touch with Isôoko Community Development in Masoro, Rwanda."
+  },
+  "hero": {
+    "title": "Contact Us",
+    "subtitle": "We'd love to hear from you"
+  },
+  "info": {
+    "title": "Get in Touch",
+    "desc": "Reach out to learn more about our programs, partnerships, or how you can support youth and women empowerment in Masoro.",
+    "addressLabel": "Visit Us",
+    "address": "Masoro Sector, Rulindo District, Northern Province, Rwanda",
+    "emailLabel": "Email Us",
+    "phoneLabel": "Call Us"
+  },
+  "form": {
+    "success": "Thank you! Your message has been sent.",
+    "error": "Something went wrong. Please try again.",
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "submit": "Send Message"
+  }
+}

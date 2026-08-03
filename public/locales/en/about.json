@@ -1,0 +1,42 @@
+{
+  "seo": {
+    "title": "About Us — Isôoko Community Development",
+    "description": "Isôoko Community Development (ICD) is a nonprofit empowering youth and women in Masoro, Rwanda through literacy, health, and entrepreneurship."
+  },
+  "hero": {
+    "title": "About Isôoko",
+    "subtitle": "Rooted in Masoro, serving the community since 2019"
+  },
+  "story": {
+    "title": "Our Story",
+    "subtitle": "From a learning center to a community movement",
+    "body1": "In 2019, the Masoro Learning and Sports Center (MLSC) was founded to address the lack of community resources in Masoro Sector — a peri-urban area in Rulindo District with limited access to learning centers, sports facilities, and computers. Between 2019 and 2021, MLSC implemented five programs: Digital Literacy, Library Access, Health, Sports & Recreation, and Leadership & Empowerment.",
+    "body2": "The success of these programs revealed the need for a more sustainable entity to carry on the mission. Thus, Isôoko Community Development (ICD) was born. Today, ICD operates from the Isôoko Community Center — a hub featuring sports facilities, a computer lab, a library, and office spaces that support educational and recreational activities for the entire community.",
+    "body3": "Masoro is just the starting point. We envision reaching every corner of Rwanda, equipping our people — especially women and youth — with the resources, skills, and confidence they need to thrive. Because when one voice rises, it inspires another."
+  },
+  "missionVision": {
+    "title": "Our Mission & Vision",
+    "mission": {
+      "title": "Mission",
+      "text": "To cultivate inclusive growth and opportunities, for both women and youth through enhanced health & wellbeing, literacy and entrepreneurship."
+    },
+    "vision": {
+      "title": "Vision",
+      "text": "A nation where all Rwandans are equipped with the skills and resources that empower them to realize their full potential."
+    }
+  },
+  "sdgs": {
+    "title": "Sustainable Development Goals",
+    "subtitle": "Aligned with SDG 1, 2, 3, 4, 5, and 8",
+    "sdg1": "No Poverty",
+    "sdg2": "Zero Hunger",
+    "sdg3": "Good Health and Well-Being",
+    "sdg4": "Quality Education",
+    "sdg5": "Gender Equality",
+    "sdg8": "Decent Work and Economic Growth"
+  },
+  "team": {
+    "title": "Our Team",
+    "subtitle": "Dedicated to community impact"
+  }
+}
