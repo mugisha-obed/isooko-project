@@ -1,8 +1,36 @@
 [
   {
-    "id": "",
-    "src": "/assets/gallery/gallery-placeholder.svg",
-    "altKey": "mm",
+    "id": "g1",
+    "src": "/assets/gallery/gallery-1.jpg",
+    "altKey": "gallery.alt1",
+    "createdAt": "2026-08-04T08:26:26.587Z",
+    "updatedAt": "2026-08-04T08:26:26.587Z"
+  },
+  {
+    "id": "g2",
+    "src": "/assets/gallery/gallery-2.jpg",
+    "altKey": "gallery.alt2",
+    "createdAt": "2026-08-04T08:26:26.587Z",
+    "updatedAt": "2026-08-04T08:26:26.587Z"
+  },
+  {
+    "id": "g3",
+    "src": "/assets/gallery/gallery-3.jpg",
+    "altKey": "gallery.alt3",
+    "createdAt": "2026-08-04T08:26:26.587Z",
+    "updatedAt": "2026-08-04T08:26:26.587Z"
+  },
+  {
+    "id": "g4",
+    "src": "/assets/gallery/gallery-4.jpg",
+    "altKey": "gallery.alt4",
+    "createdAt": "2026-08-04T08:26:26.587Z",
+    "updatedAt": "2026-08-04T08:26:26.587Z"
+  },
+  {
+    "id": "g5",
+    "src": "/assets/gallery/gallery-5.jpg",
+    "altKey": "gallery.alt5",
     "createdAt": "2026-08-04T08:26:26.587Z",
     "updatedAt": "2026-08-04T08:26:26.587Z"
   }
