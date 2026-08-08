@@ -22,6 +22,7 @@ export default function TeamMemberCard({ member }: TeamMemberCardProps) {
       <div className={styles.info}>
         <h3 className={styles.name}>{member.name}</h3>
         <p className={styles.role}>{t(member.roleKey)}</p>
+        {member.quote && <p className={styles.quote}>{t(member.quote)}</p>}
       </div>
     </article>
   )

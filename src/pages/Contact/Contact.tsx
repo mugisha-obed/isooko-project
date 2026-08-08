@@ -16,7 +16,7 @@ export default function Contact() {
       <HeroBanner
         titleKey="contact:hero.title"
         subtitleKey="contact:hero.subtitle"
-        bgImage="/assets/gallery/gallery-2.jpg"
+        bgImage="/assets/gallery/gallery-2.webp"
       />
 
       <section className="section">

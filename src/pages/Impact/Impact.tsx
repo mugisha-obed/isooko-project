@@ -20,7 +20,7 @@ export default function Impact() {
       <HeroBanner
         titleKey="impact:hero.title"
         subtitleKey="impact:hero.subtitle"
-        bgImage="/assets/gallery/gallery-5.jpg"
+        bgImage="/assets/gallery/gallery-5.webp"
       />
 
       <section className="section">

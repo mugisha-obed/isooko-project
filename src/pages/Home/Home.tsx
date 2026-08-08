@@ -30,7 +30,7 @@ export default function Home() {
         subtitleKey="home:hero.subtitle"
         ctaKey="home:hero.cta"
         ctaLink="/get-involved"
-        bgImage="/assets/gallery/gallery-1.jpg"
+        bgImage="/assets/images/isoooko-community.webp"
       />
 
       <section className={styles.mission}>
@@ -45,7 +45,7 @@ export default function Home() {
             </div>
             <div className={styles.missionImage}>
               <img
-                src="/assets/gallery/gallery-3.jpg"
+                src="/assets/images/founding-story.webp"
                 alt={t('mission.imageAlt')}
                 loading="lazy"
               />

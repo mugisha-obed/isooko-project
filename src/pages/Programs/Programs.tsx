@@ -27,7 +27,7 @@ export default function Programs() {
       <HeroBanner
         titleKey="programs:hero.title"
         subtitleKey="programs:hero.subtitle"
-        bgImage="/assets/gallery/gallery-3.jpg"
+        bgImage="/assets/gallery/gallery-3.webp"
       />
 
       <section className="section">

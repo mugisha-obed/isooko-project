@@ -17,7 +17,7 @@ export default function About() {
       <HeroBanner
         titleKey="about:hero.title"
         subtitleKey="about:hero.subtitle"
-        bgImage="/assets/gallery/gallery-2.jpg"
+        bgImage="/assets/images/about-bg.webp"
       />
 
       <section className="section">
@@ -79,7 +79,7 @@ export default function About() {
             <h2 className="section-title">{t('team.title')}</h2>
             <p className="section-subtitle">{t('team.subtitle')}</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 'var(--space-6)', maxWidth: 800, margin: '0 auto' }}>
+          <div style={{ maxWidth: 900, margin: '0 auto' }}>
             {teamMembers.map((member) => (
               <TeamMemberCard key={member.id} member={member} />
             ))}
