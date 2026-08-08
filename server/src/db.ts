@@ -38,16 +38,63 @@ async function writeJsonCollection<T>(collection: string, data: T[]) {
   await writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8')
 }
 
+const FIELD_MAP: Record<string, string> = {
+  // shared
+  createdat: 'createdAt',
+  updatedat: 'updatedAt',
+  // auth
+  passwordhash: 'passwordHash',
+  // programs
+  titlekey: 'titleKey',
+  subtitlekey: 'subtitleKey',
+  desckey: 'descKey',
+  offeringskey: 'offeringsKey',
+  // events
+  locationkey: 'locationKey',
+  // blog posts
+  excerptkey: 'excerptKey',
+  contentkey: 'contentKey',
+  featuredimage: 'featuredImage',
+  // team
+  rolekey: 'roleKey',
+  // gallery
+  altkey: 'altKey',
+  // impact
+  labelkey: 'labelKey',
+  // testimonials
+  quotekey: 'quoteKey',
+  // volunteers
+  areaofinterest: 'areaOfInterest',
+}
+
+function normalizeRow(row: Record<string, unknown>): Record<string, unknown> {
+  const out: Record<string, unknown> = {}
+  for (const [key, value] of Object.entries(row)) {
+    const normalized = FIELD_MAP[key] ?? key.replace(/_([a-z])/g, (_, c) => c.toUpperCase())
+    out[normalized] = value
+  }
+  return out
+}
+
+function deflateRow(row: Record<string, unknown>): Record<string, unknown> {
+  const out: Record<string, unknown> = {}
+  for (const [key, value] of Object.entries(row)) {
+    out[key.toLowerCase()] = value
+  }
+  return out
+}
+
 async function getFromSupabase<T>(collection: string): Promise<T[]> {
   if (!supabase) return []
   const { data, error } = await supabase.from(collection).select('*')
   if (error) throw error
-  return (data ?? []) as T[]
+  return ((data ?? []) as Record<string, unknown>[]).map(normalizeRow) as T[]
 }
 
 async function saveToSupabase<T>(collection: string, data: T[]) {
   if (!supabase) return
-  const { error } = await supabase.from(collection).upsert(data as Record<string, unknown>[], { onConflict: 'id' })
+  const rows = (data as Record<string, unknown>[]).map(deflateRow)
+  const { error } = await supabase.from(collection).upsert(rows, { onConflict: 'id' })
   if (error) throw error
 }
 
@@ -67,7 +114,7 @@ export async function getById<T extends { id: string }>(collection: string, id: 
     try {
       const { data, error } = await supabase.from(collection).select('*').eq('id', id).single()
       if (error) throw error
-      return (data as T | null) ?? null
+      return data ? (normalizeRow(data as Record<string, unknown>) as T) : null
     } catch {
       const entries = await readJsonCollection<T>(collection)
       return entries.find(entry => entry.id === id) || null
@@ -87,9 +134,9 @@ export async function createOne(collection: string, data: Record<string, unknown
 
   if (supabase) {
     try {
-      const { data: created, error } = await supabase.from(collection).insert(entry).select().single()
+      const { data: created, error } = await supabase.from(collection).insert(deflateRow(entry)).select().single()
       if (error) throw error
-      return created as Record<string, unknown>
+      return normalizeRow(created as Record<string, unknown>)
     } catch {
       // fall through to JSON fallback
     }
@@ -110,9 +157,9 @@ export async function updateOne(collection: string, id: string, data: Record<str
 
   if (supabase) {
     try {
-      const { data: result, error } = await supabase.from(collection).update(updated).eq('id', id).select().single()
+      const { data: result, error } = await supabase.from(collection).update(deflateRow(updated)).eq('id', id).select().single()
       if (error) throw error
-      return result as Record<string, unknown>
+      return result ? normalizeRow(result as Record<string, unknown>) : null
     } catch {
       // fall through to JSON fallback
     }
@@ -153,9 +200,9 @@ export async function saveSubmission(collection: string, data: unknown) {
 
   if (supabase) {
     try {
-      const { data: created, error } = await supabase.from(collection).insert(entry).select().single()
+      const { data: created, error } = await supabase.from(collection).insert(deflateRow(entry)).select().single()
       if (error) throw error
-      return created
+      return created ? normalizeRow(created as Record<string, unknown>) : created
     } catch {
       // fall through to JSON fallback
     }
@@ -165,6 +212,40 @@ export async function saveSubmission(collection: string, data: unknown) {
   entries.push(entry)
   await writeJsonCollection(collection, entries)
   return entry
+}
+
+export async function setAdminPassword(username: string, passwordHash: string): Promise<void> {
+  if (supabase) {
+    try {
+      const { data: updated, error } = await supabase
+        .from('admins')
+        .update({ passwordhash: passwordHash, updatedat: new Date().toISOString() })
+        .eq('username', username)
+        .select()
+      if (error) throw error
+      if (Array.isArray(updated) && updated.length > 0) return
+
+      const { error: insertError } = await supabase
+        .from('admins')
+        .insert({
+          id: 'admin-1',
+          username,
+          passwordhash: passwordHash,
+          createdat: new Date().toISOString(),
+          updatedat: new Date().toISOString(),
+        })
+      if (insertError) throw insertError
+      return
+    } catch {
+      // fall through to JSON fallback
+    }
+  }
+
+  const entries = await readJsonCollection<{ id: string; username: string; passwordHash: string }>('admins')
+  const idx = entries.findIndex(a => a.username === username)
+  if (idx >= 0) entries[idx] = { ...entries[idx], passwordHash }
+  else entries.push({ id: 'admin-1', username, passwordHash })
+  await writeJsonCollection('admins', entries)
 }
 
 export async function upsertAll<T>(collection: string, data: T[]): Promise<T[]> {

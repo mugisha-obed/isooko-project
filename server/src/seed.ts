@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs'
-import { getAll, upsertAll } from './store.js'
+import { getAll, setAdminPassword } from './store.js'
 
 interface AdminUser {
   username: string
@@ -7,11 +7,22 @@ interface AdminUser {
 }
 
 export async function seedAdmin() {
+  const password = process.env.ADMIN_PASSWORD || 'admin123'
+  const passwordHash = await bcrypt.hash(password, 10)
+
   const existing = await getAll<AdminUser>('admins')
-  if (existing.length > 0) return
-  const passwordHash = await bcrypt.hash('admin123', 10)
-  await upsertAll('admins', [
-    { username: 'admin', passwordHash },
-  ])
-  console.log('Default admin created: admin / admin123')
+  const admin = existing.find(a => a.username === 'admin')
+
+  if (admin) {
+    try {
+      if (await bcrypt.compare(password, admin.passwordHash)) return
+    } catch {
+      // hash missing or invalid -> reset below
+    }
+    console.log(`Resetting admin password to: ${password}`)
+  } else {
+    console.log(`Default admin created: admin / ${password}`)
+  }
+
+  await setAdminPassword('admin', passwordHash)
 }

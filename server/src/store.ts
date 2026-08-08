@@ -6,4 +6,5 @@ export {
   deleteOne,
   saveSubmission,
   upsertAll,
+  setAdminPassword,
 } from './db.js'

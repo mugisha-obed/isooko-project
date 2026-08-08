@@ -33,18 +33,62 @@ async function writeJsonCollection(collection, data) {
     const filePath = join(DATA_DIR, `${collection}.json`);
     await writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8');
 }
+const FIELD_MAP = {
+    // shared
+    createdat: 'createdAt',
+    updatedat: 'updatedAt',
+    // auth
+    passwordhash: 'passwordHash',
+    // programs
+    titlekey: 'titleKey',
+    subtitlekey: 'subtitleKey',
+    desckey: 'descKey',
+    offeringskey: 'offeringsKey',
+    // events
+    locationkey: 'locationKey',
+    // blog posts
+    excerptkey: 'excerptKey',
+    contentkey: 'contentKey',
+    featuredimage: 'featuredImage',
+    // team
+    rolekey: 'roleKey',
+    // gallery
+    altkey: 'altKey',
+    // impact
+    labelkey: 'labelKey',
+    // testimonials
+    quotekey: 'quoteKey',
+    // volunteers
+    areaofinterest: 'areaOfInterest',
+};
+function normalizeRow(row) {
+    const out = {};
+    for (const [key, value] of Object.entries(row)) {
+        const normalized = FIELD_MAP[key] ?? key.replace(/_([a-z])/g, (_, c) => c.toUpperCase());
+        out[normalized] = value;
+    }
+    return out;
+}
+function deflateRow(row) {
+    const out = {};
+    for (const [key, value] of Object.entries(row)) {
+        out[key.toLowerCase()] = value;
+    }
+    return out;
+}
 async function getFromSupabase(collection) {
     if (!supabase)
         return [];
     const { data, error } = await supabase.from(collection).select('*');
     if (error)
         throw error;
-    return (data ?? []);
+    return (data ?? []).map(normalizeRow);
 }
 async function saveToSupabase(collection, data) {
     if (!supabase)
         return;
-    const { error } = await supabase.from(collection).upsert(data, { onConflict: 'id' });
+    const rows = data.map(deflateRow);
+    const { error } = await supabase.from(collection).upsert(rows, { onConflict: 'id' });
     if (error)
         throw error;
 }
@@ -65,7 +109,7 @@ export async function getById(collection, id) {
             const { data, error } = await supabase.from(collection).select('*').eq('id', id).single();
             if (error)
                 throw error;
-            return data ?? null;
+            return data ? normalizeRow(data) : null;
         }
         catch {
             const entries = await readJsonCollection(collection);
@@ -84,10 +128,10 @@ export async function createOne(collection, data) {
     };
     if (supabase) {
         try {
-            const { data: created, error } = await supabase.from(collection).insert(entry).select().single();
+            const { data: created, error } = await supabase.from(collection).insert(deflateRow(entry)).select().single();
             if (error)
                 throw error;
-            return created;
+            return normalizeRow(created);
         }
         catch {
             // fall through to JSON fallback
@@ -106,10 +150,10 @@ export async function updateOne(collection, id, data) {
     };
     if (supabase) {
         try {
-            const { data: result, error } = await supabase.from(collection).update(updated).eq('id', id).select().single();
+            const { data: result, error } = await supabase.from(collection).update(deflateRow(updated)).eq('id', id).select().single();
             if (error)
                 throw error;
-            return result;
+            return result ? normalizeRow(result) : null;
         }
         catch {
             // fall through to JSON fallback
@@ -150,10 +194,10 @@ export async function saveSubmission(collection, data) {
     };
     if (supabase) {
         try {
-            const { data: created, error } = await supabase.from(collection).insert(entry).select().single();
+            const { data: created, error } = await supabase.from(collection).insert(deflateRow(entry)).select().single();
             if (error)
                 throw error;
-            return created;
+            return created ? normalizeRow(created) : created;
         }
         catch {
             // fall through to JSON fallback
@@ -163,6 +207,43 @@ export async function saveSubmission(collection, data) {
     entries.push(entry);
     await writeJsonCollection(collection, entries);
     return entry;
+}
+export async function setAdminPassword(username, passwordHash) {
+    if (supabase) {
+        try {
+            const { data: updated, error } = await supabase
+                .from('admins')
+                .update({ passwordhash: passwordHash, updatedat: new Date().toISOString() })
+                .eq('username', username)
+                .select();
+            if (error)
+                throw error;
+            if (Array.isArray(updated) && updated.length > 0)
+                return;
+            const { error: insertError } = await supabase
+                .from('admins')
+                .insert({
+                id: 'admin-1',
+                username,
+                passwordhash: passwordHash,
+                createdat: new Date().toISOString(),
+                updatedat: new Date().toISOString(),
+            });
+            if (insertError)
+                throw insertError;
+            return;
+        }
+        catch {
+            // fall through to JSON fallback
+        }
+    }
+    const entries = await readJsonCollection('admins');
+    const idx = entries.findIndex(a => a.username === username);
+    if (idx >= 0)
+        entries[idx] = { ...entries[idx], passwordHash };
+    else
+        entries.push({ id: 'admin-1', username, passwordHash });
+    await writeJsonCollection('admins', entries);
 }
 export async function upsertAll(collection, data) {
     if (supabase) {
