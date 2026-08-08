@@ -29,7 +29,7 @@ export default function NewsEvents() {
       <HeroBanner
         titleKey="newsEvents:hero.title"
         subtitleKey="newsEvents:hero.subtitle"
-        bgImage="/assets/hero-news.svg"
+        bgImage="/assets/gallery/gallery-4.jpg"
       />
 
       <section className="section">

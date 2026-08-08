@@ -1,9 +1,25 @@
 [
   {
-    "id": "",
-    "name": "mm",
-    "roleKey": "admin",
-    "photo": "/assets/team/team-placeholder.svg",
+    "id": "tm1",
+    "name": "Uwimana Chantal",
+    "roleKey": "team.role1",
+    "photo": "/assets/team/team-1.jpg",
+    "createdAt": "2026-08-04T08:21:06.427Z",
+    "updatedAt": "2026-08-04T08:21:06.427Z"
+  },
+  {
+    "id": "tm2",
+    "name": "Nkurunziza Jean-Paul",
+    "roleKey": "team.role2",
+    "photo": "/assets/team/team-2.jpg",
+    "createdAt": "2026-08-04T08:21:06.427Z",
+    "updatedAt": "2026-08-04T08:21:06.427Z"
+  },
+  {
+    "id": "tm3",
+    "name": "Mukamana Diane",
+    "roleKey": "team.role3",
+    "photo": "/assets/team/team-3.jpg",
     "createdAt": "2026-08-04T08:21:06.427Z",
     "updatedAt": "2026-08-04T08:21:06.427Z"
   }

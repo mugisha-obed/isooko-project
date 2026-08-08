@@ -16,7 +16,7 @@ export default function Contact() {
       <HeroBanner
         titleKey="contact:hero.title"
         subtitleKey="contact:hero.subtitle"
-        bgImage="/assets/hero-contact.svg"
+        bgImage="/assets/gallery/gallery-2.jpg"
       />
 
       <section className="section">

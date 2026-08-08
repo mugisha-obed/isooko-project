@@ -18,7 +18,7 @@ export default function GetInvolved() {
         subtitleKey="getInvolved:hero.subtitle"
         ctaKey="getInvolved:hero.cta"
         ctaLink="#volunteer-form"
-        bgImage="/assets/hero-get-involved.svg"
+        bgImage="/assets/gallery/gallery-1.jpg"
       />
 
       <section className="section">

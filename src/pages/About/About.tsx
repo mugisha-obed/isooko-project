@@ -17,7 +17,7 @@ export default function About() {
       <HeroBanner
         titleKey="about:hero.title"
         subtitleKey="about:hero.subtitle"
-        bgImage="/assets/hero-about.svg"
+        bgImage="/assets/gallery/gallery-2.jpg"
       />
 
       <section className="section">

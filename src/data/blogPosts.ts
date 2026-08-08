@@ -17,7 +17,7 @@ export const blogPosts: BlogPost[] = [
     contentKey: 'posts.firstAid.content',
     date: '2026-07-15',
     author: 'Isôoko Community Development',
-    featuredImage: '/assets/gallery/gallery-placeholder.svg',
+    featuredImage: '/assets/gallery/gallery-1.jpg',
     category: 'news',
   },
   {
@@ -27,7 +27,7 @@ export const blogPosts: BlogPost[] = [
     contentKey: 'posts.vocational.content',
     date: '2026-06-22',
     author: 'Isôoko Community Development',
-    featuredImage: '/assets/gallery/gallery-placeholder.svg',
+    featuredImage: '/assets/gallery/gallery-2.jpg',
     category: 'news',
   },
   {
@@ -37,7 +37,7 @@ export const blogPosts: BlogPost[] = [
     contentKey: 'posts.financial.content',
     date: '2026-07-13',
     author: 'Isôoko Community Development',
-    featuredImage: '/assets/gallery/gallery-placeholder.svg',
+    featuredImage: '/assets/gallery/gallery-3.jpg',
     category: 'news',
   },
   {
@@ -47,7 +47,7 @@ export const blogPosts: BlogPost[] = [
     contentKey: 'posts.englishClub.content',
     date: '2026-06-01',
     author: 'Isôoko Community Development',
-    featuredImage: '/assets/gallery/gallery-placeholder.svg',
+    featuredImage: '/assets/gallery/gallery-4.jpg',
     category: 'event',
   },
 ]

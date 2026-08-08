@@ -30,7 +30,7 @@ export default function Home() {
         subtitleKey="home:hero.subtitle"
         ctaKey="home:hero.cta"
         ctaLink="/get-involved"
-        bgImage="/assets/hero-home.svg"
+        bgImage="/assets/gallery/gallery-1.jpg"
       />
 
       <section className={styles.mission}>
@@ -45,7 +45,7 @@ export default function Home() {
             </div>
             <div className={styles.missionImage}>
               <img
-                src="/assets/mission-image.svg"
+                src="/assets/gallery/gallery-3.jpg"
                 alt={t('mission.imageAlt')}
                 loading="lazy"
               />
