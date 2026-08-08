@@ -7,7 +7,7 @@ function resolveApiBase(): string {
   if (env && !/localhost|127\.0\.0\.1/.test(env)) {
     return env
   }
-  return typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3001'
+  return ''
 }
 
 const API_BASE = resolveApiBase()
