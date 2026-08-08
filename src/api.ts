@@ -1,4 +1,16 @@
-const API_BASE = import.meta.env.VITE_API_URL || (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3001')
+const env = import.meta.env.VITE_API_URL as string | undefined
+
+function resolveApiBase(): string {
+  if (import.meta.env.DEV) {
+    return env || 'http://localhost:3001'
+  }
+  if (env && !/localhost|127\.0\.0\.1/.test(env)) {
+    return env
+  }
+  return typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3001'
+}
+
+const API_BASE = resolveApiBase()
 
 function getToken(): string | null {
   return localStorage.getItem('isooko-admin-token')
