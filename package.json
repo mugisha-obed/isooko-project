@@ -3,11 +3,14 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "workspaces": [
+    "server"
+  ],
   "scripts": {
     "dev": "vite",
     "dev:server": "npm run dev --prefix server",
     "dev:all": "concurrently -n client,server -c cyan,magenta \"npm run dev\" \"npm run dev:server\"",
-    "build": "tsc && vite build",
+    "build": "npm run build --prefix server && tsc && vite build",
     "build:server": "npm run build --prefix server",
     "preview": "vite preview",
     "start": "node server/dist/index.js"
@@ -25,11 +28,15 @@
     "react-router-dom": "6.23.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^26.2.0",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
     "@vitejs/plugin-react": "4.3.1",
-    "typescript": "5.4.5",
     "concurrently": "^8.2.2",
+    "typescript": "^5.4.5",
     "vite": "5.2.13"
   }
 }

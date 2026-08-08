@@ -18,6 +18,10 @@ const app = express()
 app.use(cors({ origin: isDev ? ['http://localhost:5173'] : true }))
 app.use(express.json({ limit: '5mb' }))
 
+app.get('/api/health', (_req, res) => {
+  res.json({ ok: true, uptime: process.uptime() })
+})
+
 app.use('/api/auth', authRouter)
 app.use('/api/contact', contactRouter)
 app.use('/api/volunteer', volunteerRouter)
@@ -39,8 +43,21 @@ if (!isDev) {
   })
 }
 
-seedAdmin().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`)
-  })
-})
+async function startServer() {
+  try {
+    await seedAdmin()
+  } catch (error) {
+    console.warn('Admin seed initialization failed:', error)
+  }
+
+  try {
+    app.listen(PORT, () => {
+      console.log(`Server running on http://localhost:${PORT}`)
+    })
+  } catch (error) {
+    console.error('Failed to start server:', error)
+    process.exit(1)
+  }
+}
+
+startServer()
