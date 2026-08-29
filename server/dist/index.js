@@ -15,7 +15,15 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = Number(process.env.PORT) || 3001;
 const isDev = process.env.NODE_ENV !== 'production';
 const app = express();
-app.use(cors({ origin: isDev ? ['http://localhost:5173'] : true }));
+app.use(cors({
+    origin(origin, callback) {
+        const allowed = (process.env.CORS_ORIGINS || '*').split(',').map(s => s.trim());
+        if (!origin || allowed.includes('*') || allowed.includes(origin)) {
+            return callback(null, true);
+        }
+        callback(null, false);
+    },
+}));
 app.use(express.json({ limit: '5mb' }));
 app.get('/api/health', (_req, res) => {
     res.json({ ok: true, uptime: process.uptime() });
