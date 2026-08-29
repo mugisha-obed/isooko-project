@@ -1,0 +1,59 @@
+{
+  "seo": {
+    "title": "Amakuru n'Ibirori — Isôoko Community Development",
+    "description": "Amakuru mashya n'ibirebwa na Isôoko i Masoro, mu Rwanda."
+  },
+  "hero": {
+    "title": "Amakuru n'Ibirori",
+    "subtitle": "Komeza uhuze n'abaturage ba Isôoko"
+  },
+  "page": {
+    "title": "Amakuru Mashya",
+    "subtitle": "Inkuru, ibirori n'amatangazo biva i Masoro"
+  },
+  "filter": {
+    "all": "Byose",
+    "news": "Amakuru",
+    "event": "Ibirori"
+  },
+  "notFound": "Inyandiko ntibonetse.",
+  "posts": {
+    "firstAid": {
+      "title": "Amahugurwa ya Mpuha: 100% Kwitabira, 100% Kwemererwa",
+      "excerpt": "Abakozi 30 ba Isôoko barangije amahugurwa y'iminsi ibiri ya mpuha hamwe n'Umuryango w'Umukandara Utukura w'u Rwanda, batozwa ubumenyi burokoraho ubuzima.",
+      "content": "Nk'ikigo cy'ubuziranutse n'icya siporo, kwitegura gusubiza ibyihutirwa ni igice cy'ingenzi cy'uburyo dukurikirana abaturage bacu. Abakozi 30 ba Isôoko barangije neza amahugurwa y'iminsi ibiri ya mpuha hamwe n'Umuryango w'Umukandara Utukura w'u Rwanda, batozwa ubumenyi bukora burokoraho ubuzima harimo CPR, gufasha uwonetswe, kugenzura kuva amaraso, kuvura igufa ryamenetse, no gusubiza mu byihutirwa.\n\nUrakoze Umuryango w'Umukandara Utukura w'u Rwanda kuduhugura ubumenyi n'ubushobozi byo gusubiza twizewe mu gihe bihambaye cyane."
+    },
+    "vocational": {
+      "title": "Itangizwa ry'Amahugurwa y'Imirimo: Kubaka Ubumenyi bw'ejo Hazaza",
+      "excerpt": "Abanyamuryango 32 bitabira amahugurwa yo ku muduga, kogosha n'icereke ku bagororwa b'abaturage.",
+      "content": "Turanejejwe cyane gutangiza amahugurwa y'imirimo ku banyamuryango b'ibyigwa byacu mu baturage! Ubu, abanyamuryango 32 biga ubumenyi bw'akazi bw'agaciro ku bagororwa bo mu baturage babo ubwabo. Muri bo, 18 biga ubudozi, 12 kogosha, n'umwe icereke.\n\nBinyuze mu myitozo n'indi yishyigikiye, abanyamuryango baronka ubumenyi bukoreshwa bushobora gufasha mu gukora amahirwe y'ubuzima budahungabana n'iterambere ry'ubutunzi."
+    },
+    "financial": {
+      "title": "Kugera ku Mafaranga Bitanga Amahirwe",
+      "excerpt": "Amatsinda atanu yo kuzigama ya Mutima w'Urugo yahuguwe binyuze muri porogaramu ya FAST hamwe na VisionFund Rwanda.",
+      "content": "Mu bufatanye na VisionFund Rwanda, amatsinda atanu yo kuzigama ya Mutima w'Urugo yahuguwe kandi ashyigikiwe binyuze muri porogaramu ya Financial Accelerating Saving Groups Transformation (FAST), ikomeza ubushobozi bwabo bwo gutanga inguzanyo zifasha abanyamuryango gutangiza no gukura ubucuruzi bw'injiza.\n\nAbanyamuryango kandi bahawe Ikigega cy'Ubwishingizi cya Humura, gitanga ubwishingizi mu byihutirwa by'ubuzima bo n'imiryango yabo, bifasha kurinda ibyo baziimije n'urugendo rw'ubucuruzi."
+    },
+    "englishClub": {
+      "title": "Ishuri ry'Icyongereza: Urubyiruko Rubona Amajwi Yaryo",
+      "excerpt": "Abana b'abanyamuryango ba Mutima w'Urugo bafite imyaka 12–18 barimo kubaka ubumenyi bw'Icyongereza n'icyizere.",
+      "content": "Turanejejwa cyane kubona abanyamuryango b'Ishuri ry'Icyongereza barangiza Icyongereza cyabo buri munsi! Abenshi muri bo ni abana ba Mutima w'Urugo, bafite imyaka hagati ya 12–18, kandi byahumekeye kubona ukubaho kwabo n'icyizere cyabo.\n\nBagiye biga kuvuga no guhagurukana mu Cyongereza, bagiga ubumenyi bwo kuvuga imbere y'abantu, kandi bakusanya ijambo n'ikibonezamvugo binyuze mu byiciro bishimishije kandi bikorana. Nibyiza kubona babona amajwi yabo kandi bagasobanura ku mibanire yabo kuva ku munsi ukundi."
+    }
+  },
+  "events": {
+    "yoga": {
+      "title": "Igitondo cya Yoga n'Ubuziranutse by'Abaturage",
+      "location": "Isôoko Community Center",
+      "desc": "Dusangire igitondo cya yoga, kwitegereza, no guhuza abaturage."
+    },
+    "saving": {
+      "title": "Ishuri ry'Amatsinda yo Kuzigama",
+      "location": "Isôoko Community Center",
+      "desc": "Ishuri ryo kwiga imari no kuzigama mu itsinda ku banyamuryango b'ibyigwa."
+    },
+    "vocational": {
+      "title": "Imbonerahamwe y'Ubumenyi bw'Imirimo",
+      "location": "Isôoko Community Center",
+      "desc": "Kwerekana ibikorwa by'ubudozi, kogosha n'icereke by'abanyamuryango b'amahugurwa y'imirimo."
+    }
+  }
+}

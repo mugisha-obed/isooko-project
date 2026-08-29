@@ -60,6 +60,15 @@ const FIELD_MAP = {
     quotekey: 'quoteKey',
     // volunteers
     areaofinterest: 'areaOfInterest',
+    // employees
+    employeeid: 'employeeId',
+    taxid: 'taxId',
+    startdate: 'startDate',
+    // attendance
+    checkin: 'checkIn',
+    checkout: 'checkOut',
+    // leave
+    enddate: 'endDate',
 };
 function normalizeRow(row) {
     const out = {};
@@ -120,9 +129,13 @@ export async function getById(collection, id) {
     return entries.find(entry => entry.id === id) || null;
 }
 export async function createOne(collection, data) {
+    const id = typeof data.id === 'string' && data.id
+        ? data.id
+        : `${collection}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+    const { id: _dropped, ...rest } = data;
     const entry = {
-        id: `${collection}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-        ...data,
+        id,
+        ...rest,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
     };
@@ -187,9 +200,13 @@ export async function deleteOne(collection, id) {
     return true;
 }
 export async function saveSubmission(collection, data) {
+    const id = typeof data?.id === 'string' && data.id
+        ? data.id
+        : `${collection}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+    const { id: _dropped, ...rest } = (data ?? {});
     const entry = {
-        id: `${collection}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-        ...data,
+        id,
+        ...rest,
         createdAt: new Date().toISOString(),
     };
     if (supabase) {

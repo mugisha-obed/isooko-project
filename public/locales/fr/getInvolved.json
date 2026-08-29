@@ -1,0 +1,39 @@
+{
+  "seo": {
+    "title": "S'impliquer — Isôoko Community Development",
+    "description": "Soutenez Isôoko par des dons, du bénévolat ou des partenariats."
+  },
+  "hero": {
+    "title": "S'impliquer",
+    "subtitle": "Chaque contribution fait la différence",
+    "cta": "Devenir Bénévole"
+  },
+  "ways": {
+    "title": "Comment Soutenir",
+    "subtitle": "Choisissez comment vous souhaitez avoir un impact",
+    "donate": {
+      "title": "Faire un Don",
+      "desc": "Votre soutien financier nous aide à mener des programmes pour les jeunes, des initiatives d'autonomisation des femmes, des activités sportives et à entretenir notre centre communautaire."
+    },
+    "volunteer": {
+      "title": "Bénévolat",
+      "desc": "Partagez vos compétences — de l'enseignement de l'alphabétisation numérique à l'entraînement sportif — et faites une différence concrète à Masoro."
+    },
+    "partner": {
+      "title": "Devenir Partenaire",
+      "desc": "Les organisations et les entreprises peuvent s'associer à Isôoko pour financer des programmes spécifiques, parrainer des événements ou soutenir les infrastructures."
+    }
+  },
+  "volunteer": {
+    "title": "Candidature de Bénévolat",
+    "subtitle": "Remplissez le formulaire et nous vous contacterons",
+    "success": "Merci pour votre candidature ! Nous vous contacterons bientôt.",
+    "fields": {
+      "name": "Nom Complet",
+      "email": "Adresse E-mail",
+      "phone": "Numéro de Téléphone",
+      "area": "Domaine d'Intérêt",
+      "message": "Parlez-nous de vous"
+    }
+  }
+}

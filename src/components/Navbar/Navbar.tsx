@@ -53,6 +53,7 @@ export default function Navbar() {
         <div className={styles.right}>
           <LanguageSwitcher />
           <Link to="/admin/login" className={styles.link} style={{ fontSize: 'var(--font-size-sm)' }}>Admin</Link>
+          <Link to="/employee/login" className={styles.link} style={{ fontSize: 'var(--font-size-sm)' }}>Staff</Link>
           <button className={styles.burger} onClick={() => setMenuOpen(o => !o)} aria-expanded={menuOpen} aria-controls="mobile-menu" aria-label={menuOpen ? 'Close menu' : 'Open menu'}>
             {menuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
           </button>

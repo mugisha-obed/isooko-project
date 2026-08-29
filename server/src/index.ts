@@ -7,7 +7,10 @@ import contactRouter from './routes/contact.js'
 import volunteerRouter from './routes/volunteer.js'
 import authRouter from './routes/auth.js'
 import { createContentRouter } from './routes/content.js'
-import { seedAdmin } from './seed.js'
+import { createEmployeesRouter } from './routes/employees.js'
+import { createAttendanceRouter } from './routes/attendance.js'
+import { createLeaveRouter } from './routes/leave.js'
+import { seedAdmin, seedEmployee } from './seed.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const PORT = Number(process.env.PORT) || 3001
@@ -34,6 +37,9 @@ app.use('/api/impact-stats', createContentRouter('impact-stats'))
 app.use('/api/testimonials', createContentRouter('testimonials'))
 app.use('/api/contacts', createContentRouter('contacts'))
 app.use('/api/volunteers', createContentRouter('volunteers'))
+app.use('/api/employees', createEmployeesRouter())
+app.use('/api/attendance', createAttendanceRouter())
+app.use('/api/leave', createLeaveRouter())
 
 if (!isDev) {
   const distPath = join(__dirname, '..', '..', 'dist')
@@ -48,6 +54,12 @@ async function startServer() {
     await seedAdmin()
   } catch (error) {
     console.warn('Admin seed initialization failed:', error)
+  }
+
+  try {
+    await seedEmployee()
+  } catch (error) {
+    console.warn('Employee seed initialization failed:', error)
   }
 
   try {

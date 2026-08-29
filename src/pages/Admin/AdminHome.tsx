@@ -12,6 +12,9 @@ export default function AdminHome() {
           { label: 'Impact Stats', path: '/admin/stats', color: '#2D6A4F' },
           { label: 'Testimonials', path: '/admin/testimonials', color: '#52B788' },
           { label: 'Submissions', path: '/admin/submissions', color: '#BC6C25' },
+          { label: 'Employees', path: '/admin/employees', color: '#2D6A4F' },
+          { label: 'Attendance', path: '/admin/attendance', color: '#52B788' },
+          { label: 'Leave Requests', path: '/admin/leaves', color: '#BC6C25' },
         ].map(card => (
           <a key={card.path} href={card.path}
             style={{ display: 'block', background: card.color, color: '#fff', padding: 'var(--space-6)', borderRadius: 'var(--radius-md)', textDecoration: 'none', fontWeight: 600 }}>

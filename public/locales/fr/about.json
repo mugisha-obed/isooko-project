@@ -1,0 +1,44 @@
+{
+  "seo": {
+    "title": "À Propos — Isôoko Community Development",
+    "description": "Isôoko Community Development (ICD) est une organisation à but non lucratif qui autonomise les jeunes et les femmes à Masoro, au Rwanda, à travers l'alphabétisation, la santé et l'entrepreneuriat."
+  },
+  "hero": {
+    "title": "À Propos d'Isôoko",
+    "subtitle": "Enraciné à Masoro, au service de la communauté depuis 2019"
+  },
+  "story": {
+    "title": "Notre Histoire",
+    "subtitle": "D'un centre d'apprentissage à un mouvement communautaire",
+    "body1": "En 2019, le Centre d'Apprentissage et de Sports de Masoro (MLSC) a été fondé pour combler le manque de ressources communautaires dans le secteur de Masoro — une zone périurbaine du district de Rulindo avec un accès limité aux centres d'apprentissage, aux installations sportives et aux ordinateurs. Entre 2019 et 2021, le MLSC a mis en œuvre cinq programmes : Alphabétisation Numérique, Accès à la Bibliothèque, Santé, Sports & Loisirs, et Leadership & Autonomisation.",
+    "body2": "Le succès de ces programmes a révélé la nécessité d'une entité plus durable pour poursuivre la mission. Ainsi est née Isôoko Community Development (ICD). Aujourd'hui, l'ICD opère depuis le Centre Communautaire Isôoko — un pôle comprenant des installations sportives, un laboratoire informatique, une bibliothèque et des bureaux qui soutiennent des activités éducatives et récréatives pour toute la communauté.",
+    "body3": "Masoro n'est que le point de départ. Nous envisageons d'atteindre chaque recoin du Rwanda, en dotant nos concitoyens — en particulier les femmes et les jeunes — des ressources, des compétences et de la confiance dont ils ont besoin pour s'épanouir. Parce que lorsqu'une voix s'élève, elle en inspire une autre."
+  },
+  "missionVision": {
+    "title": "Notre Mission & Notre Vision",
+    "mission": {
+      "title": "Mission",
+      "text": "Cultiver une croissance inclusive et des opportunités, pour les femmes et les jeunes, à travers une meilleure santé et un meilleur bien-être, l'alphabétisation et l'entrepreneuriat."
+    },
+    "vision": {
+      "title": "Vision",
+      "text": "Une nation où tous les Rwandais sont dotés des compétences et des ressources qui leur permettent de réaliser leur plein potentiel."
+    }
+  },
+  "sdgs": {
+    "title": "Objectifs de Développement Durable",
+    "subtitle": "Alignés sur les ODD 1, 2, 3, 4, 5 et 8",
+    "sdg1": "Pas de Pauvreté",
+    "sdg2": "Faim Zéro",
+    "sdg3": "Bonne Santé et Bien-Être",
+    "sdg4": "Éducation de Qualité",
+    "sdg5": "Égalité des Sexes",
+    "sdg8": "Travail Décent et Croissance Économique"
+  },
+  "team": {
+    "title": "Notre Équipe",
+    "subtitle": "Dévouée à l'impact communautaire",
+    "roleEd": "Co-fondatrice & Directrice Exécutive",
+    "edQuote": "Isôoko est né d'un profond amour pour mon pays et d'une passion pour redonner de manière significative. Avec la communauté dynamique du secteur de Masoro, j'ai co-fondé Isôoko Community Development avec une vision commune : autonomiser les jeunes générations et les femmes pour qu'elles trouvent leur voix, réalisent leur potentiel et vivent une vie qui compte vraiment. Pour leurs familles, leurs communautés et pour le Rwanda dans son ensemble."
+  }
+}

@@ -65,6 +65,15 @@ const FIELD_MAP: Record<string, string> = {
   quotekey: 'quoteKey',
   // volunteers
   areaofinterest: 'areaOfInterest',
+  // employees
+  employeeid: 'employeeId',
+  taxid: 'taxId',
+  startdate: 'startDate',
+  // attendance
+  checkin: 'checkIn',
+  checkout: 'checkOut',
+  // leave
+  enddate: 'endDate',
 }
 
 function normalizeRow(row: Record<string, unknown>): Record<string, unknown> {
@@ -125,9 +134,13 @@ export async function getById<T extends { id: string }>(collection: string, id: 
 }
 
 export async function createOne(collection: string, data: Record<string, unknown>): Promise<Record<string, unknown>> {
+  const id = typeof data.id === 'string' && data.id
+    ? data.id
+    : `${collection}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
+  const { id: _dropped, ...rest } = data
   const entry = {
-    id: `${collection}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-    ...data,
+    id,
+    ...rest,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   }
@@ -192,9 +205,13 @@ export async function deleteOne(collection: string, id: string): Promise<boolean
 }
 
 export async function saveSubmission(collection: string, data: unknown) {
+  const id = typeof (data as Record<string, unknown>)?.id === 'string' && (data as Record<string, unknown>).id
+    ? (data as Record<string, unknown>).id as string
+    : `${collection}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
+  const { id: _dropped, ...rest } = (data ?? {}) as Record<string, unknown>
   const entry = {
-    id: `${collection}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-    ...(data as object),
+    id,
+    ...rest,
     createdAt: new Date().toISOString(),
   }
 

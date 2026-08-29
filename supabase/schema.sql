@@ -103,6 +103,49 @@ create table if not exists public.volunteers (
   updatedat timestamptz
 );
 
+create table if not exists public.employees (
+  id text primary key,
+  name text,
+  role text,
+  department text,
+  phone text,
+  email text,
+  startdate text,
+  salary numeric,
+  bankname text,
+  bankaccount text,
+  taxid text,
+  active boolean default true,
+  username text,
+  passwordhash text,
+  createdat timestamptz,
+  updatedat timestamptz
+);
+
+create table if not exists public.attendance (
+  id text primary key,
+  employeeid text,
+  date text,
+  checkin text,
+  checkout text,
+  status text,
+  createdat timestamptz,
+  updatedat timestamptz
+);
+
+create table if not exists public.leave_requests (
+  id text primary key,
+  employeeid text,
+  startdate text,
+  enddate text,
+  type text,
+  reason text,
+  status text,
+  adminnote text,
+  createdat timestamptz,
+  updatedat timestamptz
+);
+
 -- Add any columns missing on tables that already exist.
 alter table public.programs add column if not exists icon text;
 alter table public.programs add column if not exists titlekey text;
@@ -147,6 +190,36 @@ alter table public.testimonials add column if not exists updatedat timestamptz;
 alter table public.contacts add column if not exists updatedat timestamptz;
 alter table public.volunteers add column if not exists updatedat timestamptz;
 
+alter table public.employees add column if not exists role text;
+alter table public.employees add column if not exists department text;
+alter table public.employees add column if not exists phone text;
+alter table public.employees add column if not exists email text;
+alter table public.employees add column if not exists startdate text;
+alter table public.employees add column if not exists salary numeric;
+alter table public.employees add column if not exists bankname text;
+alter table public.employees add column if not exists bankaccount text;
+alter table public.employees add column if not exists taxid text;
+alter table public.employees add column if not exists active boolean default true;
+alter table public.employees add column if not exists username text;
+alter table public.employees add column if not exists passwordhash text;
+alter table public.employees add column if not exists updatedat timestamptz;
+
+alter table public.attendance add column if not exists employeeid text;
+alter table public.attendance add column if not exists date text;
+alter table public.attendance add column if not exists checkin text;
+alter table public.attendance add column if not exists checkout text;
+alter table public.attendance add column if not exists status text;
+alter table public.attendance add column if not exists updatedat timestamptz;
+
+alter table public.leave_requests add column if not exists employeeid text;
+alter table public.leave_requests add column if not exists startdate text;
+alter table public.leave_requests add column if not exists enddate text;
+alter table public.leave_requests add column if not exists type text;
+alter table public.leave_requests add column if not exists reason text;
+alter table public.leave_requests add column if not exists status text;
+alter table public.leave_requests add column if not exists adminnote text;
+alter table public.leave_requests add column if not exists updatedat timestamptz;
+
 -- Only the backend (service role) reads/writes these tables.
 alter table public.admins enable row level security;
 alter table public.programs enable row level security;
@@ -158,3 +231,6 @@ alter table public.impact_stats enable row level security;
 alter table public.testimonials enable row level security;
 alter table public.contacts enable row level security;
 alter table public.volunteers enable row level security;
+alter table public.employees enable row level security;
+alter table public.attendance enable row level security;
+alter table public.leave_requests enable row level security;

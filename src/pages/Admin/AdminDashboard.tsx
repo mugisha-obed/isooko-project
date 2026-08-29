@@ -12,6 +12,9 @@ const SIDEBAR_LINKS = [
   { label: 'Impact Stats', path: '/admin/stats' },
   { label: 'Testimonials', path: '/admin/testimonials' },
   { label: 'Submissions', path: '/admin/submissions' },
+  { label: 'Employees', path: '/admin/employees' },
+  { label: 'Attendance', path: '/admin/attendance' },
+  { label: 'Leave Requests', path: '/admin/leaves' },
 ]
 
 export default function AdminDashboard() {

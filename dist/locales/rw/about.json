@@ -1,0 +1,44 @@
+{
+  "seo": {
+    "title": "Ibyatubanda — Isôoko Community Development",
+    "description": "Isôoko Community Development (ICD) ni ikorera-ntabagenza riteza imbere urubyiruko n'abagore i Masoro, mu Rwanda, binyuze mu burezi, ubuzima n'ubucuruzi."
+  },
+  "hero": {
+    "title": "Ibya Isôoko",
+    "subtitle": "Dushingiye i Masoro, dusanga abaturage kuva 2019"
+  },
+  "story": {
+    "title": "Inkuru Yacu",
+    "subtitle": "Kuva ahantu ho kwiga kugera ku rugerero rw'abaturage",
+    "body1": "Mu 2019, Ikigo cya Masoro cyo Kwiga no Gukora Siporo (MLSC) cyashinzwe kugira ngo gikemure ikibazo cy'ubuke bw'ibikoresho by'abaturage mu Karere ka Masoro — agace kari hafi y'umujyi mu Akarere ka Rulindo kafite ubushobozi buke bwo kugera ku bigo byo kwiga, ibikoresho bya siporo na mudasobwa. Hagati ya 2019 na 2021, MLSC yashyize mu bikorwa porogaramu eshanu: Ikoranabuhanga n'Uburezi, Isomero, Ubuzima, Siporo n'Imyidagaduro, ndetse n'Ubuyobozi n'Ubushobozi.",
+    "body2": "Intsinzi y'iyi porogaramu yerekanye ko hakenewe ikigo giramba gishobora gukomeza iyi misi. Ni ko Isôoko Community Development (ICD) yavutse. Uyu munsi, ICD ikorera mu Isôoko Community Center — ahantu huzuyemo ibikoresho bya siporo, laboratwari ya mudasobwa, isomero n'ibiro bishyigikira ibikorwa by'uburezi n'ubutunzi by'abaturage bose.",
+    "body3": "Masoro ni intangiriro gusa. Turagamije kugera muri buri mfuruka y'u Rwanda, duhaye abantu bacu — cyane cyane abagore n'urubyiruko — ibikoresho, ubumenyi n'icyizere bikenewe kugira ngo batebere. Kuko iyo ijwi rimwe rizamutse, rihahamira irindi."
+  },
+  "missionVision": {
+    "title": "Intego n'Icyerekezo Byacu",
+    "mission": {
+      "title": "Intego",
+      "text": "Guhinga iterambere ryuzuye n'amahirwe, ku bagore n'urubyiruko, binyuze mu buzima n'ubuziranutse, burezi n'ubucuruzi."
+    },
+    "vision": {
+      "title": "Icyerekezo",
+      "text": "Igihugu aho Abanyarwanda bose bahabwa ubumenyi n'ibikoresho bibatera imbaraga zo kugera ku bushobozi bwabo bwuzuye."
+    }
+  },
+  "sdgs": {
+    "title": "Intego z'Iterambere Riramba",
+    "subtitle": "Bihuje na SDG 1, 2, 3, 4, 5 na 8",
+    "sdg1": "Kurandura Ubukene",
+    "sdg2": "Kurandura Inzara",
+    "sdg3": "Ubuzima Bwiza n'Ubuziranutse",
+    "sdg4": "Uburezi Bwiza",
+    "sdg5": "Uburinganire bw'Abagabo n'Abagore",
+    "sdg8": "Umurimo Ukwiye n'Iterambere ry'Ubukungu"
+  },
+  "team": {
+    "title": "Itsinda Ryacu",
+    "subtitle": "Twiyemeje ingaruka ku baturage",
+    "roleEd": "Umwe mu Batangiye & Umuyobozi Mukuru",
+    "edQuote": "Isôoko yavutse mu rukundo rwimbitse ku gihugu cyanjye no mu cyifuzo cyo gusubiza ku buryo bw'umumaro. Hamwe n'abaturage batangaje b'akarere ka Masoro, natangiye Isôoko Community Development ndi kumwe n'icyerekezo kimwe: guteza imbere urubyiruko n'abagore kugira ngo babone ijwi ryabo, bagere ku bushobozi bwabo, kandi babane ubuzima buba bw'ingenzi mu by'ukuri. Ku miryango yabo, ku baturage babo, no ku Rwanda muri rusange."
+  }
+}

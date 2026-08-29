@@ -24,6 +24,12 @@ const AdminGallery = lazy(() => import('./pages/Admin/AdminGallery'))
 const AdminStats = lazy(() => import('./pages/Admin/AdminStats'))
 const AdminTestimonials = lazy(() => import('./pages/Admin/AdminTestimonials'))
 const AdminSubmissions = lazy(() => import('./pages/Admin/AdminSubmissions'))
+const AdminEmployees = lazy(() => import('./pages/Admin/AdminEmployees'))
+const AdminAttendance = lazy(() => import('./pages/Admin/AdminAttendance'))
+const AdminLeaves = lazy(() => import('./pages/Admin/AdminLeaves'))
+
+const EmployeeLogin = lazy(() => import('./pages/Employee/EmployeeLogin'))
+const EmployeeDashboard = lazy(() => import('./pages/Employee/EmployeeDashboard'))
 
 const wrap = (element: React.ReactNode) => (
   <Suspense fallback={<Spinner />}>{element}</Suspense>
@@ -62,7 +68,18 @@ const router = createBrowserRouter([
       { path: 'stats', element: wrap(<AdminStats />) },
       { path: 'testimonials', element: wrap(<AdminTestimonials />) },
       { path: 'submissions', element: wrap(<AdminSubmissions />) },
+      { path: 'employees', element: wrap(<AdminEmployees />) },
+      { path: 'attendance', element: wrap(<AdminAttendance />) },
+      { path: 'leaves', element: wrap(<AdminLeaves />) },
     ],
+  },
+  {
+    path: '/employee/login',
+    element: wrap(<EmployeeLogin />),
+  },
+  {
+    path: '/employee',
+    element: wrap(<EmployeeDashboard />),
   },
 ])
 

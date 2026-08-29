@@ -1,0 +1,39 @@
+{
+  "seo": {
+    "title": "Gira Uruhare — Isôoko Community Development",
+    "description": "Shyigikira Isôoko binyuze mu guha, ubukorerabushake, cyangwa ubufatanye."
+  },
+  "hero": {
+    "title": "Gira Uruhare",
+    "subtitle": "Buri nkunga itanga itandukaniro",
+    "cta": "Baho Umukorerabushake"
+  },
+  "ways": {
+    "title": "Uburyo bwo Gutanga Inkunga",
+    "subtitle": "Hitamo uburyo ushaka kugira ingaruka",
+    "donate": {
+      "title": "Tanga",
+      "desc": "Inkunga yawe y'amafaranga idufasha gukoresha porogaramu z'urubyiruko, imishinga yo guteza imbere abagore, ibikorwa bya siporo, no gukomeza ikigo cyacu cy'abaturage."
+    },
+    "volunteer": {
+      "title": "Ubukorerabushake",
+      "desc": "Sangira ubumenyi bwawe — kuva mu kwigisha ikoranabuhanga kugera mu guhugura siporo — kandi utange itandukaniro i Masoro."
+    },
+    "partner": {
+      "title": "Fatanira Natwe",
+      "desc": "Ibigo n'amashyirahamwe bishobora gufatanya na Isôoko gutera inkunga porogaramu zihariye, gufasha mu birori, cyangwa gushyigikira ibikorwa remezo."
+    }
+  },
+  "volunteer": {
+    "title": "Ubwiyandikise bw'Ubukorerabushake",
+    "subtitle": "Uzuza ifishi maze tuzakwandikire",
+    "success": "Urakoze kwiyandikisha! Tuza kuguhuza vuba.",
+    "fields": {
+      "name": "Amazina Yombi",
+      "email": "Aderesi ya E-mail",
+      "phone": "Nomero ya Telefoni",
+      "area": "Agashami Ushaka",
+      "message": "Udukore ku wawe"
+    }
+  }
+}

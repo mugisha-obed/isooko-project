@@ -1,0 +1,27 @@
+{
+  "seo": {
+    "title": "Twandikire — Isôoko Community Development",
+    "description": "Baza Isôoko Community Development i Masoro, mu Rwanda."
+  },
+  "hero": {
+    "title": "Twandikire",
+    "subtitle": "Twishimira kumva ibyo ufite"
+  },
+  "info": {
+    "title": "Bwira Natwe",
+    "desc": "Bwira natwe kugira ngo umenye byinshi kuri porogaramu zacu, ubufatanye, cyangwa uko ushobora gushyigikira guteza imbere urubyiruko n'abagore i Masoro.",
+    "addressLabel": "Dusura",
+    "address": "Masoro Sector, Akarere ka Rulindo, Intara y'Amajyaruguru, Rwanda",
+    "emailLabel": "Twandikire",
+    "phoneLabel": "Duhamagare"
+  },
+  "form": {
+    "success": "Urakoze! Ubutumwa bwawe bwoherejwe.",
+    "error": "Hari ikitagenze neza. Ongera ugerageze.",
+    "name": "Amazina",
+    "email": "E-mail",
+    "subject": "Icyo Wandika",
+    "message": "Ubutumwa",
+    "submit": "Ohereza Ubutumwa"
+  }
+}
