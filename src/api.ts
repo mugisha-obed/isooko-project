@@ -50,6 +50,11 @@ export const api = {
         method: 'POST',
         body: JSON.stringify({ username, password }),
       }),
+    employeeTokenLogin: (payload: { username: string; token: string; date?: string; latitude?: string; longitude?: string; locationLabel?: string }) =>
+      request<{ token: string; username: string; employeeId: string; attendance: AttendanceRecord }>('/api/auth/login/token', {
+        method: 'POST',
+        body: JSON.stringify(payload),
+      }),
   },
   employee: {
     me: () => request<EmployeeProfile>('/api/employees/me', { scope: 'employee' }),
@@ -63,12 +68,20 @@ export const api = {
       request<{ success: boolean }>(`/api/employees/${id}`, { method: 'DELETE' }),
     attendance: (id: string) => request<AttendanceRecord[]>(`/api/employees/${id}/attendance`),
     leave: (id: string) => request<LeaveRequest[]>(`/api/employees/${id}/leave`),
-    markAttendance: (id: string, action: 'checkin' | 'checkout') =>
+    markAttendance: (id: string, action: 'checkin' | 'checkout', location?: { latitude?: string; longitude?: string; locationLabel?: string }) =>
       request<AttendanceRecord>(`/api/employees/${id}/attendance`, {
         method: 'POST',
-        body: JSON.stringify({ action }),
+        body: JSON.stringify({ action, ...(location || {}) }),
         scope: 'employee',
       }),
+  },
+  tokens: {
+    list: () => request<DailyTokenRecord[]>('/api/tokens'),
+    today: (date?: string) => request<DailyTokenRecord[]>(`/api/tokens/today${date ? `?date=${encodeURIComponent(date)}` : ''}`),
+    create: (data: { date?: string; token?: string }) =>
+      request<DailyTokenRecord>('/api/tokens', { method: 'POST', body: JSON.stringify(data) }),
+    delete: (id: string) =>
+      request<{ success: boolean }>(`/api/tokens/${id}`, { method: 'DELETE' }),
   },
   attendance: {
     list: () => request<AttendanceRecord[]>('/api/attendance'),
@@ -131,6 +144,18 @@ interface AttendanceRecord {
   checkIn: string
   checkOut: string
   status: string
+  latitude?: string
+  longitude?: string
+  locationLabel?: string
+  createdAt?: string
+  updatedAt?: string
+}
+
+interface DailyTokenRecord {
+  id: string
+  date: string
+  token: string
+  active: boolean
   createdAt?: string
   updatedAt?: string
 }

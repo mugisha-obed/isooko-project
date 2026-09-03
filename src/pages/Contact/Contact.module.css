@@ -1,0 +1,14 @@
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .infoGrid { gap: var(--space-8); }
+}
+
+@media (max-width: 768px) {
+  .infoGrid { grid-template-columns: 1fr; gap: var(--space-8); }
+}

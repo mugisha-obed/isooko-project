@@ -27,6 +27,7 @@ const AdminSubmissions = lazy(() => import('./pages/Admin/AdminSubmissions'))
 const AdminEmployees = lazy(() => import('./pages/Admin/AdminEmployees'))
 const AdminAttendance = lazy(() => import('./pages/Admin/AdminAttendance'))
 const AdminLeaves = lazy(() => import('./pages/Admin/AdminLeaves'))
+const AdminTokens = lazy(() => import('./pages/Admin/AdminTokens'))
 
 const EmployeeLogin = lazy(() => import('./pages/Employee/EmployeeLogin'))
 const EmployeeDashboard = lazy(() => import('./pages/Employee/EmployeeDashboard'))
@@ -70,6 +71,7 @@ const router = createBrowserRouter([
       { path: 'submissions', element: wrap(<AdminSubmissions />) },
       { path: 'employees', element: wrap(<AdminEmployees />) },
       { path: 'attendance', element: wrap(<AdminAttendance />) },
+      { path: 'tokens', element: wrap(<AdminTokens />) },
       { path: 'leaves', element: wrap(<AdminLeaves />) },
     ],
   },

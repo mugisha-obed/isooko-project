@@ -1,0 +1,30 @@
+.missionVisionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  max-width: 800px;
+  margin: 0 auto;
+}
+.missionVisionCard {
+  background: var(--color-white);
+  padding: var(--space-6);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+.sdgPill {
+  background: var(--color-white);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  font-weight: 600;
+  color: var(--color-green-dark);
+}
+
+@media (max-width: 768px) {
+  .missionVisionGrid { grid-template-columns: 1fr; gap: var(--space-6); }
+}
+
+@media (max-width: 560px) {
+  .missionVisionCard { padding: var(--space-4); }
+  .sdgPill { width: 100%; text-align: center; }
+}

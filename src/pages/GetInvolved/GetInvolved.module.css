@@ -1,0 +1,8 @@
+.volunteerWrap {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .volunteerWrap { max-width: 100%; }
+}

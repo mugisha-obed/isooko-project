@@ -73,14 +73,14 @@ export default function AdminListPage({ title, apiPath, columns, defaultItem, on
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-6)' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-6)', flexWrap: 'wrap', gap: 'var(--space-3)' }}>
         <h1 style={{ margin: 0, color: 'var(--color-green-dark)' }}>{title}</h1>
         <button onClick={startNew} style={{ padding: 'var(--space-2) var(--space-4)', background: 'var(--color-green-dark)', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', fontWeight: 600 }}>
           + Add New
         </button>
       </div>
 
-      <div style={{ background: '#fff', borderRadius: 'var(--radius-md)', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
+      <div className="tab-card tab-scroll">
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr style={{ background: 'var(--color-cream-dark)' }}>

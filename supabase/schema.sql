@@ -129,6 +129,18 @@ create table if not exists public.attendance (
   checkin text,
   checkout text,
   status text,
+  latitude text,
+  longitude text,
+  locationlabel text,
+  createdat timestamptz,
+  updatedat timestamptz
+);
+
+create table if not exists public.tokens (
+  id text primary key,
+  date text,
+  token text,
+  active boolean default true,
   createdat timestamptz,
   updatedat timestamptz
 );
@@ -209,6 +221,9 @@ alter table public.attendance add column if not exists date text;
 alter table public.attendance add column if not exists checkin text;
 alter table public.attendance add column if not exists checkout text;
 alter table public.attendance add column if not exists status text;
+alter table public.attendance add column if not exists latitude text;
+alter table public.attendance add column if not exists longitude text;
+alter table public.attendance add column if not exists locationlabel text;
 alter table public.attendance add column if not exists updatedat timestamptz;
 
 alter table public.leave_requests add column if not exists employeeid text;
@@ -234,3 +249,4 @@ alter table public.volunteers enable row level security;
 alter table public.employees enable row level security;
 alter table public.attendance enable row level security;
 alter table public.leave_requests enable row level security;
+alter table public.tokens enable row level security;

@@ -39,7 +39,7 @@ export default function AdminLeaves() {
     <div>
       <h1 style={{ margin: 0, color: 'var(--color-green-dark)', marginBottom: 'var(--space-6)' }}>Leave Requests</h1>
 
-      <div style={{ background: '#fff', borderRadius: 'var(--radius-md)', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
+      <div className="tab-card tab-scroll">
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr style={{ background: 'var(--color-cream-dark)' }}>

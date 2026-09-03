@@ -3,6 +3,7 @@ import SEOHead from '@/components/SEOHead/SEOHead'
 import HeroBanner from '@/components/HeroBanner/HeroBanner'
 import TeamMemberCard from '@/components/TeamMemberCard/TeamMemberCard'
 import { teamMembers } from '@/data/teamMembers'
+import styles from './About.module.css'
 
 export default function About() {
   const { t } = useTranslation('about')
@@ -37,12 +38,12 @@ export default function About() {
           <div className="section-header">
             <h2 className="section-title">{t('missionVision.title')}</h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-8)', maxWidth: 800, margin: '0 auto' }}>
-            <div style={{ background: 'var(--color-white)', padding: 'var(--space-6)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)' }}>
+          <div className={styles.missionVisionGrid}>
+            <div className={styles.missionVisionCard}>
               <h3>{t('missionVision.mission.title')}</h3>
               <p style={{ fontStyle: 'italic' }}>{t('missionVision.mission.text')}</p>
             </div>
-            <div style={{ background: 'var(--color-white)', padding: 'var(--space-6)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)' }}>
+            <div className={styles.missionVisionCard}>
               <h3>{t('missionVision.vision.title')}</h3>
               <p style={{ fontStyle: 'italic' }}>{t('missionVision.vision.text')}</p>
             </div>
@@ -58,14 +59,7 @@ export default function About() {
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-4)', justifyContent: 'center' }}>
             {[1, 2, 3, 4, 5, 8].map((n) => (
-              <div key={n} style={{
-                background: 'var(--color-white)',
-                padding: 'var(--space-3) var(--space-6)',
-                borderRadius: 'var(--radius-full)',
-                boxShadow: 'var(--shadow-sm)',
-                fontWeight: 600,
-                color: 'var(--color-green-dark)',
-              }}>
+              <div key={n} className={styles.sdgPill}>
                 SDG {n} — {t(`sdgs.sdg${n}`)}
               </div>
             ))}

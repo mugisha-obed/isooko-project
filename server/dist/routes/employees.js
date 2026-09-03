@@ -128,12 +128,17 @@ export function createEmployeesRouter() {
                     return;
                 }
                 const now = timeNow();
+                const location = {
+                    latitude: String(req.body.latitude || ''),
+                    longitude: String(req.body.longitude || ''),
+                    locationLabel: typeof req.body.locationLabel === 'string' ? req.body.locationLabel : '',
+                };
                 if (existing) {
-                    const updated = await updateOne('attendance', existing.id, { checkIn: now, status: 'present', employeeId });
+                    const updated = await updateOne('attendance', existing.id, { checkIn: now, status: 'present', employeeId, ...location });
                     res.json(updated);
                 }
                 else {
-                    const created = await createOne('attendance', { employeeId, date, checkIn: now, status: 'present' });
+                    const created = await createOne('attendance', { employeeId, date, checkIn: now, status: 'present', ...location });
                     res.status(201).json(created);
                 }
                 return;

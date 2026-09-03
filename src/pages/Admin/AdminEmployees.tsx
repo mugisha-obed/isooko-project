@@ -101,7 +101,7 @@ export default function AdminEmployees() {
         </button>
       </div>
 
-      <div style={{ background: '#fff', borderRadius: 'var(--radius-md)', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
+      <div className="tab-card tab-scroll">
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr style={{ background: 'var(--color-cream-dark)' }}>
@@ -143,7 +143,7 @@ export default function AdminEmployees() {
         <div style={modalOverlay} onClick={() => setEditing(null)}>
           <div style={modal} onClick={e => e.stopPropagation()}>
             <h2 style={{ marginBottom: 'var(--space-4)' }}>{isNew ? 'Add' : 'Edit'} Employee</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-3)' }}>
+            <div className="rd-grid-2">
               <Field label="Name">
                 <input style={input} value={editing.name} onChange={e => setField('name', e.target.value)} />
               </Field>
@@ -201,15 +201,15 @@ export default function AdminEmployees() {
             <h3 style={{ fontSize: 'var(--font-size-base)', margin: 'var(--space-3) 0' }}>Attendance</h3>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead><tr style={{ background: 'var(--color-cream-dark)' }}>
-                <th style={th}>Date</th><th style={th}>In</th><th style={th}>Out</th><th style={th}>Status</th>
+                <th style={th}>Date</th><th style={th}>In</th><th style={th}>Out</th><th style={th}>Location</th><th style={th}>Status</th>
               </tr></thead>
               <tbody>
                 {detail.attendance.slice().reverse().map(a => (
                   <tr key={a.id} style={{ borderTop: '1px solid var(--color-cream-dark)' }}>
-                    <td style={td}>{a.date}</td><td style={td}>{a.checkIn || '—'}</td><td style={td}>{a.checkOut || '—'}</td><td style={td}>{a.status || '—'}</td>
+                    <td style={td}>{a.date}</td><td style={td}>{a.checkIn || '—'}</td><td style={td}>{a.checkOut || '—'}</td><td style={td}>{a.latitude ? (a.locationLabel || `${a.latitude}, ${a.longitude}`) : '—'}</td><td style={td}>{a.status || '—'}</td>
                   </tr>
                 ))}
-                {detail.attendance.length === 0 && <tr><td colSpan={4} style={td}>No attendance records</td></tr>}
+                {detail.attendance.length === 0 && <tr><td colSpan={5} style={td}>No attendance records</td></tr>}
               </tbody>
             </table>
             <h3 style={{ fontSize: 'var(--font-size-base)', margin: 'var(--space-3) 0' }}>Leave Requests</h3>

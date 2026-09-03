@@ -14,6 +14,7 @@ const SIDEBAR_LINKS = [
   { label: 'Submissions', path: '/admin/submissions' },
   { label: 'Employees', path: '/admin/employees' },
   { label: 'Attendance', path: '/admin/attendance' },
+  { label: 'Daily Tokens', path: '/admin/tokens' },
   { label: 'Leave Requests', path: '/admin/leaves' },
 ]
 
@@ -24,13 +25,13 @@ export default function AdminDashboard() {
   if (!token) return <Navigate to="/admin/login" replace />
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
-      <aside style={{ width: 240, background: 'var(--color-green-dark)', color: '#fff', display: 'flex', flexDirection: 'column' }}>
+    <div className="admin-shell">
+      <aside className="admin-sidebar">
         <div style={{ padding: 'var(--space-6)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
           <h2 style={{ margin: 0, fontSize: 'var(--font-size-lg)' }}>Isôoko Admin</h2>
           <p style={{ margin: 'var(--space-2) 0 0', fontSize: 'var(--font-size-sm)', opacity: 0.8 }}>{username}</p>
         </div>
-        <nav style={{ flex: 1, padding: 'var(--space-3)' }}>
+        <nav style={{ flex: 1 }}>
           {SIDEBAR_LINKS.map(link => (
             <NavLink
               key={link.path}
@@ -60,7 +61,7 @@ export default function AdminDashboard() {
           </button>
         </div>
       </aside>
-      <main style={{ flex: 1, padding: 'var(--space-6)', background: '#f8f6f3', overflow: 'auto' }}>
+      <main className="admin-main">
         <Outlet />
       </main>
     </div>

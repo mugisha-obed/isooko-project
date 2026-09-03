@@ -35,7 +35,7 @@ export default function AdminLogin() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--color-cream)' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--color-cream)', padding: 'var(--space-4)' }}>
       <form onSubmit={handleSubmit} style={{ background: '#fff', padding: 'var(--space-8)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-lg)', width: '100%', maxWidth: 400 }}>
         <h1 style={{ textAlign: 'center', marginBottom: 'var(--space-6)', color: 'var(--color-green-dark)' }}>Admin Login</h1>
         {error && <div style={{ background: '#fee', color: '#c33', padding: 'var(--space-3)', borderRadius: 'var(--radius-sm)', marginBottom: 'var(--space-4)', textAlign: 'center' }}>{error}</div>}

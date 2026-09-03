@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useEmployeeAuth } from '../../hooks/useEmployeeAuth'
+import { useGeolocation } from '../../hooks/useGeolocation'
 import { api } from '../../api'
 
 interface EmployeeProfile {
@@ -20,13 +21,14 @@ interface EmployeeProfile {
   leaves: Leave[]
 }
 
-interface Attendance { id: string; employeeId: string; date: string; checkIn: string; checkOut: string; status: string }
+interface Attendance { id: string; employeeId: string; date: string; checkIn: string; checkOut: string; status: string; latitude?: string; longitude?: string; locationLabel?: string }
 interface Leave { id: string; startDate: string; endDate: string; type: string; reason: string; status: string; adminNote?: string }
 
 const today = () => new Date().toISOString().slice(0, 10)
 
 export default function EmployeeDashboard() {
   const { token, logout, username } = useEmployeeAuth()
+  const { getPosition } = useGeolocation()
   const navigate = useNavigate()
   const [profile, setProfile] = useState<EmployeeProfile | null>(null)
   const [loading, setLoading] = useState(true)
@@ -83,8 +85,12 @@ export default function EmployeeDashboard() {
 
   const doCheckIn = async () => {
     setMessage(null)
+    const pos = await getPosition()
     try {
-      await api.employee.markAttendance(profile.id, 'checkin')
+      await api.employee.markAttendance(profile.id, 'checkin', {
+        latitude: pos?.latitude,
+        longitude: pos?.longitude,
+      })
       setMessage({ type: 'ok', text: 'Checked in successfully' })
       load()
     } catch (e: any) {
@@ -95,8 +101,12 @@ export default function EmployeeDashboard() {
 
   const doCheckOut = async () => {
     setMessage(null)
+    const pos = await getPosition()
     try {
-      await api.employee.markAttendance(profile.id, 'checkout')
+      await api.employee.markAttendance(profile.id, 'checkout', {
+        latitude: pos?.latitude,
+        longitude: pos?.longitude,
+      })
       setMessage({ type: 'ok', text: 'Checked out successfully' })
       load()
     } catch (e: any) {
@@ -128,6 +138,11 @@ export default function EmployeeDashboard() {
           <span style={{ padding: '4px 14px', borderRadius: 'var(--radius-md)', background: statusBg, color: statusColor }}>{statusText}</span>
         </div>
         {hours && <div style={{ marginTop: 'var(--space-2)', color: '#666' }}>Hours worked: {hours}</div>}
+        {todayRec && todayRec.latitude && (
+          <div style={{ marginTop: 'var(--space-2)', fontSize: 'var(--font-size-sm)', color: '#2d6a4f' }}>
+            Checked in from: {todayRec.locationLabel || `${todayRec.latitude}, ${todayRec.longitude}`}
+          </div>
+        )}
         <div style={{ marginTop: 'var(--space-4)', display: 'flex', gap: 'var(--space-3)' }}>
           <button onClick={doCheckIn} disabled={isCheckedIn || isCheckedOut || onLeaveToday}
             style={{ ...actionBtn, background: 'var(--color-green-dark)', color: '#fff', opacity: (isCheckedIn || isCheckedOut || onLeaveToday) ? 0.5 : 1 }}>
@@ -162,10 +177,10 @@ export default function EmployeeDashboard() {
   const attendanceTab = (
     <div>
       <h2 style={{ fontSize: 'var(--font-size-base)', marginBottom: 'var(--space-3)', color: 'var(--color-green-dark)' }}>Attendance History</h2>
-      <div style={tableWrap}>
+      <div className="tab-card tab-scroll" style={tableWrap}>
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead><tr style={{ background: 'var(--color-cream-dark)' }}>
-            <th style={th}>Date</th><th style={th}>Check In</th><th style={th}>Check Out</th><th style={th}>Hours</th><th style={th}>Status</th>
+            <th style={th}>Date</th><th style={th}>Check In</th><th style={th}>Check Out</th><th style={th}>Hours</th><th style={th}>Location</th><th style={th}>Status</th>
           </tr></thead>
           <tbody>
             {profile.attendance.slice().reverse().map(a => (
@@ -174,10 +189,11 @@ export default function EmployeeDashboard() {
                 <td style={td}>{a.checkIn || '—'}</td>
                 <td style={td}>{a.checkOut || '—'}</td>
                 <td style={td}>{a.checkIn && a.checkOut ? calcHours(a.checkIn, a.checkOut) : '—'}</td>
+                <td style={td}>{a.latitude ? (a.locationLabel || `${a.latitude}, ${a.longitude}`) : '—'}</td>
                 <td style={td}><span style={{ ...statusPill, background: a.status === 'present' ? '#e8f5e9' : '#fde8e8', color: a.status === 'present' ? '#2d6a4f' : '#c33' }}>{a.status || '—'}</span></td>
               </tr>
             ))}
-            {profile.attendance.length === 0 && <tr><td colSpan={5} style={{ ...td, textAlign: 'center', color: '#999' }}>No attendance records yet</td></tr>}
+            {profile.attendance.length === 0 && <tr><td colSpan={6} style={{ ...td, textAlign: 'center', color: '#999' }}>No attendance records yet</td></tr>}
           </tbody>
         </table>
       </div>
@@ -188,7 +204,7 @@ export default function EmployeeDashboard() {
     <div>
       <h2 style={{ fontSize: 'var(--font-size-base)', marginBottom: 'var(--space-3)', color: 'var(--color-green-dark)' }}>Request Leave</h2>
       <form onSubmit={submitLeave} style={{ background: '#fff', padding: 'var(--space-5)', borderRadius: 'var(--radius-md)', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', maxWidth: 520 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-3)' }}>
+        <div className="rd-grid-2">
           <div>
             <label style={label}>Start Date</label>
             <input type="date" required style={field} value={leaveForm.startDate} onChange={e => setLeaveForm({ ...leaveForm, startDate: e.target.value })} />
@@ -214,7 +230,7 @@ export default function EmployeeDashboard() {
       </form>
 
       <h2 style={{ fontSize: 'var(--font-size-base)', margin: 'var(--space-6) 0 var(--space-3)', color: 'var(--color-green-dark)' }}>My Leave Requests</h2>
-      <div style={tableWrap}>
+      <div className="tab-card tab-scroll" style={tableWrap}>
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead><tr style={{ background: 'var(--color-cream-dark)' }}>
             <th style={th}>Start</th><th style={th}>End</th><th style={th}>Type</th><th style={th}>Reason</th><th style={th}>Status</th>
@@ -239,13 +255,13 @@ export default function EmployeeDashboard() {
   )
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
-      <aside style={{ width: 200, background: 'var(--color-green-dark)', color: '#fff', display: 'flex', flexDirection: 'column' }}>
+    <div className="admin-shell">
+      <aside className="admin-sidebar" style={{ width: 200 }}>
         <div style={{ padding: 'var(--space-5)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
           <h2 style={{ margin: 0, fontSize: 'var(--font-size-lg)' }}>My Dashboard</h2>
           <p style={{ margin: 'var(--space-2) 0 0', fontSize: 'var(--font-size-sm)', opacity: 0.8 }}>{username}</p>
         </div>
-        <nav style={{ flex: 1, padding: 'var(--space-3)' }}>
+        <nav style={{ flex: 1 }}>
           {([['status', 'Today'], ['attendance', 'My Attendance'], ['leave', 'Leave']] as const).map(([key, label]) => (
             <button key={key} onClick={() => setView(key)}
               style={{ display: 'block', width: '100%', textAlign: 'left', padding: 'var(--space-2) var(--space-3)', marginBottom: 'var(--space-1)', borderRadius: 'var(--radius-sm)', border: 'none', cursor: 'pointer', fontSize: 'var(--font-size-sm)', background: view === key ? 'rgba(255,255,255,0.15)' : 'transparent', color: '#fff' }}>
@@ -260,7 +276,7 @@ export default function EmployeeDashboard() {
           </button>
         </div>
       </aside>
-      <main style={{ flex: 1, padding: 'var(--space-6)', background: '#f8f6f3', overflow: 'auto' }}>
+      <main className="admin-main">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-5)', flexWrap: 'wrap', gap: 'var(--space-3)' }}>
           <h1 style={{ margin: 0, color: 'var(--color-green-dark)' }}>Welcome, {profile.name.split(' ')[0]}</h1>
           <button onClick={() => navigate('/')} style={{ padding: 'var(--space-2) var(--space-4)', background: 'transparent', color: 'var(--color-green-dark)', border: '1px solid var(--color-green-dark)', borderRadius: 'var(--radius-sm)', cursor: 'pointer', fontSize: 'var(--font-size-sm)' }}>
@@ -297,7 +313,7 @@ const actionBtn: React.CSSProperties = { padding: 'var(--space-2) var(--space-5)
 const infoGrid: React.CSSProperties = { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 'var(--space-3)' }
 const th: React.CSSProperties = { padding: 'var(--space-3) var(--space-4)', textAlign: 'left', fontSize: 'var(--font-size-sm)', fontWeight: 600 }
 const td: React.CSSProperties = { padding: 'var(--space-3) var(--space-4)', fontSize: 'var(--font-size-sm)' }
-const tableWrap: React.CSSProperties = { background: '#fff', borderRadius: 'var(--radius-md)', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', overflow: 'hidden' }
+const tableWrap: React.CSSProperties = { background: '#fff', borderRadius: 'var(--radius-md)', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }
 const label: React.CSSProperties = { display: 'block', marginBottom: 'var(--space-1)', fontWeight: 600, fontSize: 'var(--font-size-sm)' }
 const field: React.CSSProperties = { width: '100%', padding: 'var(--space-2) var(--space-3)', border: '1px solid var(--color-cream-dark)', borderRadius: 'var(--radius-sm)', boxSizing: 'border-box' }
 const statusPill: React.CSSProperties = { padding: '2px 10px', borderRadius: 'var(--radius-sm)', fontSize: 12 }

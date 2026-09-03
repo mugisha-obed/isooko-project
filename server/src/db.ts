@@ -1,10 +1,23 @@
 import { createClient } from '@supabase/supabase-js'
 import { readFile, writeFile, mkdir, access } from 'fs/promises'
+import { existsSync } from 'fs'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const DATA_DIR = join(__dirname, '..', 'data')
+
+function resolveDataDir(): string {
+  const candidates = [
+    join(__dirname, '..', 'data'),
+    join(process.cwd(), 'server', 'data'),
+  ]
+  for (const dir of candidates) {
+    if (existsSync(dir)) return dir
+  }
+  return candidates[0]
+}
+
+const DATA_DIR = resolveDataDir()
 
 const supabaseUrl = process.env.SUPABASE_URL
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -72,6 +85,9 @@ const FIELD_MAP: Record<string, string> = {
   // attendance
   checkin: 'checkIn',
   checkout: 'checkOut',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  locationlabel: 'locationLabel',
   // leave
   enddate: 'endDate',
 }

@@ -1,6 +1,7 @@
 import './i18n'
 import './styles/global.css'
 import './styles/typography.css'
+import './styles/admin-responsive.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'

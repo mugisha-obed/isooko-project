@@ -10,6 +10,7 @@ interface EmployeeAuthState {
 
 interface EmployeeAuthContextType extends EmployeeAuthState {
   login: (username: string, password: string) => Promise<void>
+  loginWithToken: (payload: { username: string; token: string; date?: string; latitude?: string; longitude?: string; locationLabel?: string }) => Promise<void>
   logout: () => void
 }
 
@@ -56,10 +57,19 @@ export function EmployeeAuthProvider({ children }: { children: ReactNode }) {
 
   const login = async (username: string, password: string) => {
     const res = await api.auth.employeeLogin(username, password)
-    localStorage.setItem('isooko-employee-token', res.token)
-    localStorage.setItem('isooko-employee-id', res.employeeId)
-    localStorage.setItem('isooko-employee-username', res.username)
-    setState({ token: res.token, employeeId: res.employeeId, username: res.username, loading: false })
+    persistAuth(res.token, res.employeeId, res.username)
+  }
+
+  const loginWithToken = async (payload: { username: string; token: string; date?: string; latitude?: string; longitude?: string; locationLabel?: string }) => {
+    const res = await api.auth.employeeTokenLogin(payload)
+    persistAuth(res.token, res.employeeId, res.username)
+  }
+
+  const persistAuth = (token: string, employeeId: string, username: string) => {
+    localStorage.setItem('isooko-employee-token', token)
+    localStorage.setItem('isooko-employee-id', employeeId)
+    localStorage.setItem('isooko-employee-username', username)
+    setState({ token, employeeId, username, loading: false })
   }
 
   const logout = () => {
@@ -68,7 +78,7 @@ export function EmployeeAuthProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <EmployeeAuthContext.Provider value={{ ...state, login, logout }}>
+    <EmployeeAuthContext.Provider value={{ ...state, login, loginWithToken, logout }}>
       {children}
     </EmployeeAuthContext.Provider>
   )

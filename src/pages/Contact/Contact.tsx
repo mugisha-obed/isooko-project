@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import SEOHead from '@/components/SEOHead/SEOHead'
 import HeroBanner from '@/components/HeroBanner/HeroBanner'
 import ContactForm from '@/components/ContactForm/ContactForm'
+import styles from './Contact.module.css'
 
 export default function Contact() {
   const { t } = useTranslation('contact')
@@ -21,7 +22,7 @@ export default function Contact() {
 
       <section className="section">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-12)', alignItems: 'start' }}>
+          <div className={styles.infoGrid}>
             <div>
               <h2 className="section-title">{t('info.title')}</h2>
               <p>{t('info.desc')}</p>
