@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Porogaramu Zacu — Isôoko Community Development",
-    "description": "Isôoko ifite porogaramu eshanu: Guteza imbere Abagore (MWU), Urubyiruko (IZI), Siporo, Ikoranabuhanga, na Tûuza Mubyeyi."
+    "description": "Isôoko ifite porogaramu eshanu: Guteza imbere Abakobwa (MWU), Urubyiruko (IZI), Siporo, Ikoranabuhanga, na Tûuza Mubyeyi."
   },
   "hero": {
     "title": "Porogaramu Zacu",
@@ -9,46 +9,46 @@
   },
   "overview": {
     "title": "Ibyo Dukora",
-    "subtitle": "Porogaramu zifatanya zigamije ingaruka ziramba"
+    "subtitle": "Porogaramu zifatanya zifite ingaruka ziramba"
   },
   "womenEmpowerment": {
     "acronym": "Mutima W'urugo (MWU)",
-    "title": "Guteza Imbere Abagore",
+    "title": "Guteza Imbere Abakobwa",
     "subtitle": "Mutima W'urugo (MWU)",
-    "desc": "Guha ubushobozi abagore bakene kugira ngo bazane impinduka mu mibereho.",
-    "intro": "Tuwizera ko kuzamuka kw'umugore ari ukuzamuka kw'abaturage. Porogaramu ya MWU igamije guha ubushobozi abagore bakene mu baturage.",
-    "offerings": ["Kwimenya no gushyira intego", "Amatsinda yo kuzigama no kubona inguzanyo", "Uburezi ku mirire n'isuku", "Ubuzima bw'umubyeyi n'umwana", "Ubucuruzi n'ubushobozi bwo kugera ku mari", "Amahugurwa y'imyuga (udukoto, kwogosha, welding)"]
+    "desc": "Guha ubushobozi abakobwa bakene kugira ngo bazane impinduka mu mibereho yabo.",
+    "intro": "Tuwizera ko kuzamuka kw'umukoresha ari ukuzamuka kw'abaturage. Porogaramu ya MWU igamije guha ubushobozi abakobwa bakene mu baturage binyuze mu bushobozi bw'akazi, amahugurwa n'inkunga y'ubucuruzi.",
+    "offerings": ["Kwimenya no gushyira intego", "Amatsinda yo kuzigama no kubona inguzanyo", "Uburezi ku mirire n'isuku", "Ubuzima bw'umubyeyi n'umwana", "Ubucuruzi n'ubushobozi bwo kubona inguzanyo", "Amahugurwa y'imyuga (udukoto, kwogosha, welding)"]
   },
   "youthEmpowerment": {
-    "acronym": "Imbaraga z' Isôoko (IZI)",
+    "acronym": "Imbaraga z'Isôoko (IZI)",
     "title": "Guteza Imbere Urubyiruko",
-    "subtitle": "Imbaraga z' Isôoko (IZI)",
-    "desc": "Guha imbaraga urubyiruko mu buyobozi n'ubumenyi.",
-    "intro": "Akarere ka Masoro gakoresha ubucukuzi bw'amabuye y'agaciro. Urubyiruko ruhura n'ibibazo by'uburezi, ubuzima bwo mu mutwe, n'akazi. Porogaramu ya IZI ikemura ibi bibazo.",
-    "offerings": ["Kwimenya no gushyira intego", "Amatsinda yo kuzigama n'ubucuruzi", "Ubuzima bw'imyororokere n'uburenganzira", "Kugera ku nguzanyo", "Amahugurwa y'imyuga", "Gushyira mu kazi", "Ishuri ry'Icyongereza"]
+    "subtitle": "Imbaraga z'Isôoko (IZI)",
+    "desc": "Guteza imbere ubuyobozi n'ubumenyi bw'urubyiruko mu karere ka Masoro.",
+    "intro": "Akarere ka Masoro gakoresha ubucukuzi bw'amabuye y'agaciro. Urubyiruko ruhura n'ibibazo by'uburezi, ubuzima bwo mu mutwe, n'akazi. Porogaramu ya IZI ikemura ibi bibazo binyuze mu buryo bw'ubufatanye.",
+    "offerings": ["Kwimenya no gushyira intego", "Amatsinda yo kuzigama n'ubucuruzi", "Ubuzima bw'umugore n'umwana", "Kubona inguzanyo", "Amahugurwa y'imyuga", "Gushyira mu kazi", "Ishuri ry'Icyongereza"]
   },
   "sportsWellness": {
     "acronym": "",
     "title": "Siporo n'Ubuziranutse",
     "subtitle": "Ubuzima bw'umubiri n'ubwo mu mutwe",
-    "desc": "Ahantu ho gukora siporo no guteza imbere ubuzima bwo mu mutwe.",
-    "intro": "Isôoko Community Center ni ahantu ho gukora siporo no guteza imbere ubuzima bwo mu mutwe.",
-    "offerings": ["Yoga no kwitegereza", "Imyitozo n'irushanwa rya siporo", "Uburezi ku buzima bwo mu mutwe", "Amahugurwa ya mpuha", "Ibikorwa byo kwidagadura"]
+    "desc": "Ahantu ho gukora siporo no guteza imbere ubuzima bwo mu mutwe mu baturage.",
+    "intro": "Isôoko Community Center ni ahantu ho gukora siporo, gukina, no guteza imbere ubuzima bwo mu mutwe. Abaturage bahabwa ibikorwa byinshi bya siporo n'ubuziranutse bigamije gukomeza imbaraga no gutera imbere ubuzima bwiza.",
+    "offerings": ["Yoga no kwitegura", "Ishuri ry'ubukina n'irushanwa", "Uburezi n'ubufasha ku buzima bwo mu mutwe", "Amahugurwa y'ubuvivitsi", "Ibikorwa byo kwidagadura"]
   },
   "digitalLiteracy": {
     "acronym": "",
     "title": "Ikoranabuhanga n'Uburezi",
     "subtitle": "Ubumenyi bw'ikoranabuhanga",
-    "desc": "Amahugurwa y'ikoranabuhanga no gusoma.",
-    "intro": "Isôoko Community Center itanga amahugurwa y'ikoranabuhanga n'uburezi bwo gusoma.",
+    "desc": "Amahugurwa y'ikoranabuhanga n'uburezi bwo gusoma.",
+    "intro": "Isôoko Community Center itanga amahugurwa y'ikoranabuhanga n'uburezi bwo gusoma kugira ngo abaturage babone ubumenyi bufite agaciro ku buzima bwabo.",
     "offerings": ["Ikoranabuhanga n'ubumenyi bwa mudasobwa", "Isomero no gusoma", "Ishuri ry'Icyongereza", "Ikoranabuhanga ku bacuruzi", "Ubufasha mu kwiga"]
   },
   "tuuzaMubyeyi": {
     "acronym": "",
     "title": "Tûuza Mubyeyi",
-    "subtitle": "Kurera Abana ba Porogaramu",
+    "subtitle": "Kurera Abana mu Gihe ababyeyi bategura Ubuzima bwabo",
     "desc": "Kurera abana mu gihe ababyeyi bategura ubuzima bwabo.",
-    "intro": "Porogaramu ya Tûuza Mubyeyi ishyigikira ababyeyi bakene mu gihe bahugurwa kugira ngo bashobore kwiteza imbere.",
-    "offerings": ["Ibikorwa byo kurera abana", "Aho kugumisha abana hatekanye", "Inkunga y'imirire y'abana", "Ibikorwa byo kwitegura ishuri", "Uburezi ku babyeyi"]
+    "intro": "Porogaramu ya Tûuza Mubyeyi ishyigikira abanyamuryango b'abana bakene mu gihe bahugurwa kugira ngo bashobore kwiteza imbere. Abana bahabwa ibikorwa by'uburezi n'iterambere mu ahantu hateganyijwe kandi hazoroshye.",
+    "offerings": ["Ibikorwa by'iterambere ry'umwana", "Ahantu hateganyijwe kandi hazoroshye", "Inkunga y'imirire y'abana", "Kwitegura ishuri", "Uburezi n'ubufasha ku babyeyi"]
   }
 }

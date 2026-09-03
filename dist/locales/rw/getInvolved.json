@@ -1,22 +1,22 @@
 {
   "seo": {
-    "title": "Gira Uruhare — Isôoko Community Development",
+    "title": "Fatanira Natwe — Isôoko Community Development",
     "description": "Shyigikira Isôoko binyuze mu guha, ubukorerabushake, cyangwa ubufatanye."
   },
   "hero": {
-    "title": "Gira Uruhare",
+    "title": "Fatanira Natwe",
     "subtitle": "Buri nkunga itanga itandukaniro",
-    "cta": "Baho Umukorerabushake"
+    "cta": "Iyandikishe Nk'Umukorerabushake"
   },
   "ways": {
     "title": "Uburyo bwo Gutanga Inkunga",
     "subtitle": "Hitamo uburyo ushaka kugira ingaruka",
     "donate": {
-      "title": "Tanga",
-      "desc": "Inkunga yawe y'amafaranga idufasha gukoresha porogaramu z'urubyiruko, imishinga yo guteza imbere abagore, ibikorwa bya siporo, no gukomeza ikigo cyacu cy'abaturage."
+      "title": "Tanga Inkunga",
+      "desc": "Inkunga yawe y'amafaranga idufasha gukoresha porogaramu z'urubyiruko, imishinga yo guteza imbere abakobwa, ibikorwa bya siporo, no gukomeza ikigo cyacu cy'abaturage."
     },
     "volunteer": {
-      "title": "Ubukorerabushake",
+      "title": "Ubufatanye",
       "desc": "Sangira ubumenyi bwawe — kuva mu kwigisha ikoranabuhanga kugera mu guhugura siporo — kandi utange itandukaniro i Masoro."
     },
     "partner": {
@@ -25,7 +25,7 @@
     }
   },
   "volunteer": {
-    "title": "Ubwiyandikise bw'Ubukorerabushake",
+    "title": "Ubwiyandikise bw'Ubufatanye",
     "subtitle": "Uzuza ifishi maze tuzakwandikire",
     "success": "Urakoze kwiyandikisha! Tuza kuguhuza vuba.",
     "fields": {
@@ -33,7 +33,7 @@
       "email": "Aderesi ya E-mail",
       "phone": "Nomero ya Telefoni",
       "area": "Agashami Ushaka",
-      "message": "Udukore ku wawe"
+      "message": "Ubutumwa"
     }
   }
 }

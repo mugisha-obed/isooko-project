@@ -1,10 +1,10 @@
 {
   "seo": {
-    "title": "Amakuru n'Ibirori — Isôoko Community Development",
+    "title": "Amakuru — Isôoko Community Development",
     "description": "Amakuru mashya n'ibirebwa na Isôoko i Masoro, mu Rwanda."
   },
   "hero": {
-    "title": "Amakuru n'Ibirori",
+    "title": "Amakuru",
     "subtitle": "Komeza uhuze n'abaturage ba Isôoko"
   },
   "page": {
@@ -14,14 +14,14 @@
   "filter": {
     "all": "Byose",
     "news": "Amakuru",
-    "event": "Ibirori"
+    "event": "Ibyerekeye"
   },
-  "notFound": "Inyandiko ntibonetse.",
+  "notFound": "Nta nyandiko iletse.",
   "posts": {
     "firstAid": {
-      "title": "Amahugurwa ya Mpuha: 100% Kwitabira, 100% Kwemererwa",
-      "excerpt": "Abakozi 30 ba Isôoko barangije amahugurwa y'iminsi ibiri ya mpuha hamwe n'Umuryango w'Umukandara Utukura w'u Rwanda, batozwa ubumenyi burokoraho ubuzima.",
-      "content": "Nk'ikigo cy'ubuziranutse n'icya siporo, kwitegura gusubiza ibyihutirwa ni igice cy'ingenzi cy'uburyo dukurikirana abaturage bacu. Abakozi 30 ba Isôoko barangije neza amahugurwa y'iminsi ibiri ya mpuha hamwe n'Umuryango w'Umukandara Utukura w'u Rwanda, batozwa ubumenyi bukora burokoraho ubuzima harimo CPR, gufasha uwonetswe, kugenzura kuva amaraso, kuvura igufa ryamenetse, no gusubiza mu byihutirwa.\n\nUrakoze Umuryango w'Umukandara Utukura w'u Rwanda kuduhugura ubumenyi n'ubushobozi byo gusubiza twizewe mu gihe bihambaye cyane."
+      "title": "Amahugurwa y'Ubuvivitsi: 100% Kwitabira, 100% Kwemererwa",
+      "excerpt": "Abakozi 30 ba Isôoko barangije amahugurwa y'iminsi ibiri y'ubuvivitsi hamwe n'Umuryango w'Umukandara Utukura w'u Rwanda, batozwa ubumenyi bukora burokoraho ubuzima.",
+      "content": "Nk'ikigo cy'ubuziranutse n'icya siporo, kwitegura gusubiza ibyihutirwa ni igice cy'ingenzi cy'uburyo dukurikirana abaturage bacu. Abakozi 30 ba Isôoko barangije neza amahugurwa y'iminsi ibiri y'ubuvivitsi hamwe n'Umuryango w'Umukandara Utukura w'u Rwanda, batozwa ubumenyi bukora burokoraho ubuzima harimo CPR, gufasha uwonetswe, kugenzura amaraso, kuvura igufa ryamenetse, no gusubiza mu byihutirwa.\n\nUrakoze Umuryango w'Umukandara Utukura w'u Rwanda kuduhugura ubumenyi n'ubushobozi byo gusubiza twizewe mu gihe bihambaye cyane."
     },
     "vocational": {
       "title": "Itangizwa ry'Amahugurwa y'Imirimo: Kubaka Ubumenyi bw'ejo Hazaza",
@@ -29,7 +29,7 @@
       "content": "Turanejejwe cyane gutangiza amahugurwa y'imirimo ku banyamuryango b'ibyigwa byacu mu baturage! Ubu, abanyamuryango 32 biga ubumenyi bw'akazi bw'agaciro ku bagororwa bo mu baturage babo ubwabo. Muri bo, 18 biga ubudozi, 12 kogosha, n'umwe icereke.\n\nBinyuze mu myitozo n'indi yishyigikiye, abanyamuryango baronka ubumenyi bukoreshwa bushobora gufasha mu gukora amahirwe y'ubuzima budahungabana n'iterambere ry'ubutunzi."
     },
     "financial": {
-      "title": "Kugera ku Mafaranga Bitanga Amahirwe",
+      "title": "Kubona Amafaranga Atero Amahirwe",
       "excerpt": "Amatsinda atanu yo kuzigama ya Mutima w'Urugo yahuguwe binyuze muri porogaramu ya FAST hamwe na VisionFund Rwanda.",
       "content": "Mu bufatanye na VisionFund Rwanda, amatsinda atanu yo kuzigama ya Mutima w'Urugo yahuguwe kandi ashyigikiwe binyuze muri porogaramu ya Financial Accelerating Saving Groups Transformation (FAST), ikomeza ubushobozi bwabo bwo gutanga inguzanyo zifasha abanyamuryango gutangiza no gukura ubucuruzi bw'injiza.\n\nAbanyamuryango kandi bahawe Ikigega cy'Ubwishingizi cya Humura, gitanga ubwishingizi mu byihutirwa by'ubuzima bo n'imiryango yabo, bifasha kurinda ibyo baziimije n'urugendo rw'ubucuruzi."
     },

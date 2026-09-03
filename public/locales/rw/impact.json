@@ -9,38 +9,38 @@
   },
   "stats": {
     "title": "Ingaruka mu Mibare",
-    "subtitle": "Kuva 2019"
+    "subtitle": "Kuva mu 2019"
   },
   "testimonials": {
     "title": "Amajwi y'Abaturage",
     "subtitle": "Umva abo dukorera",
     "t1": {
       "quote": "Natangiye kuzigama RWF 200 gusa binyuze muri porogaramu. Uyu munsi, mfite iduka ryanjye mu Isoko rya Musizi. Isôoko yampaye icyizere cyo kwizera njyewe.",
-      "role": "Umugore wa MWU, Masoro"
+      "role": "Umuqueri wa MWU, Masoro"
     },
     "t2": {
-      "quote": "Ishuri ry'Icyongereza ryahinduye ubuzima bwanjye. Ubu nshobora kuvuga nta gutindigara kandi nkafasha abana b'ibanze b'umuryango wanjye imyitozo.",
-      "role": "Urubyiruko rwa IZI, Masoro"
+      "quote": "Ishuri ry'Icyongereza ryahinduye ubuzima bwanjye. Ubu nshobora kuvuga mu mfuruka nta kibazo kandi nkafasha abana b'ibanze b'umuryango wanjye mu myitozo.",
+      "role": "Umwirabande wa IZI, Masoro"
     },
     "t3": {
-      "quote": "Mu gihe niganaga ubudozi, umushinga wa Tûuza Mubyeyi warebaga umwana wanjye. Ubu nshobora kubona amafaranga nkabona icyo gufatira umuryango wanjye.",
-      "role": "Umugore wa MWU, Masoro"
+      "quote": "Mu gihe niganaga ubukene, umushinga wa Tûuza Mubyeyi warebaga umwana wanjye. Ubu nshobora kubona amafaranga nkabona icyo gufatira umuryango wanjye.",
+      "role": "Umuqueri wa MWU, Masoro"
     }
   },
   "gallery": {
     "title": "Amafoto",
     "subtitle": "Ibyabaye mu byigwa byacu no mu kigo cyacu cy'abaturage",
-    "alt1": "Abagore bitabira inama y'itsinda ryo kuzigama",
+    "alt1": "Abakobwa bitabira inama y'itsinda ryo kuzigama",
     "alt2": "Urubyiruko rukora siporo mu kigo cy'abaturage",
     "alt3": "Isomo rya mudasobwa mu Isôoko Community Center",
-    "alt4": "Amahugurwa ya mpuha hamwe n'Umuryango w'Umukandara Utukura w'u Rwanda",
+    "alt4": "Amahugurwa y'ubuvivitsi hamwe n'Umuryango w'Umukandara Utukura w'u Rwanda",
     "alt5": "Amahugurwa y'imyuga — isomo ry'ubudozi",
     "alt6": "Ibyiciro bya yoga n'ubuziranutse by'abaturage"
   },
   "stats.beneficiaries": "Abaturage Bafashwa",
-  "stats.women": "Abagore Bafashwa",
+  "stats.women": "Abakobwa Bafashwa",
   "stats.youth": "Urubyiruko Rufashwa",
-  "stats.ecd": "Abana Bato mu Burezi",
-  "stats.businesses": "Ubucuruzi Bwahanzwe",
-  "stats.wellness": "Uburyo bwo Kugera ku Buzima bwo mu Mutwe n'Ubuziranutse"
+  "stats.ecd": "Abana mu Burezi bw'Imbidukuri",
+  "stats.businesses": "Ubucuruzi Bwavuzwe",
+  "stats.wellness": "Buri Uburyo bwo Kugera ku Buzima bwiza"
 }

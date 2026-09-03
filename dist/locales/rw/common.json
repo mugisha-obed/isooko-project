@@ -1,37 +1,37 @@
 {
   "nav": {
     "home": "Ahabanza",
-    "about": "Ibyatubanda",
+    "about": "Ibyo duhana",
     "programs": "Porogaramu",
     "impact": "Ingaruka",
-    "getInvolved": "Ushobora Kugira Uruhare",
-    "newsEvents": "Amakuru n'Ibirori",
+    "getInvolved": "Fatanira Natwe",
+    "newsEvents": "Amakuru",
     "contact": "Twandikire"
   },
   "btn": {
     "learnMore": "Menya Byinshi",
     "readMore": "Soma Byinshi",
     "donate": "Tanga",
-    "volunteer": "Koresha Ubushobozi",
+    "volunteer": "Ubufatanye",
     "viewAll": "Reba Byose",
     "submit": "Ohereza",
     "back": "Inyuma",
-    "home": "Jya Ahabanza",
-    "getInvolved": "Gira Uruhare"
+    "home": "Ahabanza",
+    "getInvolved": "Fatanira Natwe"
   },
   "footer": {
-    "tagline": "Gutera imbere abakobwa n'urubyiruko i Masoro, Rwanda.",
-    "quickLinks": "Ihuza Byihuse",
-    "connect": "Huzagira",
-    "address": "Masoro Sector, Akarere ka Rulindo, Intara y'Amajyaruguru, Rwanda",
+    "tagline": "Guteza imbere urubyiruko n'abakobwa bo mu karere ka Masoro, mu Rwanda.",
+    "quickLinks": "Amahuriro",
+    "connect": "Tuganire",
+    "address": "Akarere ka Masoro, Rulindo, Amajyaruguru, Rwanda",
     "email": "info@isookocommunity.org",
     "phone": "+250 788 000 000",
     "copyright": "© {{year}} Isôoko Community Development. Uburenganzira bwose buratengwa."
   },
-  "loading": "Birakora...",
-  "notFound": "Paji ntibonetse.",
+  "loading": "Tegereza...",
+  "notFound": "Nta paji iletse.",
   "getInvolved": {
-    "title": "Urashaka Gutanga Uruhare?",
-    "desc": "Twunganire mu guteza imbere urubyiruko n'abakobwa ba Masoro binyuze mu burezi, ubuzima, n'ubucuruzi."
+    "title": "Urashaka gutanga inkunga?",
+    "desc": "Fatanira natwe mu guteza imbere urubyiruko n'abakobwa bo mu karere ka Masoro binyuze mu burezi, ubuzima n'ubucuruzi."
   }
 }
