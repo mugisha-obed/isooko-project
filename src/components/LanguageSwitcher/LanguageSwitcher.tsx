@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { FaGlobe } from 'react-icons/fa'
 import styles from './LanguageSwitcher.module.css'
 
 const LANGUAGES = [
@@ -17,6 +18,7 @@ export default function LanguageSwitcher() {
 
   return (
     <div className={styles.wrapper} role="group" aria-label="Select language">
+      <FaGlobe aria-hidden="true" className={styles.globe} />
       {LANGUAGES.map(({ code, label }) => (
         <button
           key={code}

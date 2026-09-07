@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { FaPaperPlane } from 'react-icons/fa'
 import styles from './ContactForm.module.css'
 
 interface ContactFormData {
@@ -98,7 +99,7 @@ export default function ContactForm() {
       </div>
 
       <button type="submit" className="btn-primary" disabled={isSubmitting}>
-        {isSubmitting ? tc('loading') : t('form.submit')}
+        {isSubmitting ? tc('loading') : (<><FaPaperPlane aria-hidden="true" /> {t('form.submit')}</>)}
       </button>
     </form>
   )

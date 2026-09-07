@@ -1,21 +1,21 @@
 import { NavLink, Outlet, Navigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
-import { FaSignOutAlt, FaHome } from 'react-icons/fa'
+import { FaSignOutAlt, FaHome, FaTachometerAlt, FaNewspaper, FaCalendarAlt, FaUsers, FaLayerGroup, FaImages, FaChartBar, FaCommentDots, FaInbox, FaUserTie, FaClipboardCheck, FaTicketAlt, FaUmbrellaBeach } from 'react-icons/fa'
 
 const SIDEBAR_LINKS = [
-  { label: 'Dashboard', path: '/admin', end: true },
-  { label: 'Blog Posts', path: '/admin/blog-posts' },
-  { label: 'Events', path: '/admin/events' },
-  { label: 'Team Members', path: '/admin/team' },
-  { label: 'Programs', path: '/admin/programs' },
-  { label: 'Gallery', path: '/admin/gallery' },
-  { label: 'Impact Stats', path: '/admin/stats' },
-  { label: 'Testimonials', path: '/admin/testimonials' },
-  { label: 'Submissions', path: '/admin/submissions' },
-  { label: 'Employees', path: '/admin/employees' },
-  { label: 'Attendance', path: '/admin/attendance' },
-  { label: 'Daily Tokens', path: '/admin/tokens' },
-  { label: 'Leave Requests', path: '/admin/leaves' },
+  { label: 'Dashboard', path: '/admin', end: true, icon: <FaTachometerAlt /> },
+  { label: 'Blog Posts', path: '/admin/blog-posts', icon: <FaNewspaper /> },
+  { label: 'Events', path: '/admin/events', icon: <FaCalendarAlt /> },
+  { label: 'Team Members', path: '/admin/team', icon: <FaUsers /> },
+  { label: 'Programs', path: '/admin/programs', icon: <FaLayerGroup /> },
+  { label: 'Gallery', path: '/admin/gallery', icon: <FaImages /> },
+  { label: 'Impact Stats', path: '/admin/stats', icon: <FaChartBar /> },
+  { label: 'Testimonials', path: '/admin/testimonials', icon: <FaCommentDots /> },
+  { label: 'Submissions', path: '/admin/submissions', icon: <FaInbox /> },
+  { label: 'Employees', path: '/admin/employees', icon: <FaUserTie /> },
+  { label: 'Attendance', path: '/admin/attendance', icon: <FaClipboardCheck /> },
+  { label: 'Daily Tokens', path: '/admin/tokens', icon: <FaTicketAlt /> },
+  { label: 'Leave Requests', path: '/admin/leaves', icon: <FaUmbrellaBeach /> },
 ]
 
 export default function AdminDashboard() {
@@ -38,7 +38,9 @@ export default function AdminDashboard() {
               to={link.path}
               end={link.end}
               style={({ isActive }) => ({
-                display: 'block',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--space-2)',
                 padding: 'var(--space-2) var(--space-3)',
                 marginBottom: 'var(--space-1)',
                 borderRadius: 'var(--radius-sm)',
@@ -48,6 +50,7 @@ export default function AdminDashboard() {
                 fontSize: 'var(--font-size-sm)',
               })}
             >
+              <span aria-hidden="true">{link.icon}</span>
               {link.label}
             </NavLink>
           ))}

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { FaBars, FaTimes } from 'react-icons/fa'
+import { FaBars, FaTimes, FaLeaf } from 'react-icons/fa'
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher'
 import { useFocusTrap } from '@/hooks/useFocusTrap'
 
@@ -37,7 +37,8 @@ export default function Navbar() {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 flex items-center justify-between h-[72px]">
-        <Link to="/" className="text-no-underline" aria-label="Isôoko Community Development — Home">
+        <Link to="/" className="text-no-underline flex items-center gap-2" aria-label="Isôoko Community Development — Home">
+          <FaLeaf aria-hidden="true" className="text-[#4B9F46]" />
           <span className={`text-xl font-bold ${scrolled ? 'text-[#17191F]' : 'text-white'}`}>Isôoko</span>
         </Link>
 

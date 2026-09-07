@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { FaCalendarAlt, FaUser, FaTag } from 'react-icons/fa'
+import { FaCalendarAlt, FaUser, FaTag, FaArrowLeft } from 'react-icons/fa'
 import SEOHead from '@/components/SEOHead/SEOHead'
 import { blogPosts } from '@/data/blogPosts'
 
@@ -36,7 +36,7 @@ export default function BlogPost() {
       <article className="section">
         <div className="container" style={{ maxWidth: 760, margin: '0 auto' }}>
           <Link to="/news-events" className="btn btn-secondary" style={{ marginBottom: 'var(--space-6)' }}>
-            ← {tc('btn.back')}
+            <FaArrowLeft aria-hidden="true" /> {tc('btn.back')}
           </Link>
 
           <img

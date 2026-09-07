@@ -51,6 +51,10 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin-bottom: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
 }
 
 .quote {

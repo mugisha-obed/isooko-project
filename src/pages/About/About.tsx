@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { FaBullseye, FaEye, FaLeaf } from 'react-icons/fa'
 import SEOHead from '@/components/SEOHead/SEOHead'
 import HeroBanner from '@/components/HeroBanner/HeroBanner'
 import TeamMemberCard from '@/components/TeamMemberCard/TeamMemberCard'
@@ -40,10 +41,12 @@ export default function About() {
           </div>
           <div className={styles.missionVisionGrid}>
             <div className={styles.missionVisionCard}>
+              <FaBullseye style={{ fontSize: 'var(--font-size-2xl)', color: 'var(--color-green-dark)', marginBottom: 'var(--space-3)' }} aria-hidden="true" />
               <h3>{t('missionVision.mission.title')}</h3>
               <p style={{ fontStyle: 'italic' }}>{t('missionVision.mission.text')}</p>
             </div>
             <div className={styles.missionVisionCard}>
+              <FaEye style={{ fontSize: 'var(--font-size-2xl)', color: 'var(--color-green-dark)', marginBottom: 'var(--space-3)' }} aria-hidden="true" />
               <h3>{t('missionVision.vision.title')}</h3>
               <p style={{ fontStyle: 'italic' }}>{t('missionVision.vision.text')}</p>
             </div>
@@ -60,6 +63,7 @@ export default function About() {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-4)', justifyContent: 'center' }}>
             {[1, 2, 3, 4, 5, 8].map((n) => (
               <div key={n} className={styles.sdgPill}>
+                <FaLeaf style={{ marginRight: 'var(--space-2)', verticalAlign: 'middle', color: 'var(--color-green-mid)' }} aria-hidden="true" />
                 SDG {n} — {t(`sdgs.sdg${n}`)}
               </div>
             ))}

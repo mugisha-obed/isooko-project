@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { FaEnvelope, FaHandsHelping } from 'react-icons/fa'
 import { api } from '../../api'
 
 type Tab = 'contacts' | 'volunteers'
@@ -25,7 +26,8 @@ export default function AdminSubmissions() {
       <div style={{ display: 'flex', gap: 'var(--space-2)', marginBottom: 'var(--space-4)' }}>
         {(['contacts', 'volunteers'] as Tab[]).map(t => (
           <button key={t} onClick={() => setTab(t)}
-            style={{ padding: 'var(--space-2) var(--space-4)', background: tab === t ? 'var(--color-green-dark)' : '#fff', color: tab === t ? '#fff' : 'var(--color-green-dark)', border: '1px solid var(--color-green-dark)', borderRadius: 'var(--radius-sm)', cursor: 'pointer', fontWeight: 600, textTransform: 'capitalize' }}>
+            style={{ padding: 'var(--space-2) var(--space-4)', background: tab === t ? 'var(--color-green-dark)' : '#fff', color: tab === t ? '#fff' : 'var(--color-green-dark)', border: '1px solid var(--color-green-dark)', borderRadius: 'var(--radius-sm)', cursor: 'pointer', fontWeight: 600, textTransform: 'capitalize', display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+            {t === 'contacts' ? <FaEnvelope aria-hidden="true" /> : <FaHandsHelping aria-hidden="true" />}
             {t}
           </button>
         ))}

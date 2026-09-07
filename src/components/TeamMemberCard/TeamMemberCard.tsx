@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { FaUserTag, FaQuoteLeft } from 'react-icons/fa'
 import type { TeamMember } from '../../data/teamMembers'
 import styles from './TeamMemberCard.module.css'
 
@@ -21,8 +22,8 @@ export default function TeamMemberCard({ member }: TeamMemberCardProps) {
       </div>
       <div className={styles.info}>
         <h3 className={styles.name}>{member.name}</h3>
-        <p className={styles.role}>{t(member.roleKey)}</p>
-        {member.quote && <p className={styles.quote}>{t(member.quote)}</p>}
+        <p className={styles.role}><FaUserTag className={styles.roleIcon} aria-hidden="true" /> {t(member.roleKey)}</p>
+        {member.quote && <p className={styles.quote}><FaQuoteLeft className={styles.quoteIcon} aria-hidden="true" /> {t(member.quote)}</p>}
       </div>
     </article>
   )

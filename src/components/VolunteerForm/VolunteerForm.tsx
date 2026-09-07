@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { FaHandshake } from 'react-icons/fa'
 import styles from './VolunteerForm.module.css'
 
 interface VolunteerFormData {
@@ -123,7 +124,7 @@ export default function VolunteerForm() {
       </div>
 
       <button type="submit" className="btn-primary" disabled={isSubmitting}>
-        {isSubmitting ? tc('loading') : tc('btn.submit')}
+        {isSubmitting ? tc('loading') : (<><FaHandshake aria-hidden="true" /> {tc('btn.submit')}</>)}
       </button>
     </form>
   )
