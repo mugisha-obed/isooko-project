@@ -24,14 +24,12 @@ export default function ContactForm() {
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL
-      if (apiUrl) {
-        await fetch(`${apiUrl}/contact`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        })
-      }
+      const apiUrl = import.meta.env.VITE_API_URL || ''
+      await fetch(`${apiUrl}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
       setStatus('success')
       reset()
     } catch {

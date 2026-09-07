@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher'
 import { useFocusTrap } from '@/hooks/useFocusTrap'
-import styles from './Navbar.module.css'
 
 const NAV_LINKS = [
   { key: 'nav.home',       path: '/' },
@@ -36,38 +35,65 @@ export default function Navbar() {
   }, [])
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
-      <div className={`container ${styles.inner}`}>
-        <Link to="/" className={styles.logo} aria-label="Isôooko Community Development — Home">
-          <span className={styles.logoText}>Isôoko</span>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 flex items-center justify-between h-[72px]">
+        <Link to="/" className="text-no-underline" aria-label="Isôoko Community Development — Home">
+          <span className={`text-xl font-bold ${scrolled ? 'text-[#17191F]' : 'text-white'}`}>Isôoko</span>
         </Link>
 
-        <nav className={styles.nav} aria-label="Main navigation">
+        <nav className="hidden lg:flex items-center gap-6" aria-label="Main navigation">
           {NAV_LINKS.map(({ key, path }) => (
-            <NavLink key={path} to={path} end={path === '/'} className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}`} aria-current={undefined}>
+            <NavLink
+              key={path}
+              to={path}
+              end={path === '/'}
+              className={({ isActive }) =>
+                `text-sm font-medium no-underline pb-0.5 border-b-2 transition-colors ${
+                  isActive
+                    ? 'border-[#4B9F46] text-[#4B9F46]'
+                    : 'border-transparent hover:border-[#4B9F46] ' + (scrolled ? 'text-[#17191F]' : 'text-white')
+                }`
+              }
+            >
               {t(key)}
             </NavLink>
           ))}
         </nav>
 
-        <div className={styles.right}>
+        <div className="flex items-center gap-4">
           <LanguageSwitcher />
-          <Link to="/admin/login" className={styles.link} style={{ fontSize: 'var(--font-size-sm)' }}>Admin</Link>
-          <Link to="/employee/login" className={styles.link} style={{ fontSize: 'var(--font-size-sm)' }}>Staff</Link>
-          <button className={styles.burger} onClick={() => setMenuOpen(o => !o)} aria-expanded={menuOpen} aria-controls="mobile-menu" aria-label={menuOpen ? 'Close menu' : 'Open menu'}>
-            {menuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+          <Link to="/admin/login" className={`hidden lg:inline text-xs font-medium no-underline ${scrolled ? 'text-[#5C4A3E]' : 'text-white/80'}`}>Admin</Link>
+          <Link to="/employee/login" className={`hidden lg:inline text-xs font-medium no-underline ${scrolled ? 'text-[#5C4A3E]' : 'text-white/80'}`}>Staff</Link>
+          <button
+            className="lg:hidden bg-transparent border-none p-2 text-current"
+            onClick={() => setMenuOpen(o => !o)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          >
+            {menuOpen ? <FaTimes size={22} className={scrolled ? 'text-[#17191F]' : 'text-white'} /> : <FaBars size={22} className={scrolled ? 'text-[#17191F]' : 'text-white'} />}
           </button>
         </div>
       </div>
 
       {menuOpen && (
-        <div id="mobile-menu" ref={menuRef} className={styles.mobileMenu} role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <div id="mobile-menu" ref={menuRef} className="lg:hidden bg-[#17191F] px-6 py-6 flex flex-col gap-4" role="dialog" aria-modal="true" aria-label="Navigation menu">
           {NAV_LINKS.map(({ key, path }) => (
-            <NavLink key={path} to={path} end={path === '/'} className={({ isActive }) => `${styles.mobileLink} ${isActive ? styles.active : ''}`} onClick={() => setMenuOpen(false)}>
+            <NavLink
+              key={path}
+              to={path}
+              end={path === '/'}
+              className={({ isActive }) =>
+                `text-white text-lg font-medium no-underline py-2 border-b border-white/15 ${
+                  isActive ? 'text-[#4B9F46]' : 'hover:text-[#4B9F46]'
+                }`
+              }
+              onClick={() => setMenuOpen(false)}
+            >
               {t(key)}
             </NavLink>
           ))}
-          <div className={styles.mobileLang}><LanguageSwitcher /></div>
+          <div className="pt-4"><LanguageSwitcher /></div>
         </div>
       )}
     </header>

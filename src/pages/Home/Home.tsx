@@ -8,7 +8,6 @@ import NewsCard from '@/components/NewsCard/NewsCard'
 import { impactStats } from '@/data/impactStats'
 import { programs } from '@/data/programs'
 import { blogPosts } from '@/data/blogPosts'
-import styles from './Home.module.css'
 
 export default function Home() {
   const { t } = useTranslation('home')
@@ -33,30 +32,36 @@ export default function Home() {
         bgImage="/assets/images/isoooko-community.webp"
       />
 
-      <section className={styles.mission}>
-        <div className="container">
-          <div className={styles.missionGrid}>
-            <div className={styles.missionText}>
-              <h2 className="section-title">{t('mission.title')}</h2>
-              <p className={styles.missionBody}>{t('mission.body')}</p>
-              <Link to="/about" className="btn btn-primary">
+      {/* Mission Section */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-[#17191F] mb-4">{t('mission.title')}</h2>
+              <p className="text-lg text-[#5C4A3E] mb-6 leading-relaxed">{t('mission.body')}</p>
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#4B9F46] text-white font-semibold no-underline hover:bg-[#3a7d37] transition-colors"
+              >
                 {tc('btn.learnMore')}
               </Link>
             </div>
-            <div className={styles.missionImage}>
+            <div>
               <img
                 src="/assets/images/founding-story.webp"
                 alt={t('mission.imageAlt')}
                 loading="lazy"
+                className="rounded-2xl w-full"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section className={styles.stats}>
-        <div className="container">
-          <div className={styles.statsGrid}>
+      {/* Stats Section */}
+      <section className="bg-[#4B9F46] py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
             {impactStats.map((stat) => (
               <ImpactCounter key={stat.id} stat={stat} />
             ))}
@@ -64,13 +69,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.programs}>
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">{t('programs.title')}</h2>
-            <p className="section-subtitle">{t('programs.subtitle')}</p>
+      {/* Programs Section */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#17191F] mb-4">{t('programs.title')}</h2>
+            <p className="text-lg text-[#5C4A3E]">{t('programs.subtitle')}</p>
           </div>
-          <div className={styles.programsGrid}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {programs.map((program) => (
               <ProgramCard key={program.id} program={program} />
             ))}
@@ -78,32 +84,40 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.news}>
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">{t('news.title')}</h2>
-            <p className="section-subtitle">{t('news.subtitle')}</p>
+      {/* News Section */}
+      <section className="bg-[#EADFD3] py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#17191F] mb-4">{t('news.title')}</h2>
+            <p className="text-lg text-[#5C4A3E]">{t('news.subtitle')}</p>
           </div>
-          <div className={styles.newsGrid}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {latestPosts.map((post) => (
               <NewsCard key={post.slug} post={post} />
             ))}
           </div>
-          <div className={styles.newsFooter}>
-            <Link to="/news-events" className="btn btn-secondary">
+          <div className="text-center mt-8">
+            <Link
+              to="/news-events"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-[#4B9F46] text-[#4B9F46] font-semibold no-underline hover:bg-[#4B9F46] hover:text-white transition-colors"
+            >
               {tc('btn.viewAll')}
             </Link>
           </div>
         </div>
       </section>
 
-      <section className={styles.cta}>
-        <div className="container">
-          <div className={styles.ctaContent}>
-            <h2 className={styles.ctaTitle}>{t('cta.title')}</h2>
-            <p className={styles.ctaText}>{t('cta.text')}</p>
-            <div className={styles.ctaButtons}>
-              <Link to="/get-involved" className="btn btn-white">
+      {/* CTA Section */}
+      <section className="bg-[#B6582A] py-16 md:py-24 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+          <div className="text-center max-w-xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">{t('cta.title')}</h2>
+            <p className="text-lg text-white/90 mb-6">{t('cta.text')}</p>
+            <div className="flex gap-4 justify-center">
+              <Link
+                to="/get-involved"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[#B6582A] font-semibold no-underline hover:bg-[#FDF6EF] transition-colors"
+              >
                 {tc('btn.getInvolved')}
               </Link>
             </div>

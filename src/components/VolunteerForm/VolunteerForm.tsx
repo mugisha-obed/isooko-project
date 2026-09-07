@@ -33,14 +33,12 @@ export default function VolunteerForm() {
 
   const onSubmit = async (data: VolunteerFormData) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL
-      if (apiUrl) {
-        await fetch(`${apiUrl}/volunteer`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        })
-      }
+      const apiUrl = import.meta.env.VITE_API_URL || ''
+      await fetch(`${apiUrl}/api/volunteer`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
       setStatus('success')
       reset()
     } catch {
