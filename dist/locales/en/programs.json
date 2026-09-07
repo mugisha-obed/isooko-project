@@ -1,0 +1,54 @@
+{
+  "seo": {
+    "title": "Our Programs — Isôoko Community Development",
+    "description": "Isôoko runs five programs: Women Empowerment (MWU), Youth Empowerment (IZI), Sports & Wellness, Digital & Literacy, and Tûuza Mubyeyi childcare."
+  },
+  "hero": {
+    "title": "Our Programs",
+    "subtitle": "Five pillars of inclusive community development"
+  },
+  "overview": {
+    "title": "What We Do",
+    "subtitle": "Integrated programs designed for lasting impact"
+  },
+  "womenEmpowerment": {
+    "acronym": "Mutima W'urugo (MWU)",
+    "title": "Women Empowerment Program",
+    "subtitle": "Mutima W'urugo (MWU)",
+    "desc": "Empowering vulnerable women with skills and resources to drive socio-economic change.",
+    "intro": "We believe that the rise of a Woman is the rise of a community. The MWU program is designed to empower vulnerable women in the community with skills and resources that help them find a voice and be the agent of socio-economic change.",
+    "offerings": ["Self-awareness and goal setting", "Saving groups and access to finance", "Nutrition and hygiene education", "Maternal and child health", "Entrepreneurship journey", "Vocational training (tailoring, hairdressing, welding)"]
+  },
+  "youthEmpowerment": {
+    "acronym": "Imbaraga z' Isôoko (IZI)",
+    "title": "Youth Empowerment Program",
+    "subtitle": "Imbaraga z' Isôoko (IZI)",
+    "desc": "Fostering youth leadership, skills, and sustainable livelihoods in Masoro.",
+    "intro": "The Masoro Sector, located in a mining area, relies heavily on the mining industry. Youth face limited access to education, mental health concerns, and difficulties securing stable employment. The IZI program addresses these challenges through a supportive learning environment that fosters youth leadership and sustainability.",
+    "offerings": ["Self-awareness and goal setting", "Saving groups and entrepreneurship", "Sexual reproductive health and rights", "Access to finance", "Vocational training", "Job placement opportunities", "English Club"]
+  },
+  "sportsWellness": {
+    "acronym": "",
+    "title": "Sports and Wellness Services",
+    "subtitle": "Physical & Mental Wellness",
+    "desc": "A hub for wellness, sports, and mental health initiatives.",
+    "intro": "The Isôoko Community Center serves as a hub for wellness and community engagement through sports and mental health initiatives. Beneficiaries enjoy a wide range of physical and mental wellness activities designed to enhance resilience and promote well-being.",
+    "offerings": ["Yoga and mindfulness sessions", "Sports leagues and tournaments", "Mental health awareness and counseling", "First aid and emergency preparedness training", "Recreational activities for all ages"]
+  },
+  "digitalLiteracy": {
+    "acronym": "",
+    "title": "Digital & Literacy Services",
+    "subtitle": "Skills for the Digital Age",
+    "desc": "Essential learning opportunities in digital skills and literacy.",
+    "intro": "The Isôoko Community Center provides essential learning opportunities to empower individuals with digital skills and literacy programs, creating pathways for professional and personal growth.",
+    "offerings": ["Computer literacy and IT skills", "Library access and reading programs", "English language club", "Digital literacy for entrepreneurs", "Homework support for students"]
+  },
+  "tuuzaMubyeyi": {
+    "acronym": "",
+    "title": "Tûuza Mubyeyi Project",
+    "subtitle": "Childcare for Mothers in Program",
+    "desc": "Comprehensive childcare enabling mothers to focus on socio-economic transformation.",
+    "intro": "The Tûuza Mubyeyi Project supports vulnerable mothers in our programs by providing comprehensive care for their children while they focus on their socio-economic transformation. Children receive high-quality educational and developmental activities in a safe, nurturing environment. Meanwhile, mothers pursue their small-scale projects, fostering economic stability and personal growth.",
+    "offerings": ["Early childhood development (ECD) activities", "Safe and nurturing childcare environment", "Nutritional support for children", "School readiness programs", "Parenting education and support"]
+  }
+}

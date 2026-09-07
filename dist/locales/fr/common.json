@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "programs": "Programmes",
+    "impact": "Impact",
+    "getInvolved": "S'impliquer",
+    "newsEvents": "Actualités & Événements",
+    "contact": "Contact"
+  },
+  "btn": {
+    "learnMore": "En Savoir Plus",
+    "readMore": "Lire Plus",
+    "donate": "Faire un Don",
+    "volunteer": "Bénévolat",
+    "viewAll": "Voir Tout",
+    "submit": "Envoyer",
+    "back": "Retour",
+    "home": "Accueil",
+    "getInvolved": "S'impliquer"
+  },
+  "footer": {
+    "tagline": "Autonomiser les jeunes et les femmes à Masoro, Rwanda.",
+    "quickLinks": "Liens Rapides",
+    "connect": "Connexion",
+    "address": "Secteur Masoro, District Rulindo, Province du Nord, Rwanda",
+    "email": "info@isookocommunity.org",
+    "phone": "+250 788 000 000",
+    "copyright": "© {{year}} Isôoko Community Development. Tous droits réservés."
+  },
+  "loading": "Chargement...",
+  "notFound": "Page non trouvée.",
+  "getInvolved": {
+    "title": "Vous Voulez Faire la Différence?",
+    "desc": "Rejoignez-nous pour autonomiser les jeunes et les femmes de Masoro à travers l'éducation, la santé et l'entrepreneuriat."
+  }
+}

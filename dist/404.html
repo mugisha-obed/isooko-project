@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Isôoko Community Development</title>
+  <script>
+    ;(function () {
+      var path = window.location.pathname
+      if (!/\/isooko-project\/?$/.test(path) && !/\.\w+$/.test(path)) {
+        var hash = window.location.hash
+        var qs = window.location.search
+        window.stop()
+        window.location.replace('/isooko-project/' + qs + hash)
+      }
+    })()
+  </script>
+</head>
+<body>
+  <p>Redirecting to Isôoko…</p>
+</body>
+</html>

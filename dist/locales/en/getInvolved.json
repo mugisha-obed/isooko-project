@@ -1,0 +1,39 @@
+{
+  "seo": {
+    "title": "Get Involved — Isôoko Community Development",
+    "description": "Support Isôoko through donations, volunteering, or partnerships."
+  },
+  "hero": {
+    "title": "Get Involved",
+    "subtitle": "Every contribution makes a difference",
+    "cta": "Volunteer Now"
+  },
+  "ways": {
+    "title": "Ways to Support",
+    "subtitle": "Choose how you'd like to make an impact",
+    "donate": {
+      "title": "Donate",
+      "desc": "Your financial support helps us run youth programs, women's empowerment initiatives, sports activities, and maintain our community center."
+    },
+    "volunteer": {
+      "title": "Volunteer",
+      "desc": "Share your skills — from teaching digital literacy to coaching sports — and make a hands-on difference in Masoro."
+    },
+    "partner": {
+      "title": "Partner With Us",
+      "desc": "Organizations and businesses can partner with Isôoko to fund specific programs, sponsor events, or support infrastructure."
+    }
+  },
+  "volunteer": {
+    "title": "Volunteer Application",
+    "subtitle": "Fill out the form and we'll be in touch",
+    "success": "Thank you for applying! We'll contact you soon.",
+    "fields": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "area": "Area of Interest",
+      "message": "Tell us about yourself"
+    }
+  }
+}

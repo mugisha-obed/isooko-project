@@ -1,0 +1,28 @@
+{
+  "seo": {
+    "title": "Isôoko Community Development — Autonomiser les jeunes et les femmes à Masoro, Rwanda",
+    "description": "Isôoko Community Development (ICD) autonomise les jeunes et les femmes à Masoro, au Rwanda, à travers l'alphabétisation, l'accès aux soins de santé, l'entrepreneuriat, le sport et les programmes de bien-être."
+  },
+  "hero": {
+    "title": "Autonomiser les Communautés de Masoro",
+    "subtitle": "Autonomisation des Femmes · Autonomisation des Jeunes · Sports & Bien-être · Alphabétisation Numérique",
+    "cta": "S'impliquer"
+  },
+  "mission": {
+    "title": "Notre Mission",
+    "body": "Nous cultivons une croissance inclusive et des opportunités pour les femmes et les jeunes grâce à l'amélioration de la santé et du bien-être, de l'alphabétisation et de l'entrepreneuriat. Notre centre communautaire dans le secteur de Masoro offre des installations sportives, un laboratoire informatique, une bibliothèque et des bureaux pour soutenir un large éventail d'activités éducatives et récréatives.",
+    "imageAlt": "Centre Communautaire Isôoko à Masoro"
+  },
+  "programs": {
+    "title": "Nos Programmes",
+    "subtitle": "Cinq programmes intégrés pour un impact communautaire durable"
+  },
+  "news": {
+    "title": "Dernières Nouvelles",
+    "subtitle": "Histoires de la communauté Isôoko"
+  },
+  "cta": {
+    "title": "Rejoignez-nous pour Autonomiser Masoro",
+    "text": "Votre soutien aide les femmes à créer des entreprises, les jeunes à acquérir des compétences et les familles à prospérer."
+  }
+}

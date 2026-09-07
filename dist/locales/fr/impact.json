@@ -1,0 +1,46 @@
+{
+  "seo": {
+    "title": "Notre Impact — Isôoko Community Development",
+    "description": "Voyez l'impact mesurable des programmes d'Isôoko à Masoro, au Rwanda — plus de 11 971 bénéficiaires touchés."
+  },
+  "hero": {
+    "title": "Notre Impact",
+    "subtitle": "Des changements mesurables dans les communautés de Masoro"
+  },
+  "stats": {
+    "title": "Impact en Chiffres",
+    "subtitle": "Depuis 2019"
+  },
+  "testimonials": {
+    "title": "Témoignages de la Communauté",
+    "subtitle": "Écoutez ceux que nous servons",
+    "t1": {
+      "quote": "J'ai commencé à épargner seulement 200 RWF grâce au programme. Aujourd'hui, je possède ma propre boutique au Centre Musizi. Isôoko m'a donné la confiance de croire en moi.",
+      "role": "Bénéficiaire MWU, Masoro"
+    },
+    "t2": {
+      "quote": "Le Club d'Anglais a changé ma vie. Je peux maintenant parler avec confiance et aider mes jeunes frères et sœurs à faire leurs devoirs.",
+      "role": "Participant IZI, Masoro"
+    },
+    "t3": {
+      "quote": "Pendant que j'apprenais la couture, le projet Tûuza Mubyeyi s'occupait de mon enfant. Je peux maintenant gagner un revenu et subvenir aux besoins de ma famille.",
+      "role": "Bénéficiaire MWU, Masoro"
+    }
+  },
+  "gallery": {
+    "title": "Galerie de Photos",
+    "subtitle": "Des moments de nos programmes et de notre centre communautaire",
+    "alt1": "Des participantes à une réunion de groupe d'épargne",
+    "alt2": "Des jeunes engagés dans des activités sportives au centre communautaire",
+    "alt3": "Séance de laboratoire informatique au Centre Communautaire Isôoko",
+    "alt4": "Formation aux premiers secours avec la Croix-Rouge du Rwanda",
+    "alt5": "Formation professionnelle — cours de couture",
+    "alt6": "Séance communautaire de yoga et de bien-être"
+  },
+  "stats.beneficiaries": "Bénéficiaires Touchés",
+  "stats.women": "Bénéficiaires Femmes",
+  "stats.youth": "Bénéficiaires Jeunes",
+  "stats.ecd": "Enfants dans l'Éducation de la Petite Enfance",
+  "stats.businesses": "Entreprises Créées",
+  "stats.wellness": "Accès à la Santé Mentale et au Bien-Être"
+}

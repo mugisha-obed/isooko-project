@@ -1,0 +1,59 @@
+{
+  "seo": {
+    "title": "News & Events — Isôoko Community Development",
+    "description": "Latest news and updates from Isôoko in Masoro, Rwanda."
+  },
+  "hero": {
+    "title": "News & Events",
+    "subtitle": "Stay connected with the Isôoko community"
+  },
+  "page": {
+    "title": "Latest Updates",
+    "subtitle": "Stories, events, and announcements from Masoro"
+  },
+  "filter": {
+    "all": "All",
+    "news": "News",
+    "event": "Events"
+  },
+  "notFound": "Post not found.",
+  "posts": {
+    "firstAid": {
+      "title": "First Aid Training: 100% Attendance, 100% Certified",
+      "excerpt": "30 Isôoko team members completed a two-day First Aid Training with the Rwanda Red Cross, gaining life-saving skills.",
+      "content": "As a wellness and sports hub, being prepared to respond to emergencies is an essential part of how we care for our community. 30 Isôoko team members successfully completed a two-day First Aid Training with the Rwanda Red Cross, gaining practical life-saving skills including CPR, choking response, bleeding control, fracture management, and emergency response.\n\nThank you to the Rwanda Red Cross for equipping our team with the knowledge and skills to respond with confidence when it matters most."
+    },
+    "vocational": {
+      "title": "Vocational Training Launch: Building Skills for the Future",
+      "excerpt": "32 program participants are learning tailoring, hairdressing, and welding from local experts.",
+      "content": "We are excited to launch vocational training for our program participants in the community! Currently, 32 program participants are learning valuable vocational skills from local experts within their own community. Among them, 18 are enrolled in tailoring, 12 in hairdressing, and 1 in welding.\n\nThrough hands-on training and mentorship, participants are gaining practical skills that can help create opportunities for sustainable livelihoods and economic empowerment."
+    },
+    "financial": {
+      "title": "Access to Finance Creates Opportunities",
+      "excerpt": "Five Mutima w'Urugo saving groups trained through the FAST Program with VisionFund Rwanda.",
+      "content": "In partnership with VisionFund Rwanda, five Mutima w'Urugo saving groups have been trained and supported through the Financial Accelerating Saving Groups Transformation (FAST) Program, strengthening their capacity to provide loans that help members start and grow income-generating businesses.\n\nParticipants also received the Humura Insurance Package, providing health emergency coverage for themselves and their families, helping protect their savings and entrepreneurship journey."
+    },
+    "englishClub": {
+      "title": "English Club: Youth Finding Their Voices",
+      "excerpt": "Children of Mutima w'Urugo participants aged 12\u201318 are building English skills and confidence.",
+      "content": "We are so excited to see the English Club participants improve their English every day! Most of these are children of Mutima w'Urugo, aged between 12\u201318, and it has been inspiring to witness their growth and confidence.\n\nThey have been practicing speaking and communicating in English, learning public speaking skills, and building their vocabulary and grammar through fun and interactive sessions. It is beautiful to see them finding their voices and expressing themselves more freely each day."
+    }
+  },
+  "events": {
+    "yoga": {
+      "title": "Community Yoga & Wellness Morning",
+      "location": "Isôoko Community Center",
+      "desc": "Join us for a morning of yoga, mindfulness, and community connection."
+    },
+    "saving": {
+      "title": "Saving Group Training Workshop",
+      "location": "Isôoko Community Center",
+      "desc": "Workshop on financial literacy and group savings for program participants."
+    },
+    "vocational": {
+      "title": "Vocational Skills Fair",
+      "location": "Isôoko Community Center",
+      "desc": "Showcasing tailoring, hairdressing, and welding work from our vocational training participants."
+    }
+  }
+}

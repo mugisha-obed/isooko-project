@@ -1,0 +1,59 @@
+{
+  "seo": {
+    "title": "Actualités & Événements — Isôoko Community Development",
+    "description": "Les dernières nouvelles et mises à jour d'Isôoko à Masoro, au Rwanda."
+  },
+  "hero": {
+    "title": "Actualités & Événements",
+    "subtitle": "Restez connecté avec la communauté Isôoko"
+  },
+  "page": {
+    "title": "Dernières Mises à Jour",
+    "subtitle": "Histoires, événements et annonces de Masoro"
+  },
+  "filter": {
+    "all": "Tout",
+    "news": "Nouvelles",
+    "event": "Événements"
+  },
+  "notFound": "Publication introuvable.",
+  "posts": {
+    "firstAid": {
+      "title": "Formation aux Premiers Secours : 100% de Présence, 100% Certifiés",
+      "excerpt": "30 membres de l'équipe Isôoko ont terminé une formation de deux jours aux premiers secours avec la Croix-Rouge du Rwanda, acquérant des compétences vitales.",
+      "content": "En tant que centre de bien-être et de sport, être prêt à répondre aux urgences est une partie essentielle de la façon dont nous prenons soin de notre communauté. 30 membres de l'équipe Isôoko ont terminé avec succès une formation de deux jours aux premiers secours avec la Croix-Rouge du Rwanda, acquérant des compétences pratiques vitales, notamment la RCP, la réaction à l'étouffement, le contrôle des saignements, la gestion des fractures et la réponse aux urgences.\n\nMerci à la Croix-Rouge du Rwanda d'avoir doté notre équipe des connaissances et des compétences nécessaires pour réagir avec confiance quand cela compte le plus."
+    },
+    "vocational": {
+      "title": "Lancement de la Formation Professionnelle : Construire les Compétences de l'Avenir",
+      "excerpt": "32 participants aux programmes apprennent la couture, la coiffure et la soudure auprès d'experts locaux.",
+      "content": "Nous sommes ravis de lancer la formation professionnelle pour les participants à nos programmes dans la communauté ! Actuellement, 32 participants apprennent de précieuses compétences professionnelles auprès d'experts locaux de leur propre communauté. Parmi eux, 18 sont inscrits en couture, 12 en coiffure et 1 en soudure.\n\nGrâce à une formation pratique et à un mentorat, les participants acquièrent des compétences concrètes qui peuvent créer des opportunités de moyens de subsistance durables et d'autonomisation économique."
+    },
+    "financial": {
+      "title": "L'Accès au Financement Crée des Opportunités",
+      "excerpt": "Cinq groupes d'épargne Mutima w'Urugo formés dans le cadre du programme FAST avec VisionFund Rwanda.",
+      "content": "En partenariat avec VisionFund Rwanda, cinq groupes d'épargne Mutima w'Urugo ont été formés et soutenus dans le cadre du programme FAST (Financial Accelerating Saving Groups Transformation), renforçant leur capacité à accorder des prêts qui aident les membres à créer et à développer des entreprises génératrices de revenus.\n\nLes participants ont également reçu le Pack d'Assurance Humura, offrant une couverture en cas d'urgence sanitaire pour eux-mêmes et leurs familles, contribuant à protéger leurs économies et leur parcours entrepreneurial."
+    },
+    "englishClub": {
+      "title": "Club d'Anglais : Les Jeunes Trouvent Leur Voix",
+      "excerpt": "Les enfants des participants de Mutima w'Urugo âgés de 12 à 18 ans développent leurs compétences en anglais et leur confiance.",
+      "content": "Nous sommes ravis de voir les participants du Club d'Anglais améliorer leur anglais chaque jour ! La plupart sont des enfants de Mutima w'Urugo, âgés de 12 à 18 ans, et il a été inspirant de voir leur croissance et leur confiance.\n\nIls s'entraînent à parler et à communiquer en anglais, apprennent des compétences de prise de parole en public et développent leur vocabulaire et leur grammaire à travers des séances amusantes et interactives. C'est magnifique de les voir trouver leur voix et s'exprimer plus librement chaque jour."
+    }
+  },
+  "events": {
+    "yoga": {
+      "title": "Matinée Communautaire de Yoga et de Bien-Être",
+      "location": "Centre Communautaire Isôoko",
+      "desc": "Rejoignez-nous pour une matinée de yoga, de pleine conscience et de connexion communautaire."
+    },
+    "saving": {
+      "title": "Atelier de Formation sur les Groupes d'Épargne",
+      "location": "Centre Communautaire Isôoko",
+      "desc": "Atelier sur l'éducation financière et l'épargne de groupe pour les participants aux programmes."
+    },
+    "vocational": {
+      "title": "Foire des Compétences Professionnelles",
+      "location": "Centre Communautaire Isôoko",
+      "desc": "Présentation des travaux de couture, de coiffure et de soudure des participants à la formation professionnelle."
+    }
+  }
+}

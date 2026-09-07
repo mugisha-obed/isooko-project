@@ -1,0 +1,28 @@
+{
+  "seo": {
+    "title": "Isôoko Community Development — Empowering Youth & Women in Masoro, Rwanda",
+    "description": "Isôoko Community Development (ICD) empowers youth and women in Masoro, Rwanda through literacy, health access, entrepreneurship, sports, and wellness programs."
+  },
+  "hero": {
+    "title": "Empowering Masoro Communities",
+    "subtitle": "Women Empowerment · Youth Empowerment · Sports & Wellness · Digital Literacy",
+    "cta": "Get Involved"
+  },
+  "mission": {
+    "title": "Our Mission",
+    "body": "We cultivate inclusive growth and opportunities for both women and youth through enhanced health & wellbeing, literacy, and entrepreneurship. Our community center in Masoro Sector provides sports facilities, a computer lab, library, and office spaces to support a wide range of educational and recreational activities.",
+    "imageAlt": "Isôoko Community Center in Masoro"
+  },
+  "programs": {
+    "title": "Our Programs",
+    "subtitle": "Five integrated programs for lasting community impact"
+  },
+  "news": {
+    "title": "Latest Updates",
+    "subtitle": "Stories from the Isôoko community"
+  },
+  "cta": {
+    "title": "Join Us in Empowering Masoro",
+    "text": "Your support helps women build businesses, youth gain skills, and families thrive."
+  }
+}
