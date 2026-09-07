@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { FaArrowRight, FaNewspaper, FaCalendarDay } from 'react-icons/fa'
 import type { BlogPost } from '../../data/blogPosts'
 
 interface NewsCardProps {
@@ -37,7 +38,8 @@ function NewsCard({ post }: NewsCardProps) {
       </Link>
       <div className="p-6 flex flex-col gap-3 flex-1">
         <div className="flex items-center gap-3">
-          <span className={`text-xs font-semibold uppercase tracking-wider px-2 py-1 rounded-full ${categoryClasses}`}>
+          <span className={`text-xs font-semibold uppercase tracking-wider px-2 py-1 rounded-full inline-flex items-center gap-1 ${categoryClasses}`}>
+            {post.category === 'news' ? <FaNewspaper aria-hidden="true" /> : <FaCalendarDay aria-hidden="true" />}
             {t(`filter.${post.category}`)}
           </span>
           <time dateTime={post.date} className="text-sm text-[#5C4A3E]">
@@ -52,8 +54,8 @@ function NewsCard({ post }: NewsCardProps) {
         <p className="text-sm text-[#5C4A3E] leading-relaxed flex-1">{t(post.excerptKey)}</p>
         <div className="flex items-center justify-between mt-2">
           <span className="text-sm font-medium text-[#5C4A3E]">{post.author}</span>
-          <Link to={`/news-events/${post.slug}`} className="text-sm font-semibold text-[#4B9F46] no-underline hover:text-[#3a7d37] transition-colors">
-            {tc('btn.readMore')} →
+          <Link to={`/news-events/${post.slug}`} className="text-sm font-semibold text-[#4B9F46] no-underline hover:text-[#3a7d37] transition-colors inline-flex items-center gap-1">
+            {tc('btn.readMore')} <FaArrowRight aria-hidden="true" />
           </Link>
         </div>
       </div>

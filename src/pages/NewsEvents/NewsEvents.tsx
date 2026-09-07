@@ -39,7 +39,7 @@ export default function NewsEvents() {
             <p className="section-subtitle">{t('page.subtitle')}</p>
           </div>
 
-          <div style={{ display: 'flex', gap: 'var(--space-2)', justifyContent: 'center', marginBottom: 'var(--space-8)' }}>
+          <div style={{ display: 'flex', gap: 'var(--space-2)', justifyContent: 'center', flexWrap: 'wrap', marginBottom: 'var(--space-8)' }}>
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}

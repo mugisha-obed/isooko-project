@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import SEOHead from '@/components/SEOHead/SEOHead'
 import HeroBanner from '@/components/HeroBanner/HeroBanner'
 import VolunteerForm from '@/components/VolunteerForm/VolunteerForm'
+import { FaHandHoldingHeart, FaHandsHelping, FaHandshake } from 'react-icons/fa'
 
 export default function GetInvolved() {
   const { t } = useTranslation('getInvolved')
@@ -29,14 +30,17 @@ export default function GetInvolved() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 'var(--space-6)' }}>
             <div style={{ background: 'var(--color-white)', padding: 'var(--space-6)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)' }}>
+              <FaHandHoldingHeart style={{ fontSize: 'var(--font-size-2xl)', color: 'var(--color-green-dark)', marginBottom: 'var(--space-4)' }} aria-hidden="true" />
               <h3>{t('ways.donate.title')}</h3>
               <p>{t('ways.donate.desc')}</p>
             </div>
             <div style={{ background: 'var(--color-white)', padding: 'var(--space-6)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)' }}>
+              <FaHandsHelping style={{ fontSize: 'var(--font-size-2xl)', color: 'var(--color-green-dark)', marginBottom: 'var(--space-4)' }} aria-hidden="true" />
               <h3>{t('ways.volunteer.title')}</h3>
               <p>{t('ways.volunteer.desc')}</p>
             </div>
             <div style={{ background: 'var(--color-white)', padding: 'var(--space-6)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-sm)' }}>
+              <FaHandshake style={{ fontSize: 'var(--font-size-2xl)', color: 'var(--color-green-dark)', marginBottom: 'var(--space-4)' }} aria-hidden="true" />
               <h3>{t('ways.partner.title')}</h3>
               <p>{t('ways.partner.desc')}</p>
             </div>

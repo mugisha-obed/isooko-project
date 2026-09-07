@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { FaArrowRight } from 'react-icons/fa'
 
 interface HeroBannerProps {
   titleKey: string
@@ -18,7 +19,7 @@ export default function HeroBanner({ titleKey, subtitleKey, ctaKey, ctaLink, bgI
       style={bgImage ? { backgroundImage: `url(${bgImage})` } : undefined}
     >
       <div className="absolute inset-0 bg-black/60" />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-16 md:py-24 max-w-[800px]">
+      <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-20 py-16 md:py-24 max-w-[800px]">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
           {t(titleKey)}
         </h1>
@@ -30,7 +31,7 @@ export default function HeroBanner({ titleKey, subtitleKey, ctaKey, ctaLink, bgI
             to={ctaLink}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[#17191F] font-semibold text-lg no-underline hover:bg-[#FDF6EF] transition-colors"
           >
-            {t(ctaKey)}
+            {t(ctaKey)} <FaArrowRight className="text-base" aria-hidden="true" />
           </Link>
         )}
       </div>

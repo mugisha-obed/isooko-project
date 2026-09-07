@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { FaCalendarAlt, FaUser, FaTag } from 'react-icons/fa'
 import SEOHead from '@/components/SEOHead/SEOHead'
 import { blogPosts } from '@/data/blogPosts'
 
@@ -44,10 +45,10 @@ export default function BlogPost() {
             style={{ width: '100%', borderRadius: 'var(--radius-md)', marginBottom: 'var(--space-6)' }}
           />
 
-          <div style={{ display: 'flex', gap: 'var(--space-4)', color: 'var(--color-text-muted)', fontSize: 'var(--font-size-sm)', marginBottom: 'var(--space-4)' }}>
-            <time dateTime={post.date}>{formattedDate}</time>
-            <span>{post.author}</span>
-            <span>{t(`filter.${post.category}`)}</span>
+          <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap', color: 'var(--color-text-muted)', fontSize: 'var(--font-size-sm)', marginBottom: 'var(--space-4)' }}>
+            <time dateTime={post.date} style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-1)' }}><FaCalendarAlt aria-hidden="true" style={{ color: 'var(--color-green-dark)' }} />{formattedDate}</time>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-1)' }}><FaUser aria-hidden="true" style={{ color: 'var(--color-green-dark)' }} />{post.author}</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-1)' }}><FaTag aria-hidden="true" style={{ color: 'var(--color-green-dark)' }} />{t(`filter.${post.category}`)}</span>
           </div>
 
           <h1>{t(post.titleKey)}</h1>

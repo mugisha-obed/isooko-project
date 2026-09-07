@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { FaPlus, FaEdit, FaTrash } from 'react-icons/fa'
 import { api } from '../../api'
 
 interface Column {
@@ -75,8 +76,8 @@ export default function AdminListPage({ title, apiPath, columns, defaultItem, on
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-6)', flexWrap: 'wrap', gap: 'var(--space-3)' }}>
         <h1 style={{ margin: 0, color: 'var(--color-green-dark)' }}>{title}</h1>
-        <button onClick={startNew} style={{ padding: 'var(--space-2) var(--space-4)', background: 'var(--color-green-dark)', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', fontWeight: 600 }}>
-          + Add New
+        <button onClick={startNew} style={{ padding: 'var(--space-2) var(--space-4)', background: 'var(--color-green-dark)', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+          <FaPlus aria-hidden="true" /> Add New
         </button>
       </div>
 
@@ -99,8 +100,8 @@ export default function AdminListPage({ title, apiPath, columns, defaultItem, on
                   </td>
                 ))}
                 <td style={{ padding: 'var(--space-3) var(--space-4)', textAlign: 'right' }}>
-                  <button onClick={() => startEdit(item)} style={{ padding: 'var(--space-1) var(--space-3)', background: '#e8f5e9', color: 'var(--color-green-dark)', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', marginRight: 8 }}>Edit</button>
-                  <button onClick={() => handleDelete(item.id as string)} style={{ padding: 'var(--space-1) var(--space-3)', background: '#fde8e8', color: '#c33', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer' }}>Delete</button>
+                  <button onClick={() => startEdit(item)} style={{ padding: 'var(--space-1) var(--space-3)', background: '#e8f5e9', color: 'var(--color-green-dark)', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', marginRight: 8 }}><FaEdit aria-hidden="true" /> Edit</button>
+                  <button onClick={() => handleDelete(item.id as string)} style={{ padding: 'var(--space-1) var(--space-3)', background: '#fde8e8', color: '#c33', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer' }}><FaTrash aria-hidden="true" /> Delete</button>
                 </td>
               </tr>
             ))}

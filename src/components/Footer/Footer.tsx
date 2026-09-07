@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
+import { FaInstagram, FaLinkedin, FaTwitter, FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from 'react-icons/fa'
 
 const NAV_LINKS = [
   { key: 'nav.home',       path: '/' },
@@ -41,9 +41,9 @@ export default function Footer() {
         <div>
           <h4 className="text-base font-semibold text-white mb-4 uppercase tracking-wide">{t('footer.connect')}</h4>
           <address className="not-italic">
-            <p className="text-sm text-white/70 mb-2">{t('footer.address')}</p>
-            <p className="text-sm text-white/70 mb-2"><a href="mailto:info@isookocommunity.org" className="text-white/70 no-underline hover:text-[#4B9F46]">{t('footer.email')}</a></p>
-            <p className="text-sm text-white/70"><a href="tel:+250788000000" className="text-white/70 no-underline hover:text-[#4B9F46]">{t('footer.phone')}</a></p>
+            <p className="text-sm text-white/70 mb-2 flex items-start gap-2"><FaMapMarkerAlt className="text-[#4B9F46] mt-1 flex-shrink-0" aria-hidden="true" />{t('footer.address')}</p>
+            <p className="text-sm text-white/70 mb-2 flex items-center gap-2"><FaEnvelope className="text-[#4B9F46] flex-shrink-0" aria-hidden="true" /><a href="mailto:info@isookocommunity.org" className="text-white/70 no-underline hover:text-[#4B9F46]">{t('footer.email')}</a></p>
+            <p className="text-sm text-white/70 flex items-center gap-2"><FaPhoneAlt className="text-[#4B9F46] flex-shrink-0" aria-hidden="true" /><a href="tel:+250788000000" className="text-white/70 no-underline hover:text-[#4B9F46]">{t('footer.phone')}</a></p>
           </address>
         </div>
       </div>

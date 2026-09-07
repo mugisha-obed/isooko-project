@@ -113,6 +113,12 @@ button { cursor: pointer; font-family: var(--font-body); }
   padding: 0 var(--space-6);
 }
 .section-header { text-align: center; margin-bottom: var(--space-12); }
+
+@media (max-width: 640px) {
+  .section { padding: var(--space-8) 0; }
+  .container { padding: 0 var(--space-4); }
+  .section-header { margin-bottom: var(--space-8); }
+}
 .section-title {
   font-size: var(--font-size-2xl);
   font-family: var(--font-heading);
@@ -171,10 +177,12 @@ button { cursor: pointer; font-family: var(--font-body); }
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  line-height: var(--line-height-heading);
-  color: var(--color-text-primary);
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    line-height: var(--line-height-heading);
+    color: var(--color-text-primary);
+  }
 }
 h1 { font-size: var(--font-size-3xl); }
 h2 { font-size: var(--font-size-2xl); }

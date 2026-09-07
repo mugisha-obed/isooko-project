@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { FaArrowRight } from 'react-icons/fa'
 import SEOHead from '@/components/SEOHead/SEOHead'
 import HeroBanner from '@/components/HeroBanner/HeroBanner'
 import ProgramCard from '@/components/ProgramCard/ProgramCard'
@@ -90,7 +91,7 @@ export default function Programs() {
           <h2 className="section-title">{tc('getInvolved.title')}</h2>
           <p>{tc('getInvolved.desc')}</p>
           <Link to="/get-involved" className="btn btn-primary" style={{ marginTop: 'var(--space-4)' }}>
-            {tc('btn.getInvolved')}
+            {tc('btn.getInvolved')} <FaArrowRight style={{ verticalAlign: 'middle' }} aria-hidden="true" />
           </Link>
         </div>
       </section>

@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import SEOHead from '@/components/SEOHead/SEOHead'
 import HeroBanner from '@/components/HeroBanner/HeroBanner'
 import ContactForm from '@/components/ContactForm/ContactForm'
+import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from 'react-icons/fa'
 import styles from './Contact.module.css'
 
 export default function Contact() {
@@ -27,9 +28,9 @@ export default function Contact() {
               <h2 className="section-title">{t('info.title')}</h2>
               <p>{t('info.desc')}</p>
               <address style={{ fontStyle: 'normal', marginTop: 'var(--space-6)' }}>
-                <p><strong>{t('info.addressLabel')}</strong><br />{t('info.address')}</p>
-                <p style={{ marginTop: 'var(--space-4)' }}><strong>{t('info.emailLabel')}</strong><br /><a href="mailto:info@isookocommunity.org">info@isookocommunity.org</a></p>
-                <p style={{ marginTop: 'var(--space-4)' }}><strong>{t('info.phoneLabel')}</strong><br /><a href="tel:+250788000000">+250 788 000 000</a></p>
+                <p><FaMapMarkerAlt style={{ marginRight: 'var(--space-2)', color: 'var(--color-green-dark)' }} aria-hidden="true" /><strong>{t('info.addressLabel')}</strong><br />{t('info.address')}</p>
+                <p style={{ marginTop: 'var(--space-4)' }}><FaEnvelope style={{ marginRight: 'var(--space-2)', color: 'var(--color-green-dark)' }} aria-hidden="true" /><strong>{t('info.emailLabel')}</strong><br /><a href="mailto:info@isookocommunity.org">info@isookocommunity.org</a></p>
+                <p style={{ marginTop: 'var(--space-4)' }}><FaPhoneAlt style={{ marginRight: 'var(--space-2)', color: 'var(--color-green-dark)' }} aria-hidden="true" /><strong>{t('info.phoneLabel')}</strong><br /><a href="tel:+250788000000">+250 788 000 000</a></p>
               </address>
             </div>
             <div>

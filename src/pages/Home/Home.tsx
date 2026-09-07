@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { FaArrowRight } from 'react-icons/fa'
 import SEOHead from '@/components/SEOHead/SEOHead'
 import HeroBanner from '@/components/HeroBanner/HeroBanner'
 import ImpactCounter from '@/components/ImpactCounter/ImpactCounter'
@@ -43,7 +44,7 @@ export default function Home() {
                 to="/about"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#4B9F46] text-white font-semibold no-underline hover:bg-[#3a7d37] transition-colors"
               >
-                {tc('btn.learnMore')}
+                {tc('btn.learnMore')} <FaArrowRight aria-hidden="true" />
               </Link>
             </div>
             <div>
@@ -101,7 +102,7 @@ export default function Home() {
               to="/news-events"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-[#4B9F46] text-[#4B9F46] font-semibold no-underline hover:bg-[#4B9F46] hover:text-white transition-colors"
             >
-              {tc('btn.viewAll')}
+              {tc('btn.viewAll')} <FaArrowRight aria-hidden="true" />
             </Link>
           </div>
         </div>
@@ -118,7 +119,7 @@ export default function Home() {
                 to="/get-involved"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[#B6582A] font-semibold no-underline hover:bg-[#FDF6EF] transition-colors"
               >
-                {tc('btn.getInvolved')}
+                {tc('btn.getInvolved')} <FaArrowRight aria-hidden="true" />
               </Link>
             </div>
           </div>
