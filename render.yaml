@@ -31,3 +31,7 @@ services:
         value: "30"
       - key: REMINDER_POLL_SECONDS
         value: "60"
+      - key: CLOUDFLARE_ACCOUNT_ID
+        sync: false
+      - key: CLOUDFLARE_STREAM_API_TOKEN
+        sync: false

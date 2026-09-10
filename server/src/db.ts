@@ -97,6 +97,10 @@ const FIELD_MAP: Record<string, string> = {
   // gym rsvp
   sessionid: 'sessionId',
   remindedat: 'remindedAt',
+  // gym live broadcast (Cloudflare Stream)
+  streamid: 'streamId',
+  hlsurl: 'hlsUrl',
+  broadcaststatus: 'broadcastStatus',
 }
 
 function normalizeRow(row: Record<string, unknown>): Record<string, unknown> {

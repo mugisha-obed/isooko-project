@@ -9,6 +9,7 @@ import { createAttendanceRouter } from './routes/attendance.js';
 import { createLeaveRouter } from './routes/leave.js';
 import { createTokensRouter } from './routes/tokens.js';
 import gymRsvpsRouter from './routes/gymRsvps.js';
+import gymLiveRouter from './routes/gymLive.js';
 export const app = express();
 app.use(cors({
     origin(origin, callback) {
@@ -42,4 +43,5 @@ app.use('/api/tokens', createTokensRouter());
 app.use('/api/gym-workouts', createContentRouter('gym-workouts'));
 app.use('/api/gym-live-sessions', createContentRouter('gym-live-sessions'));
 app.use('/api/gym-rsvps', gymRsvpsRouter);
+app.use('/api/gym-live', gymLiveRouter);
 //# sourceMappingURL=app.js.map

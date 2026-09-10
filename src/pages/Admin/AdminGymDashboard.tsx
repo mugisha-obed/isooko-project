@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   FaDumbbell, FaVideo, FaPlay, FaClock, FaUsers, FaHistory,
@@ -27,6 +27,9 @@ interface LiveSession {
   joinUrl?: string
   status: string
   reminderMinutes?: number
+  streamId?: string
+  hlsUrl?: string
+  broadcastStatus?: string
 }
 
 interface Rsvp {
@@ -57,6 +60,125 @@ const EMPTY_SESSION = {
   reminderMinutes: 30,
 }
 
+function GoLiveModal({ session, onClose, onDone }: { session: LiveSession; onClose: () => void; onDone: () => void }) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const pcRef = useRef<RTCPeerConnection | null>(null)
+  const streamRef = useRef<MediaStream | null>(null)
+  const [state, setState] = useState<'preparing' | 'starting' | 'live' | 'stopping' | 'error'>('preparing')
+  const [error, setError] = useState('')
+
+  const cleanupTracks = () => {
+    streamRef.current?.getTracks().forEach(track => track.stop())
+    streamRef.current = null
+    if (pcRef.current) {
+      pcRef.current.close()
+      pcRef.current = null
+    }
+  }
+
+  const begin = async () => {
+    setState('starting')
+    setError('')
+    try {
+      const info = await api.create<{ streamId: string; whipUrl: string; hlsUrl: string }>(
+        `/api/gym-live/start/${session.id}`,
+        {},
+      )
+
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 720 } },
+        audio: true,
+      })
+      streamRef.current = stream
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream
+        videoRef.current.play().catch(() => {})
+      }
+
+      const pc = new RTCPeerConnection({ iceServers: [{ urls: 'stun:stun.cloudflare.com:3478' }] })
+      pcRef.current = pc
+      pc.onconnectionstatechange = () => {
+        if (pc.connectionState === 'failed' || pc.connectionState === 'disconnected') {
+          setState('error')
+          setError('Broadcast connection dropped. Press Go Live again to restart.')
+          cleanupTracks()
+        }
+      }
+      stream.getTracks().forEach(track => pc.addTrack(track, stream))
+
+      const offer = await pc.createOffer()
+      await pc.setLocalDescription(offer)
+
+      const res = await fetch(info.whipUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/sdp' },
+        body: pc.localDescription?.sdp,
+      })
+      if (!res.ok) throw new Error(`Broadcast handshake failed (${res.status}). Check Cloudflare Stream config.`)
+      const answer = await res.text()
+      await pc.setRemoteDescription({ type: 'answer', sdp: answer })
+
+      onDone()
+      setState('live')
+    } catch (err) {
+      setState('error')
+      setError(err instanceof Error ? err.message : 'Could not start your camera broadcast.')
+      cleanupTracks()
+    }
+  }
+
+  const stop = async () => {
+    setState('stopping')
+    cleanupTracks()
+    try {
+      await api.create(`/api/gym-live/stop/${session.id}`, {})
+      onDone()
+    } catch { /* keep going */ }
+    onClose()
+  }
+
+  return (
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: 'var(--space-4)' }}>
+      <div style={{ background: '#fff', borderRadius: 'var(--radius-md)', padding: 'var(--space-6)', width: '100%', maxWidth: 720 }}>
+        <h2 style={{ margin: 0, color: 'var(--color-green-dark)' }}>Go Live — {session.title}</h2>
+        <p style={{ margin: 'var(--space-1) 0 var(--space-4)', fontSize: 'var(--font-size-sm)', color: '#667' }}>
+          Your camera will broadcast inside the site. Members watch right on the Gym page.
+        </p>
+
+        <div style={{ position: 'relative', background: '#111', borderRadius: 'var(--radius-md)', overflow: 'hidden', marginBottom: 'var(--space-4)' }}>
+          <video ref={videoRef} autoPlay muted playsInline style={{ width: '100%', aspectRatio: '16/9', display: 'block', background: '#111' }} />
+          {state !== 'live' && (
+            <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#fff', gap: 8, background: state === 'error' ? 'rgba(200,30,30,0.75)' : 'rgba(0,0,0,0.55)' }}>
+              {state === 'preparing' && <span style={{ fontSize: 'var(--font-size-sm)' }}>Camera preview appears here</span>}
+              {state === 'starting' && <span style={{ fontSize: 'var(--font-size-sm)' }}>Going live…</span>}
+              {state === 'stopping' && <span style={{ fontSize: 'var(--font-size-sm)' }}>Stopping broadcast…</span>}
+              {state === 'error' && <span style={{ fontSize: 'var(--font-size-sm)', textAlign: 'center', padding: '0 var(--space-4)' }}>{error}</span>}
+            </div>
+          )}
+          {state === 'live' && (
+            <span style={{ position: 'absolute', top: 12, left: 12, padding: '3px 10px', borderRadius: 999, background: '#dc2626', color: '#fff', fontSize: 'var(--font-size-xs)', fontWeight: 700, letterSpacing: 1, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+              <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#fff', display: 'inline-block' }} className="animate-pulse" /> ON AIR
+            </span>
+          )}
+        </div>
+
+        <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
+          {state !== 'live' && state !== 'starting' ? (
+            <button onClick={begin} style={{ padding: 'var(--space-2) var(--space-6)', background: '#dc2626', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+              <FaVideo /> Go Live
+            </button>
+          ) : (
+            <button onClick={stop} disabled={state !== 'live'} style={{ padding: 'var(--space-2) var(--space-6)', background: '#17191F', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', fontWeight: 600, opacity: state !== 'live' ? 0.6 : 1 }}>
+              Stop Broadcast
+            </button>
+          )}
+          <button onClick={onClose} style={{ padding: 'var(--space-2) var(--space-6)', background: '#eee', color: '#333', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer' }}>Close</button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function AdminGymDashboard() {
   const [workouts, setWorkouts] = useState<Workout[]>([])
   const [sessions, setSessions] = useState<LiveSession[]>([])
@@ -67,6 +189,7 @@ export default function AdminGymDashboard() {
   const [form, setForm] = useState({ ...EMPTY_SESSION })
   const [editId, setEditId] = useState<string | null>(null)
   const [message, setMessage] = useState('')
+  const [liveSession, setLiveSession] = useState<LiveSession | null>(null)
 
   const load = async () => {
     setLoading(true)
@@ -334,6 +457,9 @@ export default function AdminGymDashboard() {
                         <Signups sessionId={s.id} dark />
                       </div>
                     </div>
+                    <button onClick={() => setLiveSession(s)} title="Go Live from your camera" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: 'var(--space-1) var(--space-3)', background: '#dc2626', color: '#fff', borderRadius: 999, fontSize: 'var(--font-size-sm)', border: 'none', cursor: 'pointer', fontWeight: 700 }}>
+                      <FaVideo size={12} /> Go Live
+                    </button>
                     <a href={s.joinUrl} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: 'var(--space-1) var(--space-3)', background: '#4B9F46', color: '#fff', borderRadius: 999, fontSize: 'var(--font-size-sm)', textDecoration: 'none', fontWeight: 600 }}>
                       <FaExternalLinkAlt size={12} /> Join
                     </a>
@@ -371,6 +497,11 @@ export default function AdminGymDashboard() {
                         </div>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+                        {s.hlsUrl ? (
+                          <button onClick={() => setLiveSession(s)} style={{ padding: 'var(--space-1) var(--space-3)', background: '#dc2626', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', fontSize: 'var(--font-size-sm)', fontWeight: 700 }}><FaVideo /> Broadcast</button>
+                        ) : (
+                          <button onClick={() => setLiveSession(s)} style={{ padding: 'var(--space-1) var(--space-3)', background: '#17191F', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', fontSize: 'var(--font-size-sm)' }}><FaVideo /> Go Live</button>
+                        )}
                         <span style={{ padding: '2px 10px', borderRadius: 999, background: '#e8f5e9', color: 'var(--color-green-dark)', fontSize: 'var(--font-size-xs)', fontWeight: 600 }}>{s.status}</span>
                         <button onClick={() => startEdit(s)} style={{ background: '#e8f5e9', color: 'var(--color-green-dark)', border: 'none', borderRadius: 'var(--radius-sm)', padding: 'var(--space-1) var(--space-3)', cursor: 'pointer', fontSize: 'var(--font-size-sm)' }}><FaEdit /> Edit</button>
                         <button onClick={() => handleDelete(s.id)} style={{ background: '#fde8e8', color: '#c33', border: 'none', borderRadius: 'var(--radius-sm)', padding: 'var(--space-1) var(--space-3)', cursor: 'pointer', fontSize: 'var(--font-size-sm)' }}><FaTrash /> Del</button>
@@ -402,6 +533,14 @@ export default function AdminGymDashboard() {
           </div>
         </div>
       </div>
+
+      {liveSession && (
+        <GoLiveModal
+          session={liveSession}
+          onClose={() => setLiveSession(null)}
+          onDone={() => load()}
+        />
+      )}
     </div>
   )
 }

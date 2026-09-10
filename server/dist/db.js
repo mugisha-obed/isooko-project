@@ -91,6 +91,10 @@ const FIELD_MAP = {
     // gym rsvp
     sessionid: 'sessionId',
     remindedat: 'remindedAt',
+    // gym live broadcast (Cloudflare Stream)
+    streamid: 'streamId',
+    hlsurl: 'hlsUrl',
+    broadcaststatus: 'broadcastStatus',
 };
 function normalizeRow(row) {
     const out = {};

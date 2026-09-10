@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { FaPlay, FaClock, FaBolt, FaFire, FaHeart, FaMusic, FaDumbbell, FaExternalLinkAlt, FaEnvelope } from 'react-icons/fa'
 import SEOHead from '@/components/SEOHead/SEOHead'
 import HeroBanner from '@/components/HeroBanner/HeroBanner'
+import LivePlayer from '@/components/LivePlayer/LivePlayer'
 
 interface Workout {
   id: string
@@ -26,6 +27,8 @@ interface LiveSession {
   duration: number
   joinUrl: string
   status: string
+  streamId?: string
+  hlsUrl?: string
 }
 
 const CATEGORY_ICONS: Record<string, React.ReactNode> = {
@@ -201,14 +204,18 @@ export default function Gym() {
                     <p className="text-sm text-white/60 mb-4">
                       {sessionDate.toLocaleDateString()} · {sessionDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} · {session.duration} min
                     </p>
-                    <a
-                      href={session.joinUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#4B9F46] text-white font-semibold text-sm no-underline hover:bg-[#3a7d37] transition-colors"
-                    >
-                      <FaPlay aria-hidden="true" /> {t('live.joinLive')} <FaExternalLinkAlt aria-hidden="true" />
-                    </a>
+                    {isLive && session.hlsUrl ? (
+                      <LivePlayer src={session.hlsUrl} title={session.title} />
+                    ) : (
+                      <a
+                        href={session.joinUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#4B9F46] text-white font-semibold text-sm no-underline hover:bg-[#3a7d37] transition-colors"
+                      >
+                        <FaPlay aria-hidden="true" /> {t('live.joinLive')} <FaExternalLinkAlt aria-hidden="true" />
+                      </a>
+                    )}
                     <ReminderForm sessionId={session.id} t={t} />
                   </div>
                 )
