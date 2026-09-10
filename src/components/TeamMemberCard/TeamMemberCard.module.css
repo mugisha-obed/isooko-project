@@ -57,8 +57,19 @@
   gap: var(--space-2);
 }
 
+.roleIcon {
+  font-size: var(--text-base);
+  opacity: 0.85;
+}
+
 .quote {
   font-style: italic;
   line-height: 1.7;
   color: var(--color-text-secondary);
+}
+
+.quoteIcon {
+  color: var(--color-green-mid);
+  margin-right: var(--space-2);
+  vertical-align: middle;
 }

@@ -30,6 +30,11 @@
   },
   "loading": "Loading...",
   "notFound": "Page not found.",
+  "aria": {
+    "lightboxClose": "Close image viewer",
+    "lightboxPrev": "Previous image",
+    "lightboxNext": "Next image"
+  },
   "getInvolved": {
     "title": "Want to Make a Difference?",
     "desc": "Join us in empowering youth and women in Masoro through literacy, health access, and entrepreneurship programs."

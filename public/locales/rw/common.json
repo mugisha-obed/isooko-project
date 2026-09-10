@@ -30,6 +30,11 @@
   },
   "loading": "Tegereza...",
   "notFound": "Nta paji iletse.",
+  "aria": {
+    "lightboxClose": "Funga amafoto",
+    "lightboxPrev": "Ifoto ibanza",
+    "lightboxNext": "Ifoto ikurikira"
+  },
   "getInvolved": {
     "title": "Urashaka gutanga inkunga?",
     "desc": "Fatanira natwe mu guteza imbere urubyiruko n'abakobwa bo mu karere ka Masoro binyuze mu burezi, ubuzima n'ubucuruzi."

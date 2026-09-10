@@ -9,7 +9,13 @@
   },
   "stats": {
     "title": "Impact in Numbers",
-    "subtitle": "Since 2019"
+    "subtitle": "Since 2019",
+    "beneficiaries": "Beneficiaries Reached",
+    "women": "Women Beneficiaries",
+    "youth": "Youth Beneficiaries",
+    "ecd": "Children in ECD",
+    "businesses": "Businesses Created",
+    "wellness": "Access to Mental Health & Wellness"
   },
   "testimonials": {
     "title": "Voices from the Community",
@@ -36,11 +42,5 @@
     "alt4": "First aid training with Rwanda Red Cross",
     "alt5": "Vocational training - tailoring class",
     "alt6": "Community yoga and wellness session"
-  },
-  "stats.beneficiaries": "Beneficiaries Reached",
-  "stats.women": "Women Beneficiaries",
-  "stats.youth": "Youth Beneficiaries",
-  "stats.ecd": "Children in ECD",
-  "stats.businesses": "Businesses Created",
-  "stats.wellness": "Access to Mental Health & Wellness"
+  }
 }

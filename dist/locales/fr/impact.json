@@ -9,7 +9,13 @@
   },
   "stats": {
     "title": "Impact en Chiffres",
-    "subtitle": "Depuis 2019"
+    "subtitle": "Depuis 2019",
+    "beneficiaries": "Bénéficiaires Touchés",
+    "women": "Bénéficiaires Femmes",
+    "youth": "Bénéficiaires Jeunes",
+    "ecd": "Enfants dans l'Éducation de la Petite Enfance",
+    "businesses": "Entreprises Créées",
+    "wellness": "Accès à la Santé Mentale et au Bien-Être"
   },
   "testimonials": {
     "title": "Témoignages de la Communauté",
@@ -36,11 +42,5 @@
     "alt4": "Formation aux premiers secours avec la Croix-Rouge du Rwanda",
     "alt5": "Formation professionnelle — cours de couture",
     "alt6": "Séance communautaire de yoga et de bien-être"
-  },
-  "stats.beneficiaries": "Bénéficiaires Touchés",
-  "stats.women": "Bénéficiaires Femmes",
-  "stats.youth": "Bénéficiaires Jeunes",
-  "stats.ecd": "Enfants dans l'Éducation de la Petite Enfance",
-  "stats.businesses": "Entreprises Créées",
-  "stats.wellness": "Accès à la Santé Mentale et au Bien-Être"
+  }
 }

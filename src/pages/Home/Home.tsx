@@ -42,7 +42,7 @@ export default function Home() {
               <p className="text-lg text-[#5C4A3E] mb-6 leading-relaxed">{t('mission.body')}</p>
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#4B9F46] text-white font-semibold no-underline hover:bg-[#3a7d37] transition-colors"
+                className="inline-flex items-center gap-2 px-10 py-4 text-lg rounded-full bg-[#FFFFFF] text-[#2D6A4F] no-underline hover:bg-[#2D6A4F] hover:text-white hover:shadow-lg hover:shadow-[#4B9F46]/25 active:scale-[0.98] transition-all duration-200"
               >
                 {tc('btn.learnMore')} <FaArrowRight aria-hidden="true" />
               </Link>
@@ -100,7 +100,7 @@ export default function Home() {
           <div className="text-center mt-8">
             <Link
               to="/news-events"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-[#4B9F46] text-[#4B9F46] font-semibold no-underline hover:bg-[#4B9F46] hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border-2 border-[#4B9F46] text-[#4B9F46] font-semibold no-underline hover:bg-[#4B9F46] hover:text-white hover:shadow-lg hover:shadow-[#4B9F46]/25 active:scale-[0.98] transition-all duration-200"
             >
               {tc('btn.viewAll')} <FaArrowRight aria-hidden="true" />
             </Link>
@@ -117,7 +117,7 @@ export default function Home() {
             <div className="flex gap-4 justify-center">
               <Link
                 to="/get-involved"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[#B6582A] font-semibold no-underline hover:bg-[#FDF6EF] transition-colors"
+                className="btn btn-white min-w-[220px] justify-center px-8 py-3.5 text-lg hover:shadow-lg hover:shadow-black/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-200"
               >
                 {tc('btn.getInvolved')} <FaArrowRight aria-hidden="true" />
               </Link>

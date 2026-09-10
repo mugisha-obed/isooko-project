@@ -9,7 +9,13 @@
   },
   "stats": {
     "title": "Ingaruka mu Mibare",
-    "subtitle": "Kuva mu 2019"
+    "subtitle": "Kuva mu 2019",
+    "beneficiaries": "Abaturage Bafashwa",
+    "women": "Abakobwa Bafashwa",
+    "youth": "Urubyiruko Rufashwa",
+    "ecd": "Abana mu Burezi bw'Imbidukuri",
+    "businesses": "Ubucuruzi Bwavuzwe",
+    "wellness": "Buri Uburyo bwo Kugera ku Buzima bwiza"
   },
   "testimonials": {
     "title": "Amajwi y'Abaturage",
@@ -36,11 +42,5 @@
     "alt4": "Amahugurwa y'ubuvivitsi hamwe n'Umuryango w'Umukandara Utukura w'u Rwanda",
     "alt5": "Amahugurwa y'imyuga — isomo ry'ubudozi",
     "alt6": "Ibyiciro bya yoga n'ubuziranutse by'abaturage"
-  },
-  "stats.beneficiaries": "Abaturage Bafashwa",
-  "stats.women": "Abakobwa Bafashwa",
-  "stats.youth": "Urubyiruko Rufashwa",
-  "stats.ecd": "Abana mu Burezi bw'Imbidukuri",
-  "stats.businesses": "Ubucuruzi Bwavuzwe",
-  "stats.wellness": "Buri Uburyo bwo Kugera ku Buzima bwiza"
+  }
 }

@@ -14,6 +14,14 @@ const LOGOS: Record<string, string> = {
   'tuuza-mubyeyi': '',
 }
 
+const TRANSLATION_KEY: Record<string, string> = {
+  'women-empowerment': 'womenEmpowerment',
+  'youth-empowerment': 'youthEmpowerment',
+  'sports-wellness': 'sportsWellness',
+  'digital-literacy': 'digitalLiteracy',
+  'tuuza-mubyeyi': 'tuuzaMubyeyi',
+}
+
 export default function Programs() {
   const { t } = useTranslation('programs')
   const { t: tc } = useTranslation('common')
@@ -55,7 +63,7 @@ export default function Programs() {
           <div className="container">
             <div className="section-header">
               <h2 className="section-title" style={{ fontSize: 'var(--font-size-xl)' }}>
-                {t(`${program.id}.acronym`)}
+                {t(`${TRANSLATION_KEY[program.id]}.acronym`)}
                 {LOGOS[program.id] && (
                   <span style={{
                     display: 'inline-block',
@@ -69,13 +77,13 @@ export default function Programs() {
                   }}>{LOGOS[program.id]}</span>
                 )}
               </h2>
-              <p className="section-subtitle">{t(`${program.id}.subtitle`)}</p>
+              <p className="section-subtitle">{t(`${TRANSLATION_KEY[program.id]}.subtitle`)}</p>
             </div>
 
             <div style={{ maxWidth: 720, margin: '0 auto' }}>
-              <p>{t(`${program.id}.intro`)}</p>
+              <p>{t(`${TRANSLATION_KEY[program.id]}.intro`)}</p>
               <ul style={{ marginTop: 'var(--space-4)', paddingLeft: 'var(--space-6)' }}>
-                {(t(`${program.id}.offerings`, { returnObjects: true }) as string[]).map(
+                {(t(`${TRANSLATION_KEY[program.id]}.offerings`, { returnObjects: true }) as string[]).map(
                   (item: string, i: number) => (
                     <li key={i} style={{ marginBottom: 'var(--space-2)' }}>{item}</li>
                   )
@@ -90,7 +98,7 @@ export default function Programs() {
         <div className="container">
           <h2 className="section-title">{tc('getInvolved.title')}</h2>
           <p>{tc('getInvolved.desc')}</p>
-          <Link to="/get-involved" className="btn btn-primary" style={{ marginTop: 'var(--space-4)' }}>
+          <Link to="/get-involved" className="btn btn-primary px-8 py-3.5 text-lg shadow-md hover:shadow-lg hover:shadow-[#4B9F46]/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-200" style={{ marginTop: 'var(--space-4)' }}>
             {tc('btn.getInvolved')} <FaArrowRight style={{ verticalAlign: 'middle' }} aria-hidden="true" />
           </Link>
         </div>

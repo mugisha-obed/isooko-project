@@ -30,6 +30,11 @@
   },
   "loading": "Chargement...",
   "notFound": "Page non trouvée.",
+  "aria": {
+    "lightboxClose": "Fermer la visionneuse d'images",
+    "lightboxPrev": "Image précédente",
+    "lightboxNext": "Image suivante"
+  },
   "getInvolved": {
     "title": "Vous Voulez Faire la Différence?",
     "desc": "Rejoignez-nous pour autonomiser les jeunes et les femmes de Masoro à travers l'éducation, la santé et l'entrepreneuriat."

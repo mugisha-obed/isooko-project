@@ -6,5 +6,13 @@
     "photo": "/assets/team/team-3.webp",
     "createdAt": "2026-08-04T08:21:06.427Z",
     "updatedAt": "2026-08-04T08:21:06.427Z"
+  },
+  {
+    "id": "team-members-1788864974639-j0accd",
+    "name": "ISH BURN ORIGINAL",
+    "roleKey": "IT manager",
+    "photo": "/assets/team/team-placeholder.svg",
+    "createdAt": "2026-09-08T10:56:14.639Z",
+    "updatedAt": "2026-09-08T10:56:14.639Z"
   }
 ]
