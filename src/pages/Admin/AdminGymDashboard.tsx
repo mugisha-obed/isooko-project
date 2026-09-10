@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {
   FaDumbbell, FaVideo, FaPlay, FaClock, FaUsers, FaHistory,
-  FaCalendarAlt, FaExternalLinkAlt, FaLink, FaPlus, FaTrash, FaEdit, FaEnvelope,
+  FaCalendarAlt, FaExternalLinkAlt, FaLink, FaPlus, FaTrash, FaEdit,
 } from 'react-icons/fa'
 import { api } from '../../api'
 
@@ -195,9 +195,10 @@ export default function AdminGymDashboard() {
       <span style={{ fontSize: 'var(--font-size-xs)' }}>
         <button
           onClick={() => toggleList(sessionId)}
-          style={{ background: pillBg, color: pillColor, border: 'none', borderRadius: 999, padding: '3px 10px', cursor: 'pointer', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 6 }}
+          title={`${count} ${count === 1 ? 'sign-up' : 'sign-ups'}`}
+          style={{ width: 26, height: 26, background: pillBg, color: pillColor, border: 'none', borderRadius: '50%', cursor: 'pointer', fontWeight: 700, fontSize: 'var(--font-size-sm)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
         >
-          <FaEnvelope size={11} /> {count} {count === 1 ? 'sign-up' : 'sign-ups'}
+          {count}
         </button>
         {isOpen && (
           <span style={{ display: 'block', marginTop: 'var(--space-2)', background: dark ? 'rgba(255,255,255,0.08)' : '#faf7f4', border: `1px solid ${dark ? 'rgba(255,255,255,0.15)' : 'var(--color-cream-dark)'}`, borderRadius: 'var(--radius-sm)', padding: 'var(--space-2)', color: subtle }}>
