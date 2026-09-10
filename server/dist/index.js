@@ -4,6 +4,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { app } from './app.js';
 import { seedAdmin, seedEmployee } from './seed.js';
+import { runReminderCheck, startReminderScheduler } from './reminders.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = Number(process.env.PORT) || 3001;
 const isDev = process.env.NODE_ENV !== 'production';
@@ -36,6 +37,8 @@ async function startServer() {
         console.error('Failed to start server:', error);
         process.exit(1);
     }
+    runReminderCheck().catch(error => console.warn('Initial reminder check failed:', error));
+    startReminderScheduler();
 }
 startServer();
 //# sourceMappingURL=index.js.map

@@ -23,6 +23,15 @@
     "onNow": "birimo kuba",
     "minutes": "min"
   },
+  "reminder": {
+    "title": "Bona urwibutso",
+    "name": "Amazina yawe",
+    "email": "Imeyili",
+    "subscribe": "Menyesha",
+    "sending": "Kwandika...",
+    "subscribed": "Uri ku rutonde — tuzakwandikira imeyili mbere y'uko ibikorwa bitangira!",
+    "error": "Ntushobora kwiyandikisha vuba aha. Gerageza nanone."
+  },
   "filter": {
     "all": "Ibikorwa Byose",
     "strength": "Imbaraga",

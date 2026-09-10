@@ -1,9 +1,12 @@
 import { NavLink, Outlet, Navigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
-import { FaSignOutAlt, FaHome, FaTachometerAlt, FaNewspaper, FaCalendarAlt, FaUsers, FaLayerGroup, FaImages, FaChartBar, FaCommentDots, FaInbox, FaUserTie, FaClipboardCheck, FaTicketAlt, FaUmbrellaBeach, FaDumbbell, FaVideo } from 'react-icons/fa'
+import { FaSignOutAlt, FaHome, FaTachometerAlt, FaNewspaper, FaCalendarAlt, FaUsers, FaLayerGroup, FaImages, FaChartBar, FaCommentDots, FaInbox, FaUserTie, FaClipboardCheck, FaTicketAlt, FaUmbrellaBeach, FaDumbbell, FaVideo, FaChalkboardTeacher } from 'react-icons/fa'
 
 const SIDEBAR_LINKS = [
   { label: 'Dashboard', path: '/admin', end: true, icon: <FaTachometerAlt /> },
+  { label: 'Gym Manager', path: '/admin/gym', icon: <FaChalkboardTeacher /> },
+  { label: 'Gym Workouts', path: '/admin/gym-workouts', icon: <FaDumbbell /> },
+  { label: 'Live Sessions', path: '/admin/gym-live-sessions', icon: <FaVideo /> },
   { label: 'Blog Posts', path: '/admin/blog-posts', icon: <FaNewspaper /> },
   { label: 'Events', path: '/admin/events', icon: <FaCalendarAlt /> },
   { label: 'Team Members', path: '/admin/team', icon: <FaUsers /> },
@@ -16,8 +19,6 @@ const SIDEBAR_LINKS = [
   { label: 'Attendance', path: '/admin/attendance', icon: <FaClipboardCheck /> },
   { label: 'Daily Tokens', path: '/admin/tokens', icon: <FaTicketAlt /> },
   { label: 'Leave Requests', path: '/admin/leaves', icon: <FaUmbrellaBeach /> },
-  { label: 'Gym Workouts', path: '/admin/gym-workouts', icon: <FaDumbbell /> },
-  { label: 'Live Sessions', path: '/admin/gym-live-sessions', icon: <FaVideo /> },
 ]
 
 export default function AdminDashboard() {

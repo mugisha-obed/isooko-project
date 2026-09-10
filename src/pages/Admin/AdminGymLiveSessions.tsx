@@ -16,6 +16,7 @@ const defaultItem = {
   duration: 45,
   joinUrl: '',
   status: 'upcoming',
+  reminderMinutes: 30,
 }
 
 export default function AdminGymLiveSessions() {

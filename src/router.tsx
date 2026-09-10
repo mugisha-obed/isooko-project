@@ -32,6 +32,7 @@ const AdminEmployees = lazy(() => import('./pages/Admin/AdminEmployees'))
 const AdminAttendance = lazy(() => import('./pages/Admin/AdminAttendance'))
 const AdminLeaves = lazy(() => import('./pages/Admin/AdminLeaves'))
 const AdminTokens = lazy(() => import('./pages/Admin/AdminTokens'))
+const AdminGymDashboard = lazy(() => import('./pages/Admin/AdminGymDashboard'))
 const AdminGymWorkouts = lazy(() => import('./pages/Admin/AdminGymWorkouts'))
 const AdminGymLiveSessions = lazy(() => import('./pages/Admin/AdminGymLiveSessions'))
 
@@ -83,6 +84,7 @@ const router = createBrowserRouter([
       { path: 'attendance', element: wrap(<AdminAttendance />) },
       { path: 'tokens', element: wrap(<AdminTokens />) },
       { path: 'leaves', element: wrap(<AdminLeaves />) },
+      { path: 'gym', element: wrap(<AdminGymDashboard />) },
       { path: 'gym-workouts', element: wrap(<AdminGymWorkouts />) },
       { path: 'gym-live-sessions', element: wrap(<AdminGymLiveSessions />) },
     ],

@@ -23,6 +23,15 @@
     "onNow": "en cours",
     "minutes": "min"
   },
+  "reminder": {
+    "title": "Recevoir un rappel",
+    "name": "Votre nom",
+    "email": "Adresse e-mail",
+    "subscribe": "Me prévenir",
+    "sending": "Inscription...",
+    "subscribed": "Vous êtes inscrit(e) — nous vous enverrons un e-mail avant le début de la session !",
+    "error": "Inscription impossible pour le moment. Veuillez réessayer."
+  },
   "filter": {
     "all": "Tous les Exercices",
     "strength": "Force",

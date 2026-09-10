@@ -88,6 +88,9 @@ const FIELD_MAP = {
     video_url: 'videoUrl',
     scheduled_at: 'scheduledAt',
     join_url: 'joinUrl',
+    // gym rsvp
+    sessionid: 'sessionId',
+    remindedat: 'remindedAt',
 };
 function normalizeRow(row) {
     const out = {};

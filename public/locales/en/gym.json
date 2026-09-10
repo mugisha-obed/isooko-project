@@ -23,6 +23,15 @@
     "onNow": "on now",
     "minutes": "min"
   },
+  "reminder": {
+    "title": "Get a reminder",
+    "name": "Your name",
+    "email": "Email address",
+    "subscribe": "Notify me",
+    "sending": "Signing up...",
+    "subscribed": "You're on the list — we'll email you before the session starts!",
+    "error": "Couldn't sign up right now. Please try again."
+  },
   "filter": {
     "all": "All Workouts",
     "strength": "Strength",

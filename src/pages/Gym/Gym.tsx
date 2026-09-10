@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { FaPlay, FaClock, FaBolt, FaFire, FaHeart, FaMusic, FaDumbbell, FaExternalLinkAlt } from 'react-icons/fa'
+import { FaPlay, FaClock, FaBolt, FaFire, FaHeart, FaMusic, FaDumbbell, FaExternalLinkAlt, FaEnvelope } from 'react-icons/fa'
 import SEOHead from '@/components/SEOHead/SEOHead'
 import HeroBanner from '@/components/HeroBanner/HeroBanner'
 
@@ -48,6 +48,67 @@ const CATEGORY_COLORS: Record<string, string> = {
   yoga: 'bg-[#4B9F46]',
   flexibility: 'bg-[#3A86FF]',
   dance: 'bg-[#6A4C93]',
+}
+
+function ReminderForm({ sessionId, t }: { sessionId: string; t: (key: string) => string }) {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [state, setState] = useState<'idle' | 'loading' | 'done' | 'error'>('idle')
+
+  const subscribe = async () => {
+    if (!name.trim() || !email.trim()) return
+    setState('loading')
+    try {
+      const res = await fetch('/api/gym-rsvps', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId, name: name.trim(), email: email.trim() }),
+      })
+      if (!res.ok) throw new Error('bad response')
+      setState('done')
+    } catch {
+      setState('error')
+    }
+  }
+
+  return (
+    <div className="border-t border-white/20 mt-4 pt-4">
+      <p className="flex items-center gap-1.5 text-sm font-semibold text-white mb-2">
+        <FaEnvelope size={13} aria-hidden="true" /> {t('reminder.title')}
+      </p>
+      {state === 'done' ? (
+        <p className="text-sm text-[#A8E6B7] font-medium">{t('reminder.subscribed')}</p>
+      ) : (
+        <>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2">
+            <input
+              type="text"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              placeholder={t('reminder.name')}
+              className="px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white text-sm placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-[#4B9F46]"
+            />
+            <input
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              placeholder={t('reminder.email')}
+              className="px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white text-sm placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-[#4B9F46]"
+            />
+          </div>
+          <button
+            onClick={subscribe}
+            disabled={state === 'loading' || !name.trim() || !email.trim()}
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/15 border border-white/25 text-white text-sm font-semibold no-underline hover:bg-white/25 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            <FaEnvelope size={12} aria-hidden="true" />
+            {state === 'loading' ? t('reminder.sending') : t('reminder.subscribe')}
+          </button>
+          {state === 'error' && <p className="text-sm text-red-300 mt-2">{t('reminder.error')}</p>}
+        </>
+      )}
+    </div>
+  )
 }
 
 export default function Gym() {
@@ -140,6 +201,7 @@ export default function Gym() {
                     >
                       <FaPlay aria-hidden="true" /> {t('live.joinLive')} <FaExternalLinkAlt aria-hidden="true" />
                     </a>
+                    <ReminderForm sessionId={session.id} t={t} />
                   </div>
                 )
               })}
