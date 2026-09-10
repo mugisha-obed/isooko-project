@@ -19,6 +19,8 @@
     "joinLive": "Join Live Session",
     "live": "LIVE",
     "upcoming": "Upcoming",
+    "startsIn": "Starts in",
+    "onNow": "on now",
     "minutes": "min"
   },
   "filter": {

@@ -19,6 +19,8 @@
     "joinLive": "Rejoindre la Session",
     "live": "EN DIRECT",
     "upcoming": "À Venir",
+    "startsIn": "Commence dans",
+    "onNow": "en cours",
     "minutes": "min"
   },
   "filter": {

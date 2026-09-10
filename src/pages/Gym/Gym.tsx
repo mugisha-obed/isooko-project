@@ -70,9 +70,17 @@ export default function Gym() {
   const filtered = filter === 'all' ? workouts : workouts.filter(w => w.category === filter)
 
   const now = new Date()
+  const activeSessions = liveSessions
+    .filter(s => {
+      const start = new Date(s.scheduledAt).getTime()
+      const end = start + (s.duration || 60) * 60 * 1000
+      return now.getTime() >= start && now.getTime() <= end && s.status !== 'cancelled'
+    })
   const upcomingSessions = liveSessions
     .filter(s => new Date(s.scheduledAt) > now && s.status !== 'cancelled')
     .sort((a, b) => new Date(a.scheduledAt).getTime() - new Date(b.scheduledAt).getTime())
+
+  const scheduledSessions = [...activeSessions, ...upcomingSessions]
 
   return (
     <>
@@ -87,7 +95,7 @@ export default function Gym() {
       />
 
       {/* Live Sessions */}
-      {upcomingSessions.length > 0 && (
+      {scheduledSessions.length > 0 && (
         <section className="section" style={{ background: 'linear-gradient(135deg, #17191F 0%, #2D6A4F 100%)' }}>
           <div className="container">
             <div className="section-header">
@@ -95,19 +103,28 @@ export default function Gym() {
               <p className="section-subtitle" style={{ color: 'rgba(255,255,255,0.8)' }}>{t('live.subtitle')}</p>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 'var(--space-6)' }}>
-              {upcomingSessions.map(session => {
+              {scheduledSessions.map(session => {
                 const sessionDate = new Date(session.scheduledAt)
                 const timeDiff = sessionDate.getTime() - now.getTime()
+                const isLive = now.getTime() >= sessionDate.getTime()
                 const hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60))
                 const minsLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))
                 return (
                   <div key={session.id} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-white border border-white/20">
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-500 text-white text-xs font-bold uppercase tracking-wider animate-pulse">
-                        {t('live.live')}
-                      </span>
+                      {isLive ? (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-500 text-white text-xs font-bold uppercase tracking-wider animate-pulse">
+                          {t('live.live')}
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#4B9F46] text-white text-xs font-bold uppercase tracking-wider">
+                          {t('live.upcoming')}
+                        </span>
+                      )}
                       <span className="text-sm text-white/70">
-                        {hoursLeft > 0 ? `${hoursLeft}h ${minsLeft}m` : `${minsLeft}m`}
+                        {isLive
+                          ? t('live.onNow')
+                          : `${t('live.startsIn')} ${hoursLeft > 0 ? `${hoursLeft}h ${minsLeft}m` : `${minsLeft}m`}`}
                       </span>
                     </div>
                     <h3 className="text-lg font-bold mb-2">{session.title}</h3>
