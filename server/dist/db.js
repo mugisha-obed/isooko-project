@@ -91,9 +91,8 @@ const FIELD_MAP = {
     // gym rsvp
     sessionid: 'sessionId',
     remindedat: 'remindedAt',
-    // gym live broadcast (Cloudflare Stream)
+    // gym live broadcast (WebRTC peer id + status)
     streamid: 'streamId',
-    hlsurl: 'hlsUrl',
     broadcaststatus: 'broadcastStatus',
 };
 function normalizeRow(row) {

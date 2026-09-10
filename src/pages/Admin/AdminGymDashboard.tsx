@@ -1,10 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import Peer from 'peerjs'
 import {
   FaDumbbell, FaVideo, FaPlay, FaClock, FaUsers, FaHistory,
   FaCalendarAlt, FaExternalLinkAlt, FaLink, FaPlus, FaTrash, FaEdit,
 } from 'react-icons/fa'
 import { api } from '../../api'
+
+const LIVE_ICE = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] }
 
 interface Workout {
   id: string
@@ -62,29 +65,28 @@ const EMPTY_SESSION = {
 
 function GoLiveModal({ session, onClose, onDone }: { session: LiveSession; onClose: () => void; onDone: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const pcRef = useRef<RTCPeerConnection | null>(null)
   const streamRef = useRef<MediaStream | null>(null)
+  const peerRef = useRef<Peer | null>(null)
+  const liveCallsRef = useRef<number>(0)
   const [state, setState] = useState<'preparing' | 'starting' | 'live' | 'stopping' | 'error'>('preparing')
+  const [viewers, setViewers] = useState(0)
   const [error, setError] = useState('')
 
-  const cleanupTracks = () => {
+  const cleanup = () => {
     streamRef.current?.getTracks().forEach(track => track.stop())
     streamRef.current = null
-    if (pcRef.current) {
-      pcRef.current.close()
-      pcRef.current = null
+    if (peerRef.current) {
+      peerRef.current.destroy()
+      peerRef.current = null
     }
+    liveCallsRef.current = 0
+    setViewers(0)
   }
 
   const begin = async () => {
     setState('starting')
     setError('')
     try {
-      const info = await api.create<{ streamId: string; whipUrl: string; hlsUrl: string }>(
-        `/api/gym-live/start/${session.id}`,
-        {},
-      )
-
       const stream = await navigator.mediaDevices.getUserMedia({
         video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 720 } },
         audio: true,
@@ -95,41 +97,37 @@ function GoLiveModal({ session, onClose, onDone }: { session: LiveSession; onClo
         videoRef.current.play().catch(() => {})
       }
 
-      const pc = new RTCPeerConnection({ iceServers: [{ urls: 'stun:stun.cloudflare.com:3478' }] })
-      pcRef.current = pc
-      pc.onconnectionstatechange = () => {
-        if (pc.connectionState === 'failed' || pc.connectionState === 'disconnected') {
-          setState('error')
-          setError('Broadcast connection dropped. Press Go Live again to restart.')
-          cleanupTracks()
-        }
-      }
-      stream.getTracks().forEach(track => pc.addTrack(track, stream))
+      const info = await api.create<{ peerId: string }>(`/api/gym-live/start/${session.id}`, {})
 
-      const offer = await pc.createOffer()
-      await pc.setLocalDescription(offer)
-
-      const res = await fetch(info.whipUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/sdp' },
-        body: pc.localDescription?.sdp,
+      const peer = new Peer(info.peerId, { config: LIVE_ICE })
+      peerRef.current = peer
+      peer.on('call', call => {
+        liveCallsRef.current += 1
+        setViewers(liveCallsRef.current)
+        call.answer(stream)
+        call.on('close', () => {
+          liveCallsRef.current = Math.max(0, liveCallsRef.current - 1)
+          setViewers(liveCallsRef.current)
+        })
       })
-      if (!res.ok) throw new Error(`Broadcast handshake failed (${res.status}). Check Cloudflare Stream config.`)
-      const answer = await res.text()
-      await pc.setRemoteDescription({ type: 'answer', sdp: answer })
+      peer.on('error', err => {
+        setState('error')
+        setError(err.type === 'unavailable-id' ? 'Another broadcast is already using this session. Close the other tab and try again.' : 'Broadcast connection failed. Press Go Live again to restart.')
+        cleanup()
+      })
 
       onDone()
       setState('live')
     } catch (err) {
       setState('error')
-      setError(err instanceof Error ? err.message : 'Could not start your camera broadcast.')
-      cleanupTracks()
+      setError(err instanceof Error ? err.message : 'Could not start your camera broadcast. Allow camera and microphone access in your browser.')
+      cleanup()
     }
   }
 
   const stop = async () => {
     setState('stopping')
-    cleanupTracks()
+    cleanup()
     try {
       await api.create(`/api/gym-live/stop/${session.id}`, {})
       onDone()
@@ -137,12 +135,23 @@ function GoLiveModal({ session, onClose, onDone }: { session: LiveSession; onClo
     onClose()
   }
 
+  const buttonArea =
+    state !== 'live' && state !== 'starting' ? (
+      <button onClick={begin} style={{ padding: 'var(--space-2) var(--space-6)', background: '#dc2626', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+        <FaVideo /> Go Live
+      </button>
+    ) : (
+      <button onClick={stop} disabled={state !== 'live'} style={{ padding: 'var(--space-2) var(--space-6)', background: '#17191F', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', fontWeight: 600, opacity: state !== 'live' ? 0.6 : 1 }}>
+        Stop Broadcast
+      </button>
+    )
+
   return (
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: 'var(--space-4)' }}>
       <div style={{ background: '#fff', borderRadius: 'var(--radius-md)', padding: 'var(--space-6)', width: '100%', maxWidth: 720 }}>
         <h2 style={{ margin: 0, color: 'var(--color-green-dark)' }}>Go Live — {session.title}</h2>
         <p style={{ margin: 'var(--space-1) 0 var(--space-4)', fontSize: 'var(--font-size-sm)', color: '#667' }}>
-          Your camera will broadcast inside the site. Members watch right on the Gym page.
+          Your camera broadcasts straight to members — no extra account or service needed.
         </p>
 
         <div style={{ position: 'relative', background: '#111', borderRadius: 'var(--radius-md)', overflow: 'hidden', marginBottom: 'var(--space-4)' }}>
@@ -157,21 +166,13 @@ function GoLiveModal({ session, onClose, onDone }: { session: LiveSession; onClo
           )}
           {state === 'live' && (
             <span style={{ position: 'absolute', top: 12, left: 12, padding: '3px 10px', borderRadius: 999, background: '#dc2626', color: '#fff', fontSize: 'var(--font-size-xs)', fontWeight: 700, letterSpacing: 1, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#fff', display: 'inline-block' }} className="animate-pulse" /> ON AIR
+              <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#fff', display: 'inline-block' }} className="animate-pulse" /> ON AIR · {viewers} watching
             </span>
           )}
         </div>
 
         <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
-          {state !== 'live' && state !== 'starting' ? (
-            <button onClick={begin} style={{ padding: 'var(--space-2) var(--space-6)', background: '#dc2626', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-              <FaVideo /> Go Live
-            </button>
-          ) : (
-            <button onClick={stop} disabled={state !== 'live'} style={{ padding: 'var(--space-2) var(--space-6)', background: '#17191F', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', fontWeight: 600, opacity: state !== 'live' ? 0.6 : 1 }}>
-              Stop Broadcast
-            </button>
-          )}
+          {buttonArea}
           <button onClick={onClose} style={{ padding: 'var(--space-2) var(--space-6)', background: '#eee', color: '#333', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer' }}>Close</button>
         </div>
       </div>

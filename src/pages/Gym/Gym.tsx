@@ -135,6 +135,13 @@ export default function Gym() {
       setWorkouts(Array.isArray(w) ? w : [])
       setLiveSessions(Array.isArray(l) ? l : [])
     }).catch(() => {}).finally(() => setLoading(false))
+
+    const poll = setInterval(() => {
+      fetch('/api/gym-live-sessions').then(r => r.json()).then(l => {
+        if (Array.isArray(l)) setLiveSessions(l)
+      }).catch(() => {})
+    }, 10000)
+    return () => clearInterval(poll)
   }, [])
 
   const filtered = filter === 'all' ? workouts : workouts.filter(w => w.category === filter)
@@ -204,8 +211,8 @@ export default function Gym() {
                     <p className="text-sm text-white/60 mb-4">
                       {sessionDate.toLocaleDateString()} · {sessionDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} · {session.duration} min
                     </p>
-                    {isLive && session.hlsUrl ? (
-                      <LivePlayer src={session.hlsUrl} title={session.title} />
+                    {isLive && session.streamId ? (
+                      <LivePlayer peerId={session.streamId} title={session.title} />
                     ) : (
                       <a
                         href={session.joinUrl}

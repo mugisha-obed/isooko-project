@@ -2,77 +2,25 @@ import { Router } from 'express';
 import { getById, updateOne } from '../store.js';
 import { requireAdmin } from '../auth.js';
 const router = Router();
-const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID;
-const API_TOKEN = process.env.CLOUDFLARE_STREAM_API_TOKEN;
-const CF_BASE = `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/stream`;
-function isConfigured() {
-    return Boolean(ACCOUNT_ID && API_TOKEN);
+export function peerIdFor(sessionId) {
+    return `isooko-live-${sessionId}`;
 }
-export function hlsUrlFor(streamId) {
-    return `https://customer-${ACCOUNT_ID}.cloudflarestream.com/${streamId}/manifest/video.m3u8`;
-}
-export function whipUrlFor(streamId) {
-    return `https://customer-${ACCOUNT_ID}.cloudflarestream.com/${streamId}/whip`;
-}
-async function cfFetch(path, init) {
-    const res = await fetch(`${CF_BASE}${path}`, {
-        ...init,
-        headers: {
-            Authorization: `Bearer ${API_TOKEN}`,
-            ...(init?.body ? { 'Content-Type': 'application/json' } : {}),
-            ...(init?.headers || {}),
-        },
-    });
-    const json = (await res.json().catch(() => ({})));
-    if (!res.ok) {
-        const message = Array.isArray(json.errors) && json.errors.length > 0
-            ? json.errors[0].message || 'Cloudflare Stream API error'
-            : json.error;
-        return { ok: false, error: message };
-    }
-    return { ok: true, data: json.result };
-}
-// Admin: create a Cloudflare Stream live input for a session. The browser then
-// pushes the camera feed to the WHIP ingest URL returned here.
+// Admin: mark a session as live. The browser then begins broadcasting to the
+// member-facing site directly over WebRTC (PeerJS), using the peer id below.
 router.post('/start/:sessionId', requireAdmin, async (req, res) => {
-    if (!isConfigured()) {
-        res.status(503).json({ error: 'Cloudflare Stream is not configured on this server.' });
-        return;
-    }
     try {
         const session = await getById('gym-live-sessions', req.params.sessionId);
         if (!session) {
             res.status(404).json({ error: 'Session not found' });
             return;
         }
-        if (session.streamId) {
-            res.json({
-                streamId: session.streamId,
-                whipUrl: whipUrlFor(session.streamId),
-                hlsUrl: session.hlsUrl || hlsUrlFor(session.streamId),
-            });
-            return;
-        }
-        const created = await cfFetch('/live_inputs', {
-            method: 'POST',
-            body: JSON.stringify({
-                meta: { name: session.title || 'Gym live session' },
-                recording: { mode: 'off' },
-            }),
-        });
-        if (!created.ok || !created.data?.uid) {
-            res.status(502).json({ error: created.error || 'Failed to create live input on Cloudflare Stream' });
-            return;
-        }
-        const streamId = created.data.uid;
-        const hlsUrl = hlsUrlFor(streamId);
+        const peerId = peerIdFor(session.id);
         await updateOne('gym-live-sessions', session.id, {
-            streamId,
-            hlsUrl,
+            streamId: peerId,
             broadcastStatus: 'live',
             status: 'active',
         });
-        res.status(201).json({ streamId, whipUrl: whipUrlFor(streamId), hlsUrl });
+        res.status(201).json({ peerId, streamId: peerId });
     }
     catch (error) {
         res.status(500).json({ error: 'Internal server error' });
@@ -82,12 +30,6 @@ router.post('/start/:sessionId', requireAdmin, async (req, res) => {
 router.post('/stop/:sessionId', requireAdmin, async (req, res) => {
     try {
         const session = await getById('gym-live-sessions', req.params.sessionId);
-        if (session?.streamId && isConfigured()) {
-            const removed = await cfFetch(`/live_inputs/${session.streamId}`, { method: 'DELETE' });
-            if (!removed.ok && removed.error?.toLowerCase().includes('not found')) {
-                // input already gone — fine
-            }
-        }
         if (session) {
             await updateOne('gym-live-sessions', session.id, {
                 broadcastStatus: 'stopped',
@@ -100,7 +42,7 @@ router.post('/stop/:sessionId', requireAdmin, async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
-// Public: current broadcast status for a session.
+// Public: current broadcast status (peer id the browser should connect to).
 router.get('/status/:sessionId', async (req, res) => {
     try {
         const session = await getById('gym-live-sessions', req.params.sessionId);
@@ -108,24 +50,12 @@ router.get('/status/:sessionId', async (req, res) => {
             res.status(404).json({ error: 'Session not found' });
             return;
         }
-        if (!session.streamId) {
-            res.json({ live: false, hlsUrl: null, streamId: null });
-            return;
-        }
-        let live = session.broadcastStatus === 'live';
-        if (session.streamId && isConfigured()) {
-            try {
-                const state = await cfFetch(`/live_inputs/${session.streamId}`);
-                const currentState = state.data?.status?.currentState;
-                const cfLive = currentState === 'live' || currentState === 'active';
-                if (typeof cfLive === 'boolean')
-                    live = cfLive;
-            }
-            catch {
-                // keep stored status
-            }
-        }
-        res.json({ live, hlsUrl: session.hlsUrl || null, streamId: session.streamId });
+        const live = session.broadcastStatus === 'live' && session.status === 'active';
+        res.json({
+            live,
+            peerId: live ? session.streamId || peerIdFor(session.id) : null,
+            streamId: session.streamId || null,
+        });
     }
     catch {
         res.status(500).json({ error: 'Internal server error' });
