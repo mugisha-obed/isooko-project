@@ -117,6 +117,12 @@ export default function Gym() {
   const [liveSessions, setLiveSessions] = useState<LiveSession[]>([])
   const [filter, setFilter] = useState<'all' | string>('all')
   const [loading, setLoading] = useState(true)
+  const [now, setNow] = useState(() => new Date())
+
+  useEffect(() => {
+    const timer = setInterval(() => setNow(new Date()), 1000)
+    return () => clearInterval(timer)
+  }, [])
 
   useEffect(() => {
     Promise.all([
@@ -130,7 +136,6 @@ export default function Gym() {
 
   const filtered = filter === 'all' ? workouts : workouts.filter(w => w.category === filter)
 
-  const now = new Date()
   const activeSessions = liveSessions
     .filter(s => {
       const start = new Date(s.scheduledAt).getTime()
@@ -168,6 +173,7 @@ export default function Gym() {
                 const sessionDate = new Date(session.scheduledAt)
                 const timeDiff = sessionDate.getTime() - now.getTime()
                 const isLive = now.getTime() >= sessionDate.getTime()
+                const startsWithin = !isLive && timeDiff <= 20000
                 const hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60))
                 const minsLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))
                 return (
@@ -178,14 +184,16 @@ export default function Gym() {
                           {t('live.live')}
                         </span>
                       ) : (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#4B9F46] text-white text-xs font-bold uppercase tracking-wider">
-                          {t('live.upcoming')}
+                        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-white text-xs font-bold uppercase tracking-wider ${startsWithin ? 'bg-amber-500 animate-pulse' : 'bg-[#4B9F46]'}`}>
+                          {startsWithin ? `⏱ ${t('live.countdown')} ${Math.max(1, Math.ceil(timeDiff / 1000))}s` : t('live.upcoming')}
                         </span>
                       )}
                       <span className="text-sm text-white/70">
                         {isLive
                           ? t('live.onNow')
-                          : `${t('live.startsIn')} ${hoursLeft > 0 ? `${hoursLeft}h ${minsLeft}m` : `${minsLeft}m`}`}
+                          : startsWithin
+                            ? `${t('live.countdown')} ${Math.max(0, Math.ceil(timeDiff / 1000))}s`
+                            : `${t('live.startsIn')} ${hoursLeft > 0 ? `${hoursLeft}h ${minsLeft}m` : `${minsLeft}m`}`}
                       </span>
                     </div>
                     <h3 className="text-lg font-bold mb-2">{session.title}</h3>
