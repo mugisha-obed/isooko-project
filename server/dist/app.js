@@ -38,4 +38,6 @@ app.use('/api/employees', createEmployeesRouter());
 app.use('/api/attendance', createAttendanceRouter());
 app.use('/api/leave', createLeaveRouter());
 app.use('/api/tokens', createTokensRouter());
+app.use('/api/gym-workouts', createContentRouter('gym-workouts'));
+app.use('/api/gym-live-sessions', createContentRouter('gym-live-sessions'));
 //# sourceMappingURL=app.js.map

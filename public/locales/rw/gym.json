@@ -1,0 +1,70 @@
+{
+  "seo": {
+    "title": "Ishuri rya Siporo — Isôoko Community Development",
+    "description": "Imyitozo ya siporo ya buri munsi mu cyubahiro n'ibikorwa bya siporo byo mu gihe cyangwa mu buzima bwa buri munsi hamwe n'abahugurwa abaranga. Siporo y'urugo."
+  },
+  "hero": {
+    "title": "Siporo Y'urugo",
+    "subtitle": "Ishuri rya siporo ry'ubuntu n'ibikorwa bya siporo byo mu gihe cyangwa byubahirijwe n'abahugurwa abaranga — aho umenye, igihe ushaka",
+    "cta": "Tangira Siporo"
+  },
+  "page": {
+    "title": "Ibikorwa bya Siporo",
+    "subtitle": "Hitamo ikorwa maze utangire gukora"
+  },
+  "live": {
+    "title": "Ibikorwa byo Mu Gihe",
+    "subtitle": "Jya mu bikorwa byacu byo mu gihe — ubusabane bw'urubuga",
+    "noSessions": "Nta bikorwa byo mu gihe biri. Subira vuba!",
+    "joinLive": "Jya mu Bikorwa",
+    "live": "MU GIHE",
+    "upcoming": "Biraza",
+    "minutes": "min"
+  },
+  "filter": {
+    "all": "Ibikorwa Byose",
+    "strength": "Imbaraga",
+    "cardio": "Ubuviri",
+    "yoga": "Yoga",
+    "flexibility": "Kubohora",
+    "dance": "Urucuco"
+  },
+  "category": {
+    "strength": "Imbaraga",
+    "cardio": "Ubuviri",
+    "yoga": "Yoga",
+    "flexibility": "Kubohora",
+    "dance": "Urucuco"
+  },
+  "difficulty": {
+    "beginner": "Umutangizi",
+    "intermediate": "Wagenewe",
+    "advanced": "Ushoboye"
+  },
+  "player": {
+    "watchWorkout": "Ikorwa",
+    "by": "na",
+    "minutes": "min",
+    "startWorkout": "Tangira Ikorwa",
+    "backToGym": "Subira ku Ishuri",
+    "equipment": "Ibikoresho",
+    "noEquipment": "Nta bikoresho bisabwa",
+    "aboutTrainer": "Ubusobanurwa bw'Umwishyitsi",
+    "relatedWorkouts": "Ibikorwa by'Inyuma"
+  },
+  "howItWorks": {
+    "title": "Uko Birohotse",
+    "step1": {
+      "title": "Hitamo Ikorwa",
+      "desc": "Reba ibikorwa byacu byose mu buryo bwa videwo maze uhitemo iryo ryihariye urwego rwawe."
+    },
+    "step2": {
+      "title": "Kurikirana",
+      "desc": "Reba umwishyitsi maze ukurikire umwitozo ku buryo bwa mbere bwo mu rugo."
+    },
+    "step3": {
+      "title": "Kurikirana Ibyagezweho",
+      "desc": "Komeza gukora siporo maze utekereze hejuru y'ubuviri bwawe n'ubuzima bwawe."
+    }
+  }
+}

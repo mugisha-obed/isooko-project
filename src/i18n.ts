@@ -20,6 +20,8 @@ i18next
       'getInvolved',
       'newsEvents',
       'contact',
+      'library',
+      'gym',
     ],
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json',

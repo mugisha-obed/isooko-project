@@ -1,0 +1,116 @@
+{
+  "seo": {
+    "title": "Library — Isôoko Community Development",
+    "description": "Discover books, novels, and educational resources at the Isôoko Community Library in Masoro, Rwanda."
+  },
+  "hero": {
+    "title": "Our Library",
+    "subtitle": "Books, novels, and learning resources open to the Masoro community"
+  },
+  "page": {
+    "title": "Browse the Collection",
+    "subtitle": "Find your next book — novels, school books, children's stories, and more"
+  },
+  "filter": {
+    "all": "All Books",
+    "novel": "Novels",
+    "education": "Education",
+    "children": "Children",
+    "other": "Other"
+  },
+  "categories": {
+    "novel": "Novel",
+    "education": "Education",
+    "children": "Children",
+    "other": "Other"
+  },
+  "pages": "pages",
+  "readNow": "Read Now",
+  "visit": {
+    "title": "Visit the Library",
+    "text": "Come read, study, or borrow a book at the Isôoko Community Center. Our library is free for everyone in the Masoro community.",
+    "location": "Masoro Community Center, Masoro Sector, Rulindo District"
+  },
+  "reader": {
+    "backToLibrary": "Back to the Library",
+    "tableOfContents": "Table of Contents",
+    "chapter": "Chapter",
+    "previousChapter": "Previous Chapter",
+    "nextChapter": "Next Chapter",
+    "fontSize": "Text size",
+    "noContent": "This book's reading content is being prepared. Please come back soon.",
+    "publishedBy": "Published"
+  },
+  "novel": {
+    "ikirehe": "A celebrated Kinyarwanda novel following Kamana as he returns to his home village and learns that rebuilding a community begins with honesty and shared stories.",
+    "umukunzi": "A moving story about Aurore, a young volunteer in Kigali who discovers that listening to others is the first step toward healing a divided community.",
+    "umundi": "The internationally acclaimed memoir from the author of The Barefoot Woman — a powerful act of remembrance of a family and a country.",
+    "baredfoot": "Scholastique Mukasonga's tender portrait of her mother, a barefoot woman who held her family together with quiet strength and love.",
+    "ourLady": "Set in a girls' boarding school perched above the River Nile, a novel exploring friendship, prejudice, and politics on the eve of great change.",
+    "murambi": "A devastating novel built on survivor testimonies, examining guilt, memory, and the meaning of justice after the genocide against the Tutsi.",
+    "antelope": "Jean Hatzfeld's unflinching work of testimony, in which survivors speak about survival, resilience, and the long road back to life.",
+    "thingsFallApart": "Chinua Achebe's classic of world literature — the story of Okonkwo and the slow crumbling of his world as new influences arrive.",
+    "weepNotChild": "Ngũgĩ wa Thiong'o's moving novel of a boy in colonial Kenya who dreams of schooling while his family is swept into the struggle for freedom.",
+    "riverBetween": "A novel of a young educated leader trying to bridge two communities divided by a river and by tradition and change in colonial Kenya.",
+    "purpleHibiscus": "Fifteen-year-old Kambili discovers courage and her own voice as she moves between her father's rigid house and her aunt's warm home in Nigeria.",
+    "halfYellowSun": "A sweeping epic of love and war set during the Biafran conflict, following the intertwined lives of twin sisters and a dedicated household.",
+    "oldManSea": "Hemingway's timeless tale of an old fisherman who battles a great fish alone on the open sea — a story of dignity and endurance.",
+    "animalFarm": "Orwell's sharp and unforgettable fable about the animals of Manor Farm and how a revolution of ideals is slowly betrayed.",
+    "alchemist": "A young shepherd follows his dream across a desert in search of treasure, and finds that the journey itself is the real prize.",
+    "littleWomen": "The beloved classic of the four March sisters — Meg, Jo, Beth, and Amy — growing up, loving, and supporting one another through joy and hardship.",
+    "tomSawyer": "Mark Twain's warm, humorous tales of a mischievous boy growing up along the Mississippi and the trouble he so often finds.",
+    "treasureIsland": "The classic pirate adventure — young Jim Hawkins, a treasure map, and the unforgettable Long John Silver.",
+    "hobbit": "Bilbo Baggins is swept from his comfortable home into a quest for a dragon's treasure, and comes home a changed hobbit.",
+    "lifeLaidBare": "A collection of plainspoken testimonies from the lakes region of northern Rwanda — a document of memory and reconciliation.",
+    "chosen": "Two boys from very different Jewish communities become friends in 1940s Brooklyn in this moving novel of fathers, sons, and silence."
+  },
+  "education": {
+    "ikinyarwanda": "A complete guide to learning Kinyarwanda grammar and vocabulary, perfect for students and beginners.",
+    "historyRwanda": "A detailed historical study of Rwanda from ancient times to the modern era.",
+    "basicHealth": "A practical health reference covering first aid, hygiene, and community health topics.",
+    "englishGrammar": "A clear, self-study grammar book with simple explanations and exercises — a trusted companion for learners at every level.",
+    "mathematics": "Primary school mathematics made simple, with examples drawn from everyday life.",
+    "biology": "An accessible biology textbook covering the human body, plants, and ecosystems with clear diagrams.",
+    "physics": "Forces, motion, light, and energy explained with experiments that can be done at home.",
+    "chemistry": "Atoms, elements, and reactions made understandable, with a strong emphasis on safety.",
+    "geography": "The land, people, and climate of Rwanda and the wider region, presented with maps and illustrations.",
+    "civics": "An introduction to the rights and duties of citizens and the institutions of the Republic of Rwanda.",
+    "enRwDictionary": "A practical English–Kinyarwanda dictionary with thousands of words and example sentences.",
+    "frRwDictionary": "A reliable French–Kinyarwanda dictionary for students, translators, and daily life.",
+    "historyAfrica": "A rich introduction to the great civilizations of Africa and the making of the modern continent.",
+    "kiswahili": "A beginner's course in Kiswahili with everyday dialogues and practical vocabulary.",
+    "writing": "A practical guide to writing clearly and well — for students, professionals, and public life."
+  },
+  "children": {
+    "villageDog": "Meet Buna, the friendly village dog who knows every path and proves that even a dog can be a hero.",
+    "bigBird": "A bird with very big wings learns that what makes him different is exactly what keeps his friends safe.",
+    "goodChild": "Amina shows that small daily acts of kindness are what make a truly good person.",
+    "caterpillar": "A hungry caterpillar eats and eats until something wonderful happens — a favourite story of growth and change.",
+    "lionMouse": "The classic fable of the tiny mouse who proves that small friends can be the greatest help.",
+    "folktales": "Grandmothers' tales gathered beneath the giant tree — Rwandan stories with wisdom for every child.",
+    "alphabet": "From A to Z, meet a friend for every letter in this bright and simple alphabet book.",
+    "numbers": "Learn to count, to add, and to share fairly with the world of the village as your classroom.",
+    "aesop": "The timeless fables of Aesop, retold simply — the tortoise, the crow, and all their clever friends.",
+    "gorilla": "Follow silverback Mundo through the misty forest as he keeps his family safe — a story of love and protection.",
+    "rainbowFish": "A beautiful fish learns that sharing its shining scales brings more joy than keeping them.",
+    "givingTree": "The tender story of a tree and a boy, showing that the truest love gives without counting.",
+    "wildSwans": "A brave sister weaves nettle shirts of silence to free her eleven brothers from a wicked spell.",
+    "littleRedHen": "The little red hen plants, harvests, and bakes by herself — and learns who deserves to share the bread."
+  },
+  "other": {
+    "communityLeadership": "A practical guide to community governance in Rwanda — dialogue, teamwork, and leading with integrity.",
+    "sportsHealth": "Why sport keeps the body and mind healthy, with routines for everyone from beginner to athlete.",
+    "inspiringStories": "Ordinary Rwandans who overcame great difficulty through courage and perseverance.",
+    "firstAid": "A clear first aid manual: how to respond calmly and save a life when an accident happens.",
+    "farming": "Modern farming techniques for Rwandan conditions — soil, seeds, water, and post-harvest care.",
+    "business": "Turning a good idea into a sustainable small business, written for young entrepreneurs.",
+    "nutrition": "A balanced plate for every budget: how to eat well and protect the health of the whole family.",
+    "environment": "Why the climate is changing and what every citizen can do — planting trees, saving water, reducing waste.",
+    "soccer": "A coaching manual for young players, covering skills, tactics, fitness, and patience.",
+    "rwandaHeroes": "The lives and values of Rwanda's heroes — ordinary people who chose to serve above themselves.",
+    "savings": "How to start and run a community savings group, the first bridge to financial security.",
+    "parenting": "Supporting parents from infancy to adolescence with practical, caring guidance.",
+    "peacebuilding": "Peace as daily practice — dialogue, justice, and reconciliation in Rwandan communities.",
+    "umuganda": "The communal work day and what it truly means: solidarity and shared responsibility."
+  }
+}

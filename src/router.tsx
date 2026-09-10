@@ -10,6 +10,10 @@ const Impact = lazy(() => import('./pages/Impact/Impact'))
 const GetInvolved = lazy(() => import('./pages/GetInvolved/GetInvolved'))
 const NewsEvents = lazy(() => import('./pages/NewsEvents/NewsEvents'))
 const BlogPost = lazy(() => import('./pages/BlogPost/BlogPost'))
+const Library = lazy(() => import('./pages/Library/Library'))
+const BookReader = lazy(() => import('./pages/Library/BookReader'))
+const Gym = lazy(() => import('./pages/Gym/Gym'))
+const WorkoutPlayer = lazy(() => import('./pages/Gym/WorkoutPlayer'))
 const Contact = lazy(() => import('./pages/Contact/Contact'))
 const NotFound = lazy(() => import('./pages/NotFound/NotFound'))
 
@@ -28,6 +32,8 @@ const AdminEmployees = lazy(() => import('./pages/Admin/AdminEmployees'))
 const AdminAttendance = lazy(() => import('./pages/Admin/AdminAttendance'))
 const AdminLeaves = lazy(() => import('./pages/Admin/AdminLeaves'))
 const AdminTokens = lazy(() => import('./pages/Admin/AdminTokens'))
+const AdminGymWorkouts = lazy(() => import('./pages/Admin/AdminGymWorkouts'))
+const AdminGymLiveSessions = lazy(() => import('./pages/Admin/AdminGymLiveSessions'))
 
 const EmployeeLogin = lazy(() => import('./pages/Employee/EmployeeLogin'))
 const EmployeeDashboard = lazy(() => import('./pages/Employee/EmployeeDashboard'))
@@ -48,6 +54,10 @@ const router = createBrowserRouter([
       { path: 'get-involved', element: wrap(<GetInvolved />) },
       { path: 'news-events', element: wrap(<NewsEvents />) },
       { path: 'news-events/:slug', element: wrap(<BlogPost />) },
+      { path: 'library', element: wrap(<Library />) },
+      { path: 'library/:bookId', element: wrap(<BookReader />) },
+      { path: 'gym', element: wrap(<Gym />) },
+      { path: 'gym/:workoutId', element: wrap(<WorkoutPlayer />) },
       { path: 'contact', element: wrap(<Contact />) },
       { path: '*', element: wrap(<NotFound />) },
     ],
@@ -73,6 +83,8 @@ const router = createBrowserRouter([
       { path: 'attendance', element: wrap(<AdminAttendance />) },
       { path: 'tokens', element: wrap(<AdminTokens />) },
       { path: 'leaves', element: wrap(<AdminLeaves />) },
+      { path: 'gym-workouts', element: wrap(<AdminGymWorkouts />) },
+      { path: 'gym-live-sessions', element: wrap(<AdminGymLiveSessions />) },
     ],
   },
   {

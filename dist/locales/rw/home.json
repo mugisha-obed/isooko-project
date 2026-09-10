@@ -1,28 +1,28 @@
 {
   "seo": {
-    "title": "Isôoko Community Development — Guteza Imbere Urubyiruko n'Abakobwa i Masoro, mu Rwanda",
-    "description": "Isôoko Community Development (ICD) iteza imbere urubyiruko n'abakobwa i Masoro, mu Rwanda, binyuze mu burezi, ubuzima, ubucuruzi, siporo n'ikoranabuhanga."
+    "title": "Isôoko Community Development — Guteza Imbere Urubyiruko n'Abakobwa i Masoro, u Rwanda",
+    "description": "Isôoko Community Development (ICD) ikorera abaturage b'i Masoro, u Rwanda, igamije guteza imbere urubyiruko n'abakobwa binyuze mu burezi, ubuzima bwiza, ubucuruzi, siporo n'ikoranabuhanga."
   },
   "hero": {
-    "title": "Guteza Imbere Abaturage ba Masoro",
+    "title": "Twiteza Imbere Twese, Abaturage b'i Masoro",
     "subtitle": "Guteza Imbere Abakobwa · Guteza Imbere Urubyiruko · Siporo n'Ubuzima Bwiza · Ikoranabuhanga n'Uburezi",
-    "cta": "Fatanya Natwe"
+    "cta": "Ngwino Dufatanye"
   },
   "mission": {
     "title": "Intego Yacu",
-    "body": "Duteza imbere iterambere rirambye n'amahirwe ku bakobwa n'urubyiruko binyuze mu buzima bwiza, uburezi, n'ubucuruzi. Ikigo cyacu cy'abaturage i Masoro gifite ibibuga bya siporo, laboratwari ya mudasobwa, isomero, n'ibiro bishyigikira ibikorwa bitandukanye by'uburezi n'iterambere ry'ubukungu.",
+    "body": "Dufasha abakobwa n'urubyiruko kubona amahirwe yo kwiteza imbere mu buryo burambye, binyuze mu buzima bwiza, uburezi, n'ubucuruzi. Ikigo cyacu cy'abaturage giherereye i Masoro gifite ibibuga bya siporo, laboratwari ya mudasobwa, isomero, ndetse n'ibiro bikoreshwa mu bikorwa bitandukanye by'uburezi n'iterambere ry'ubukungu.",
     "imageAlt": "Ikigo cy'Abaturage cya Isôoko i Masoro"
   },
   "programs": {
     "title": "Porogaramu Zacu",
-    "subtitle": "Porogaramu eshanu zifatanije zigirira akamaro abaturage"
+    "subtitle": "Porogaramu eshanu zigamije kugirira akamaro abaturage"
   },
   "news": {
     "title": "Amakuru Mashya",
-    "subtitle": "Inkuru n'ibikorwa by'abaturage ba Isôoko"
+    "subtitle": "Inkuru n'ibikorwa biba mu baturage ba Isôoko"
   },
   "cta": {
-    "title": "Fatanya Natwe mu Guteza Imbere Masoro",
-    "text": "Inkunga yawe ifasha abakobwa kwihangira imirimo, urubyiruko kuronka ubumenyi, n'imiryango gutera imbere."
+    "title": "Fatanya Natwe Guteza Imbere Masoro",
+    "text": "Inkunga yawe ifasha abakobwa kwihangira imirimo, ifasha urubyiruko kubona ubumenyi bukenewe, kandi igafasha imiryango kwiteza imbere."
   }
 }

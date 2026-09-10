@@ -1,0 +1,70 @@
+{
+  "seo": {
+    "title": "Salle de Sport en Ligne — Isôoko Community Development",
+    "description": "Cours de sport gratuits en ligne et sessions d'entraînement en direct pour la communauté de Masoro. Entraînez-vous depuis chez vous avec des entraîneurs experts."
+  },
+  "hero": {
+    "title": "Entraînez-vous Depuis Chez Vous",
+    "subtitle": "Des cours de sport gratuits et des sessions en direct animés par des entraîneurs experts — n'importe où, n'importe quand",
+    "cta": "Commencer l'Entraînement"
+  },
+  "page": {
+    "title": "Bibliothèque d'Entraînement",
+    "subtitle": "Choisissez un exercice et commencez à vous entraîner"
+  },
+  "live": {
+    "title": "Sessions en Direct",
+    "subtitle": "Rejoignez nos prochaines sessions d'entraînement en direct",
+    "noSessions": "Aucune session en direct prévue. Revenez bientôt !",
+    "joinLive": "Rejoindre la Session",
+    "live": "EN DIRECT",
+    "upcoming": "À Venir",
+    "minutes": "min"
+  },
+  "filter": {
+    "all": "Tous les Exercices",
+    "strength": "Force",
+    "cardio": "Cardio",
+    "yoga": "Yoga",
+    "flexibility": "Flexibilité",
+    "dance": "Danse"
+  },
+  "category": {
+    "strength": "Force",
+    "cardio": "Cardio",
+    "yoga": "Yoga",
+    "flexibility": "Flexibilité",
+    "dance": "Danse"
+  },
+  "difficulty": {
+    "beginner": "Débutant",
+    "intermediate": "Intermédiaire",
+    "advanced": "Avancé"
+  },
+  "player": {
+    "watchWorkout": "Entraînement",
+    "by": "par",
+    "minutes": "min",
+    "startWorkout": "Commencer l'Exercice",
+    "backToGym": "Retour à la Salle",
+    "equipment": "Équipement Requis",
+    "noEquipment": "Aucun équipement nécessaire",
+    "aboutTrainer": "À Propos de l'Entraîneur",
+    "relatedWorkouts": "Autres Exercices"
+  },
+  "howItWorks": {
+    "title": "Comment Ça Marche",
+    "step1": {
+      "title": "Choisissez un Exercice",
+      "desc": "Parcourez notre collection de vidéos d'entraînement et choisissez celle qui correspond à votre niveau."
+    },
+    "step2": {
+      "title": "Suivez les Instructions",
+      "desc": "Regardez l'entraîneur et suivez les exercices à votre rythme depuis chez vous."
+    },
+    "step3": {
+      "title": "Suivez vos Progrès",
+      "desc": "Construisez une routine et améliorez votre condition physique avec un entraînement régulier."
+    }
+  }
+}

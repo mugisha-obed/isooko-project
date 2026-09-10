@@ -235,6 +235,33 @@ alter table public.leave_requests add column if not exists status text;
 alter table public.leave_requests add column if not exists adminnote text;
 alter table public.leave_requests add column if not exists updatedat timestamptz;
 
+create table if not exists public.gym_workouts (
+  id text primary key,
+  title text,
+  description text,
+  trainer text,
+  category text,
+  difficulty text,
+  duration integer,
+  thumbnail text,
+  video_url text,
+  createdat timestamptz,
+  updatedat timestamptz
+);
+
+create table if not exists public.gym_live_sessions (
+  id text primary key,
+  title text,
+  description text,
+  trainer text,
+  scheduled_at text,
+  duration integer,
+  join_url text,
+  status text,
+  createdat timestamptz,
+  updatedat timestamptz
+);
+
 -- Only the backend (service role) reads/writes these tables.
 alter table public.admins enable row level security;
 alter table public.programs enable row level security;
@@ -250,3 +277,5 @@ alter table public.employees enable row level security;
 alter table public.attendance enable row level security;
 alter table public.leave_requests enable row level security;
 alter table public.tokens enable row level security;
+alter table public.gym_workouts enable row level security;
+alter table public.gym_live_sessions enable row level security;

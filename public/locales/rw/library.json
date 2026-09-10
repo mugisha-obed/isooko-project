@@ -1,0 +1,115 @@
+{
+  "seo": {
+    "title": "Isomero — Isôoko Community Development",
+    "description": "Sanga ibitabo, izimbarago n'ibikoresho by'uburezi mu Isomero ry'Abaturage rya Isôoko i Masoro, mu Rwanda."
+  },
+  "hero": {
+    "title": "Isomero Ryacu",
+    "subtitle": "Ibitabo, izimbarago n'ibikoresho by'uburezi birekuwe ku baturage ba Masoro"
+  },
+  "page": {
+    "title": "Reba Ibitabo",
+    "subtitle": "Shakira igitabo kikurikiraho — ibitabo by'ubuvanganzo, iby'ishuri, inkuru z'abana n'ibindi"
+  },
+  "filter": {
+    "all": "Ibitabo Byose",
+    "novel": "Izimbarago",
+    "education": "Uburezi",
+    "children": "Iby'abana",
+    "other": "Ibindi"
+  },
+  "categories": {
+    "novel": "Igitabo cy'ubuvanganzo",
+    "education": "Uburezi",
+    "children": "Iby'abana",
+    "other": "Ibindi"
+  },
+  "pages": "n'urupapuro",
+  "readNow": "Soma",
+  "visit": {
+    "title": "Sura Isomero",
+    "text": "Ngwino usome, wige cyangwa uguze igitabo mu Kigo cy'Abaturage cya Isôoko. Isomero ryacu ni ubushake ku baturage bose ba Masoro.",
+    "location": "Kigo cy'Abaturage cya Masoro, Umurenge wa Masoro, Akarere ka Rulindo"
+  },
+  "reader": {
+    "backToLibrary": "Garuka ku Isomero",
+    "tableOfContents": "Imbonerahamwe y'Ibigize Ibitabo",
+    "chapter": "Igice",
+    "previousChapter": "Igice Gishize",
+    "nextChapter": "Igice Gikurikira",
+    "fontSize": "Ingano y'inyuguti",
+    "noContent": "Ibikubiye muri iki gitabo birimo bitegurwa. Garuka vuba.",
+    "publishedBy": "Byasohotse"
+  },
+  "novel": {
+    "ikirehe": "Igitabo cy'ikinyarwanda kizwi ku isi, kivuga Kamana agarutse ku cyaro cye akamenya ko kongera kubaka umuryango gutangirana no kugirana ukuri no kubaho hamwe.",
+    "umukunzi": "Inkuru ihuza umutima ivuga Aurore, umukunzi w'urubyiruko i Kigali wamenye ko kumva abandi ari intambwe ya mbere yo gukiza umuryango watandukanijwe.",
+    "umundi": "Icyo gusobanura ukuri kwa nyina-ishobora kugeza ku isi — ibi bibuka umuryango n'igihugu mu buryo bukomeye.",
+    "baredfoot": "Scholastique Mukasonga asobanura nyina we, umugore utambagira ku birenge, wakomeje umuryango we mu mahoro n'urukundo.",
+    "ourLady": "Mu ishuri ry'abakobwa ry'i Hejuru ya Mubarika, uru ni urugendo rw'ubunywani, amacakubiri n'uburinganire hagati y'abantu batandukanye.",
+    "murambi": "Igitabo cyubaka ku buhamya bw'abazigama, kibaza ku kibazo cy'umusaraba, kwibuka, n'ubutabera nyuma ya jenoside yakorewe Abatutsi.",
+    "antelope": "Igikorwa cy'umwemerere Jean Hatzfeld, ku buhamya bw'abazigama bavuga uko bapfuye, uko bahindutse, n'urugendo rurerure rwo kugaruka mu buzima.",
+    "thingsFallApart": "Igitabo cya Chinua Achebe cy'isi yose — inkuru ya Okonkwo n'uko isi ye yapfuye buhoro buhoro igihe izindi ngengabihe zageraga.",
+    "weepNotChild": "Igitabo cya Ngũgĩ wa Thiong'o gikomeza ku mutima, cy'umuhungu mu Kenya y'ngomanzi waroze amashuri ubwo umuryango we waremereraga mu ntambara y'ubwigenge.",
+    "riverBetween": "Igitabo cy'umuyobozi mukuru warikiwe, agerageza guhuza abantu babiri batandukanijwe n'umugezi, na gakondo n'impinduka mu Kenya y'ngomanzi.",
+    "purpleHibiscus": "Kambili, umukobwa w'i myaka cumi n'itanu, amenya ubutwari n'ijwi rye ubwo yimukiye hagati y'inzu ya se ikaze n'inzu ya nyirasenge aho umutima uhari.",
+    "halfYellowSun": "Igitekerezo kinini cy'urukundo n'intambara mu gihe cy'intambara ya Biafra, kirebera kuri bakwe bakoporora n'urugo rwabo.",
+    "oldManSea": "Inkuru ihuza ibihe byose ya Hemingway ku muvuzi mushaje warwanije fi nini yonyine mu nyanja — inkuru y'icyubahiro no kwihangana.",
+    "animalFarm": "Igitabo cya Orwell gifite isomo rifatika kuri abantu — abazima bo ku murima barive ku kintu kandi bagira nabi kandi bagira bibona.",
+    "alchemist": "Umworozi w'intama ukurikira inzozi ze yambukiranya ubutayu ashaka ubutunzi, asanga urugendo ubwaryo ari rwo mutekano nyawo.",
+    "littleWomen": "Igitabo cyakarishye cy'abakobwa bane ba March — Meg, Jo, Beth na Amy — bakuriye, bakunda, kandi bafashanya mu nziza n'ingorane.",
+    "tomSawyer": "Inkuru za Mark Twain z'umusore urangwaho urwenya, warereye ku ruzi rwa Mississippi n'ibibazo yahuraga na byo buri gihe.",
+    "treasureIsland": "Igitekerezo cy'ubuyobozi bwa pirate — Jim Hawkins muto, ikarita y'ubutunzi n'umunyabyaha Long John Silver.",
+    "lifeLaidBare": "Ihuriro ry'ubuhamya bugororotse buvuye mu karere k'ibiyaga mu majyaruguru y'u Rwanda — inyandiko yo kwibuka no guhuza.",
+    "chosen": "Abahungu babiri bo mu miryango itandukanye ya Kiyahudi babaye inshuti mu 1940 mu mujyi wa Brooklyn — igitabo cy'abase, abana n'ikiruhuko."
+  },
+  "education": {
+    "ikinyarwanda": "Uburyo bwuzuye bwo kwiga ikinyarwanda — ikibonezamvugo n'inkuru z'ibinyabuzima, byu akabato kagaragara.",
+    "historyRwanda": "Ubushakashatsi burambuye ku mateka y'u Rwanda kuva kera kugeza magingo aya.",
+    "basicHealth": "Igitabo gifatiye ku buzima bwiza — ubuvuzi bw'ibanze, isuku n'ubuzima bw'abaturage.",
+    "englishGrammar": "Igitabo cy'ikibonezamvugo cy'icyongereza gisobanutse neza, gifite ingero n'umutoza.",
+    "mathematics": "Imibare y'ishuri ribanza yorohereza, ifite ingero zivuye mu buzima bwa buri munsi.",
+    "biology": "Igitabo cy'ubumenyi bw'ibinyabuzima cyoroheye kwiga — umubiri w'umuntu, ibimera n'ibidukikije.",
+    "physics": "Ibintu byigisha imbaraga, urumuri n'ingufu, bisobanuwe n'ubushakashatsi bwakozwe mu rugo.",
+    "chemistry": "Atomu, ibice n'imbaraga bisobanuwe neza, bireba iyubahirize umutekano.",
+    "geography": "Ubutaka, abaturage n'ikirere cy'u Rwanda n'akarere, bisobanuwe n'amakarita.",
+    "civics": "Intangiriro y'uburenganzira n'inshingano z'abaturage, n'inzego z'u Republica y'u Rwanda.",
+    "enRwDictionary": "Ikoranabuhanga ry'icyongereza–ikinyarwanda rifite amagambo n'ingero.",
+    "frRwDictionary": "Ikoranabuhanga ry'igifaransa–ikinyarwanda rishobora kwizerwa, ku banyeshuri, abahinduzi n'abantu bose.",
+    "historyAfrica": "Intangiriro ku nshingano z'ibihugu by'Afurika — aho uyu mugabane w'Africa ukomoka n'uburyo uye.",
+    "kiswahili": "Igitabo cyo kwiga ikiswahili ku bibanze — imvugo ya buri munsi n'inkuru z'ibintu bitandukanye.",
+    "writing": "Ubuyobozi bunguke bwo kwandika neza — ku banyeshuri, abakozi n'abaturage."
+  },
+  "children": {
+    "villageDog": "Buna, imbwa y'umudugudu izi amayira yose, yegereranya ko n'imbwa ishobora kuba mercury w'umuntu.",
+    "bigBird": "Inyoni ifite amababa manini cyane, amenya ko ibyo imutandukanya n'andi ari byo bikinze barumwe.",
+    "goodChild": "Amina yerekana ko ibikorwa bito by'ubugiraneza bya buri munsi ari byo bigira umuntu mwiza.",
+    "caterpillar": "Inkende yananiwe kurya ikarya ikarya, gusa kugeza igihe ibintu byiza byabaye — inkuru y'urukundo ya buri mwana yo gukura no guhinduka.",
+    "lionMouse": "Igitekerezo kiza cy'imbeba nto yazigamye ko n'umuntu muto ashobora gufasha cyane.",
+    "folktales": "Inkuru z'abakuru zivugwa munsi y'igiti — inkuru z'u Rwanda z'ubwenge ku mwana wese.",
+    "alphabet": "Kuva A kugeza Z, wasanganira umuntu wese urugero muri iki gitabo cy'inyuguti.",
+    "numbers": "Wiga kubara, kongeramo no kugabana ku buryo bukwiye mu mudugudu wawe.",
+    "aesop": "Inkuru z'igihe cya kera za Aesop zisobanuwe mu buryo bworoshye.",
+    "gorilla": "Mundo, imfizi y'ingagi, irinda umuryango we mu ishyamba ry'igihumyi — inkuru y'urukundo n'ubuzima.",
+    "rainbowFish": "Ifi nziza yamenye ko kugabana ibimenyetso byayo bitanga ibyishimo byinshi kuruta kubyigumiraho.",
+    "givingTree": "Inkuru y'igiti n'umuhungu, yerekana ko urukundo rw'ukuri rutanga utabara.",
+    "wildSwans": "Umukobwa ukomeye azudira imibyero y'ubuheza kugira ngo abohere mu nzoga indwi.",
+    "littleRedHen": "Inkoko itukura ihinga, isarura kandi ikabaka yonyine — ijyera yamenye uwo bikwiye kugabana umugati."
+  },
+  "other": {
+    "communityLeadership": "Ubuyobozi bw'abaturage mu Rwanda — ibikoresho, imiyoboro n'ubutwari bw'umutima.",
+    "sportsHealth": "Impamvu siporo ibungabunga ubuzima bw'umubiri n'ubwenge, hamwe n'uwozima wa buri munsi.",
+    "inspiringStories": "Abanyarwanda babayeyo bahuye n'ingorane, bitangira ubutwari n'ubwiyonge.",
+    "firstAid": "Igitabo cy'ubuvuzi bw'ibanze: uko wasubiza amaso, ukuboko k'ingenzi, ugakiza ubuzima bw'umuntu.",
+    "farming": "Ubuhinzi bakaheza ku buryo bujyanye n'u Rwanda — ubutaka, imbuto, amazi n'ubworozi.",
+    "business": "Uburyo bwo guhindura igitekerezo giza mu bihumbi byo gukora umurimo muto — cyandikiwe urubyiruko rw'inkundabuzima.",
+    "nutrition": "Isahane yuzuye kuri buri mafaranga: uko wasoma neza ukarinda ubuzima bw'umuryango wose.",
+    "environment": "Impamvu ikirere gihinduka n'ibyo buri muturage yakora — gutera ibiti, kutabomba amazi, kwica imyanda.",
+    "soccer": "Igitabo cy'umwarimu cy'abakinnyi batoya — uburyo, imikino, ubuzima n'ihungu.",
+    "rwandaHeroes": "Ubuzima n'indangagaciro z'intwari z'u Rwanda — abantu basanzwe bahisemo gukora icyubahiro cya mbere.",
+    "savings": "Uko utangura ukayobora itsinda ry'ubwizigame bw'umuryango — inzira ya mbere yo kubona ubwigenge bw'umari.",
+    "parenting": "Gufasha ababyeyi kuva ku mwana w'ikusanyo kugeza mu kigero cy'urubyiruko, n'inama zifatiye ku mutima.",
+    "peacebuilding": "Amahoro nk'igitondo cya buri munsi — ikiganiro, ubutabera n'ubwiyunge mu muryango w'u Rwanda.",
+    "umuganda": "Umunsi wa gakondo w'akazi gakorwa n'abaturage — ubwumvikane no kwitanga k'umuntu umwe."
+  }
+}

@@ -84,6 +84,10 @@ const FIELD_MAP = {
     locationlabel: 'locationLabel',
     // leave
     enddate: 'endDate',
+    // gym
+    video_url: 'videoUrl',
+    scheduled_at: 'scheduledAt',
+    join_url: 'joinUrl',
 };
 function normalizeRow(row) {
     const out = {};

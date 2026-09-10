@@ -1,0 +1,116 @@
+{
+  "seo": {
+    "title": "Bibliothèque — Isôoko Community Development",
+    "description": "Découvrez des livres, des romans et des ressources éducatives à la bibliothèque communautaire Isôoko à Masoro, au Rwanda."
+  },
+  "hero": {
+    "title": "Notre Bibliothèque",
+    "subtitle": "Des livres, des romans et des ressources d'apprentissage ouverts à la communauté de Masoro"
+  },
+  "page": {
+    "title": "Parcourir la Collection",
+    "subtitle": "Trouvez votre prochain livre — romans, livres scolaires, histoires pour enfants et plus"
+  },
+  "filter": {
+    "all": "Tous les Livres",
+    "novel": "Romans",
+    "education": "Éducation",
+    "children": "Enfants",
+    "other": "Autres"
+  },
+  "categories": {
+    "novel": "Roman",
+    "education": "Éducation",
+    "children": "Enfants",
+    "other": "Autres"
+  },
+  "pages": "pages",
+  "readNow": "Lire",
+  "visit": {
+    "title": "Visitez la Bibliothèque",
+    "text": "Venez lire, étudier ou emprunter un livre au Centre communautaire Isôoko. Notre bibliothèque est gratuite pour tous dans la communauté de Masoro.",
+    "location": "Centre communautaire de Masoro, Secteur de Masoro, District de Rulindo"
+  },
+  "reader": {
+    "backToLibrary": "Retour à la Bibliothèque",
+    "tableOfContents": "Table des Matières",
+    "chapter": "Chapitre",
+    "previousChapter": "Chapitre Précédent",
+    "nextChapter": "Chapitre Suivant",
+    "fontSize": "Taille du texte",
+    "noContent": "Le contenu de lecture de ce livre est en préparation. Revenez bientôt.",
+    "publishedBy": "Publié"
+  },
+  "novel": {
+    "ikirehe": "Un roman kinyarwanda célèbre qui suit Kamana de retour dans son village et découvre que reconstruire une communauté commence par l'honnêteté et les histoires partagées.",
+    "umukunzi": "Une histoire émouvante sur Aurore, une jeune bénévole à Kigali qui découvre qu'écouter les autres est le premier pas vers la guérison d'une communauté divisée.",
+    "umundi": "Le récit mondialement acclamé de l'auteure de La Femme aux pieds nus — un puissant acte de mémoire pour une famille et un pays.",
+    "baredfoot": "Le portrait tendre que Scholastique Mukasonga fait de sa mère, une femme aux pieds nus qui a tenu sa famille avec une force et un amour silencieux.",
+    "ourLady": "Dans un internat de jeunes filles perché au-dessus du Nil, un roman qui explore amitié, préjugés et politique à la veille de grands bouleversements.",
+    "murambi": "Un roman bouleversant construit à partir de témoignages, interrogeant la culpabilité, la mémoire et le sens de la justice après le génocide contre les Tutsi.",
+    "antelope": "Le travail de témoignage inébranlable de Jean Hatzfeld : des survivants parlent de survie, de résilience et du long chemin de retour à la vie.",
+    "thingsFallApart": "Le classique de la littérature mondiale de Chinua Achebe — l'histoire d'Okonkwo et de l'effondrement lent de son monde à l'arrivée de nouvelles influences.",
+    "weepNotChild": "Le roman bouleversant de Ngũgĩ wa Thiong'o sur un garçon du Kenya colonial qui rêve d'aller à l'école tandis que sa famille est emportée par la lutte pour la liberté.",
+    "riverBetween": "Un roman sur un jeune leader instruit qui tente de réconcilier deux communautés divisées par une rivière, la tradition et le changement dans le Kenya colonial.",
+    "purpleHibiscus": "Kambili, quinze ans, découvre le courage et sa propre voix entre la maison rigide de son père et le foyer chaleureux de sa tante au Nigeria.",
+    "halfYellowSun": "Une épopée grandiose d'amour et de guerre au temps du conflit biafrais, suivant les vies entremêlées de deux sœurs jumelles et de leur maison.",
+    "oldManSea": "Le conte intemporel de Hemingway sur un vieux pêcheur qui combat un grand poisson seul en pleine mer — une histoire de dignité et d'endurance.",
+    "animalFarm": "La fable acérée et inoubliable d'Orwell sur les animaux de la Ferme du Manoir et la révolution d'idéaux lentement trahie.",
+    "alchemist": "Un jeune berger poursuit son rêve à travers un désert à la recherche d'un trésor, et découvre que le voyage lui-même est la vraie récompense.",
+    "littleWomen": "Le classique bien-aimé des quatre sœurs March — Meg, Jo, Beth et Amy — qui grandissent, aiment et se soutiennent à travers joies et épreuves.",
+    "tomSawyer": "Les contes chaleureux et pleins d'humour de Mark Twain sur un garçon espiègle qui grandit près du Mississippi et les ennuis qu'il trouve souvent.",
+    "treasureIsland": "L'aventure de pirates classique — le jeune Jim Hawkins, une carte au trésor et l'inoubliable Long John Silver.",
+    "hobbit": "Bilbo Baggins est arraché à son foyer confortable pour une quête du trésor d'un dragon, et rentre chez lui changé.",
+    "lifeLaidBare": "Une collection de témoignages sobres venus de la région des lacs du nord du Rwanda — un document de mémoire et de réconciliation.",
+    "chosen": "Deux garçons de communautés juives très différentes deviennent amis dans le Brooklyn des années 40, dans ce roman émouvant de pères, de fils et de silence."
+  },
+  "education": {
+    "ikinyarwanda": "Un guide complet pour apprendre la grammaire et le vocabulaire du kinyarwanda, parfait pour les étudiants et les débutants.",
+    "historyRwanda": "Une étude historique détaillée du Rwanda de l'Antiquité à l'ère moderne.",
+    "basicHealth": "Une référence pratique sur la santé couvrant premiers secours, hygiène et santé communautaire.",
+    "englishGrammar": "Une grammaire claire en auto-apprentissage avec des explications simples et des exercices.",
+    "mathematics": "Les mathématiques du primaire rendues simples, avec des exemples tirés de la vie quotidienne.",
+    "biology": "Un manuel de biologie accessible couvrant le corps humain, les plantes et les écosystèmes.",
+    "physics": "Forces, mouvement, lumière et énergie expliqués avec des expériences réalisables à la maison.",
+    "chemistry": "Atomes, éléments et réactions rendus compréhensibles, avec un fort accent sur la sécurité.",
+    "geography": "Le territoire, les peuples et le climat du Rwanda et de la région, présentés avec cartes et illustrations.",
+    "civics": "Une introduction aux droits et devoirs des citoyens et aux institutions de la République du Rwanda.",
+    "enRwDictionary": "Un dictionnaire pratique anglais–kinyarwanda avec des milliers de mots et des exemples de phrases.",
+    "frRwDictionary": "Un dictionnaire français–kinyarwanda fiable pour les étudiants, les traducteurs et la vie quotidienne.",
+    "historyAfrica": "Une riche introduction aux grandes civilisations de l'Afrique et à la fabrique du continent moderne.",
+    "kiswahili": "Un cours de kiswahili pour débutants avec des dialogues quotidiens et un vocabulaire pratique.",
+    "writing": "Un guide pratique pour écrire clairement et bien — pour l'école, le travail et la vie publique."
+  },
+  "children": {
+    "villageDog": "Rencontrez Buna, le chien amical du village qui connaît tous les chemins et prouve que même un chien peut être un héros.",
+    "bigBird": "Un oiseau aux très grandes ailes découvre que ce qui le rend différent protège justement ses amis.",
+    "goodChild": "Amina montre que les petits actes de gentillesse de chaque jour font une vraiment bonne personne.",
+    "caterpillar": "Une petite chenille affamée mange et mange jusqu'à ce que quelque chose de merveilleux arrive — une histoire préférée sur la croissance et le changement.",
+    "lionMouse": "La fable classique de la petite souris qui prouve que les petits amis peuvent être la plus grande aide.",
+    "folktales": "Les contes des grands-mères sous le grand arbre — des histoires rwandaises pleines de sagesse pour chaque enfant.",
+    "alphabet": "De A à Z, rencontre un ami pour chaque lettre dans cet abécédaire clair et coloré.",
+    "numbers": "Apprends à compter, à additionner et à partager équitablement avec le village comme salle de classe.",
+    "aesop": "Les fables intemporelles d'Ésope, racontées simplement — la tortue, le corbeau et tous leurs amis malins.",
+    "gorilla": "Suis le dos argenté Mundo dans la forêt brumeuse qui protège sa famille — une histoire d'amour et de protection.",
+    "rainbowFish": "Un beau poisson apprend que partager ses écailles scintillantes apporte plus de joie que de les garder.",
+    "givingTree": "La tendre histoire d'un arbre et d'un garçon, montrant que le plus vrai amour donne sans compter.",
+    "wildSwans": "Une sœur courageuse tisse des chemises de silence avec des orties pour libérer ses onze frères d'un sortilège.",
+    "littleRedHen": "La petite poule rouge plante, récolte et cuit toute seule — et apprend qui mérite de partager le pain."
+  },
+  "other": {
+    "communityLeadership": "Un guide pratique de la gouvernance communautaire rwandaise — dialogue, travail d'équipe et intégrité.",
+    "sportsHealth": "Pourquoi le sport garde le corps et l'esprit en bonne santé, avec des routines pour tous.",
+    "inspiringStories": "Des Rwandais ordinaires qui ont surmonté de grandes difficultés par le courage et la persévérance.",
+    "firstAid": "Un manuel de premiers secours clair : comment réagir calmement et sauver une vie en cas d'accident.",
+    "farming": "Des techniques agricoles modernes adaptées aux conditions rwandaises — sol, semences, eau et récolte.",
+    "business": "Transformer une bonne idée en petite entreprise durable, écrit pour les jeunes entrepreneurs.",
+    "nutrition": "Une assiette équilibrée pour tous les budgets : bien manger et protéger la santé de toute la famille.",
+    "environment": "Pourquoi le climat change et ce que chaque citoyen peut faire — planter, économiser l'eau, réduire les déchets.",
+    "soccer": "Un manuel d'entraînement pour les jeunes joueurs, couvrant technique, tactique, condition physique et patience.",
+    "rwandaHeroes": "Les vies et les valeurs des héros du Rwanda — des gens ordinaires qui ont choisi de servir avant eux-mêmes.",
+    "savings": "Comment créer et gérer un groupe d'épargne communautaire, premier pont vers la sécurité financière.",
+    "parenting": "Accompagner les parents de la petite enfance à l'adolescence avec des conseils pratiques et bienveillants.",
+    "peacebuilding": "La paix comme pratique quotidienne — dialogue, justice et réconciliation dans les communautés rwandaises.",
+    "umuganda": "Le jour de travail communautaire et son vrai sens : solidarité et responsabilité partagée."
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "seo": {
+    "title": "Online Gym — Isôoko Community Development",
+    "description": "Free online workout classes and live training sessions for the Masoro community. Exercise from home with expert trainers."
+  },
+  "hero": {
+    "title": "Train From Home",
+    "subtitle": "Free online workouts and live training sessions led by expert trainers — anywhere, anytime",
+    "cta": "Start Training"
+  },
+  "page": {
+    "title": "Workout Library",
+    "subtitle": "Choose a workout and start training"
+  },
+  "live": {
+    "title": "Live Sessions",
+    "subtitle": "Join our upcoming live training sessions",
+    "noSessions": "No upcoming live sessions. Check back soon!",
+    "joinLive": "Join Live Session",
+    "live": "LIVE",
+    "upcoming": "Upcoming",
+    "minutes": "min"
+  },
+  "filter": {
+    "all": "All Workouts",
+    "strength": "Strength",
+    "cardio": "Cardio",
+    "yoga": "Yoga",
+    "flexibility": "Flexibility",
+    "dance": "Dance"
+  },
+  "category": {
+    "strength": "Strength",
+    "cardio": "Cardio",
+    "yoga": "Yoga",
+    "flexibility": "Flexibility",
+    "dance": "Dance"
+  },
+  "difficulty": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
+  },
+  "player": {
+    "watchWorkout": "Workout",
+    "by": "by",
+    "minutes": "min",
+    "startWorkout": "Start Workout",
+    "backToGym": "Back to Gym",
+    "equipment": "Equipment Needed",
+    "noEquipment": "No equipment needed",
+    "aboutTrainer": "About the Trainer",
+    "relatedWorkouts": "More Workouts"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "step1": {
+      "title": "Choose a Workout",
+      "desc": "Browse our collection of workout videos and pick one that fits your level and goals."
+    },
+    "step2": {
+      "title": "Follow Along",
+      "desc": "Watch the trainer and follow the exercises at your own pace from home."
+    },
+    "step3": {
+      "title": "Track Progress",
+      "desc": "Build consistency and improve your fitness with regular training."
+    }
+  }
+}

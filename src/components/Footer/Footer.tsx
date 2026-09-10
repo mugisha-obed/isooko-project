@@ -6,6 +6,8 @@ const NAV_LINKS = [
   { key: 'nav.home',       path: '/' },
   { key: 'nav.about',      path: '/about' },
   { key: 'nav.programs',   path: '/programs' },
+  { key: 'nav.library',    path: '/library' },
+  { key: 'nav.gym',        path: '/gym' },
   { key: 'nav.impact',     path: '/impact' },
   { key: 'nav.getInvolved',path: '/get-involved' },
   { key: 'nav.newsEvents', path: '/news-events' },

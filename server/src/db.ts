@@ -90,6 +90,10 @@ const FIELD_MAP: Record<string, string> = {
   locationlabel: 'locationLabel',
   // leave
   enddate: 'endDate',
+  // gym
+  video_url: 'videoUrl',
+  scheduled_at: 'scheduledAt',
+  join_url: 'joinUrl',
 }
 
 function normalizeRow(row: Record<string, unknown>): Record<string, unknown> {
