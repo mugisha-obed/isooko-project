@@ -100,6 +100,10 @@ const FIELD_MAP: Record<string, string> = {
   // gym live broadcast (WebRTC peer id + status)
   streamid: 'streamId',
   broadcaststatus: 'broadcastStatus',
+  // gym live session extras
+  reminderminutes: 'reminderMinutes',
+  replay_url: 'replayUrl',
+  ended_at: 'endedAt',
 }
 
 function normalizeRow(row: Record<string, unknown>): Record<string, unknown> {

@@ -22,7 +22,17 @@
     "startsIn": "Bitangira",
     "countdown": "Mu gihe cyo mu minota",
     "onNow": "birimo kuba",
+    "startingSoon": "Bizatangira vuba",
     "minutes": "min"
+  },
+  "past": {
+    "title": "Ibikorwa Byashize",
+    "subtitle": "Nakubite igihe? Reba ibikorwa twakaze.",
+    "completed": "Byarangiye",
+    "watchReplay": "Reba Video",
+    "replayPending": "Nta video y'ibikorwa ibi kuri ubu.",
+    "showAll": "Erekana ibikorwa byose byashize",
+    "showLess": "Gabanya"
   },
   "reminder": {
     "title": "Bona urwibutso",

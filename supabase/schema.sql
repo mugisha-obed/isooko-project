@@ -262,6 +262,22 @@ create table if not exists public.gym_live_sessions (
   updatedat timestamptz
 );
 
+-- Live broadcast state (WebRTC peer id) and post-session archive details.
+alter table public.gym_live_sessions add column if not exists reminderminutes integer;
+alter table public.gym_live_sessions add column if not exists streamid text;
+alter table public.gym_live_sessions add column if not exists broadcaststatus text;
+alter table public.gym_live_sessions add column if not exists replay_url text;
+alter table public.gym_live_sessions add column if not exists ended_at text;
+
+create table if not exists public.gym_rsvps (
+  id text primary key,
+  sessionid text,
+  name text,
+  email text,
+  remindedat text,
+  createdat timestamptz
+);
+
 -- Only the backend (service role) reads/writes these tables.
 alter table public.admins enable row level security;
 alter table public.programs enable row level security;
@@ -279,3 +295,4 @@ alter table public.leave_requests enable row level security;
 alter table public.tokens enable row level security;
 alter table public.gym_workouts enable row level security;
 alter table public.gym_live_sessions enable row level security;
+alter table public.gym_rsvps enable row level security;

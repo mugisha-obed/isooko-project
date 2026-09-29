@@ -33,6 +33,8 @@ interface LiveSession {
   streamId?: string
   hlsUrl?: string
   broadcastStatus?: string
+  replayUrl?: string
+  endedAt?: string
 }
 
 interface Rsvp {
@@ -191,6 +193,8 @@ export default function AdminGymDashboard() {
   const [editId, setEditId] = useState<string | null>(null)
   const [message, setMessage] = useState('')
   const [liveSession, setLiveSession] = useState<LiveSession | null>(null)
+  const [replayEdits, setReplayEdits] = useState<Record<string, string>>({})
+  const [savingReplay, setSavingReplay] = useState<Record<string, boolean>>({})
 
   const load = async () => {
     setLoading(true)
@@ -212,22 +216,29 @@ export default function AdminGymDashboard() {
   const rsvpCount = (sessionId: string) => rsvps.filter(r => r.sessionId === sessionId).length
   const toggleList = (id: string) => setExpanded(prev => ({ ...prev, [id]: !prev[id] }))
 
-  const now = new Date()
+  // Tick so "On Air" and the session buckets stay accurate without a manual reload.
+  const [now, setNow] = useState(() => new Date())
+  useEffect(() => {
+    const timer = setInterval(() => setNow(new Date()), 5000)
+    return () => clearInterval(timer)
+  }, [])
+
+  const windowEnd = (s: LiveSession) =>
+    new Date(s.scheduledAt).getTime() + (s.duration || 60) * 60 * 1000
+
+  // On air means the broadcaster started, not that the clock says it should have.
+  const isOnAir = (s: LiveSession) => s.broadcastStatus === 'live' && s.status !== 'cancelled'
 
   const activeSessions = sessions
-    .filter(s => {
-      const start = new Date(s.scheduledAt).getTime()
-      const end = start + (s.duration || 60) * 60 * 1000
-      return now.getTime() >= start && now.getTime() <= end && s.status !== 'cancelled'
-    })
+    .filter(s => s.status !== 'cancelled' && (isOnAir(s) || (new Date(s.scheduledAt).getTime() <= now.getTime() && windowEnd(s) >= now.getTime())))
     .sort((a, b) => new Date(a.scheduledAt).getTime() - new Date(b.scheduledAt).getTime())
 
   const upcomingSessions = sessions
-    .filter(s => new Date(s.scheduledAt) > now && s.status !== 'cancelled')
+    .filter(s => !isOnAir(s) && s.status !== 'cancelled' && new Date(s.scheduledAt) > now)
     .sort((a, b) => new Date(a.scheduledAt).getTime() - new Date(b.scheduledAt).getTime())
 
   const pastSessions = sessions
-    .filter(s => new Date(s.scheduledAt).getTime() + (s.duration || 60) * 60 * 1000 < now.getTime() || s.status === 'cancelled')
+    .filter(s => !isOnAir(s) && (windowEnd(s) < now.getTime() || s.status === 'cancelled'))
     .sort((a, b) => new Date(b.scheduledAt).getTime() - new Date(a.scheduledAt).getTime())
 
   const totalMinutes = workouts.reduce((sum, w) => sum + (Number(w.duration) || 0), 0)
@@ -285,6 +296,21 @@ export default function AdminGymDashboard() {
     })
     setEditId(s.id)
     window.scrollTo(0, 0)
+  }
+
+  // Attach (or clear) a replay link for a finished session so members can watch
+  // it again from the Past Sessions section on the public gym page.
+  const saveReplay = async (s: LiveSession) => {
+    const value = (replayEdits[s.id] ?? s.replayUrl ?? '').trim()
+    setSavingReplay(prev => ({ ...prev, [s.id]: true }))
+    try {
+      await api.update('/api/gym-live-sessions', s.id, { replayUrl: value })
+      setMessage(value ? `Replay link saved for “${s.title}”.` : `Replay link removed from “${s.title}”.`)
+      load()
+    } catch {
+      setMessage('Could not save the replay link. Please try again.')
+    }
+    setSavingReplay(prev => ({ ...prev, [s.id]: false }))
   }
 
   const statCard = (label: string, value: number, icon: React.ReactNode, color: string) => (
@@ -504,6 +530,67 @@ export default function AdminGymDashboard() {
                           <button onClick={() => setLiveSession(s)} style={{ padding: 'var(--space-1) var(--space-3)', background: '#17191F', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', fontSize: 'var(--font-size-sm)' }}><FaVideo /> Go Live</button>
                         )}
                         <span style={{ padding: '2px 10px', borderRadius: 999, background: '#e8f5e9', color: 'var(--color-green-dark)', fontSize: 'var(--font-size-xs)', fontWeight: 600 }}>{s.status}</span>
+                        <button onClick={() => startEdit(s)} style={{ background: '#e8f5e9', color: 'var(--color-green-dark)', border: 'none', borderRadius: 'var(--radius-sm)', padding: 'var(--space-1) var(--space-3)', cursor: 'pointer', fontSize: 'var(--font-size-sm)' }}><FaEdit /> Edit</button>
+                        <button onClick={() => handleDelete(s.id)} style={{ background: '#fde8e8', color: '#c33', border: 'none', borderRadius: 'var(--radius-sm)', padding: 'var(--space-1) var(--space-3)', cursor: 'pointer', fontSize: 'var(--font-size-sm)' }}><FaTrash /> Del</button>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Completed / past sessions */}
+          <div style={{ background: '#fff', borderRadius: 'var(--radius-md)', padding: 'var(--space-5)', boxShadow: '0 1px 3px rgba(0,0,0,0.08)', marginBottom: 'var(--space-4)' }}>
+            <h2 style={{ margin: '0 0 var(--space-1)', fontSize: 'var(--font-size-lg)', color: 'var(--color-green-dark)' }}>Completed Sessions</h2>
+            <p style={{ margin: '0 0 var(--space-4)', fontSize: 'var(--font-size-sm)', color: '#667' }}>
+              Members see these in the Past Sessions section of the gym page. Add a replay link to let them watch it again.
+            </p>
+            {pastSessions.length === 0 ? (
+              <p style={{ margin: 0, fontSize: 'var(--font-size-sm)', color: '#667' }}>No past sessions yet.</p>
+            ) : (
+              <div style={{ display: 'grid', gap: 'var(--space-3)' }}>
+                {pastSessions.map(s => {
+                  const d = new Date(s.scheduledAt)
+                  const cancelled = s.status === 'cancelled'
+                  return (
+                    <div key={s.id} style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--space-3)', padding: 'var(--space-3) 0', borderBottom: '1px solid var(--color-cream-dark)', flexWrap: 'wrap' }}>
+                      <div style={{ width: 44, height: 44, borderRadius: 10, background: '#f3eefa', color: '#6A4C93', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: 'var(--font-size-xs)', fontWeight: 700, flexShrink: 0 }}>
+                        <span>{d.getDate()}</span>
+                        <span style={{ fontSize: 10, textTransform: 'uppercase' }}>{d.toLocaleString('en', { month: 'short' })}</span>
+                      </div>
+                      <div style={{ flex: 1, minWidth: 220 }}>
+                        <p style={{ margin: 0, fontWeight: 600 }}>{s.title}</p>
+                        <p style={{ margin: 0, fontSize: 'var(--font-size-sm)', color: '#667' }}>
+                          {s.trainer} · {d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} · {s.duration} min
+                        </p>
+                        <div style={{ marginTop: 4 }}>
+                          <Signups sessionId={s.id} />
+                        </div>
+                        {!cancelled && (
+                          <div style={{ display: 'flex', gap: 'var(--space-2)', marginTop: 'var(--space-2)', alignItems: 'center', flexWrap: 'wrap' }}>
+                            <FaLink style={{ color: '#999' }} />
+                            <input
+                              style={{ ...inputStyle, flex: 1, minWidth: 200 }}
+                              value={replayEdits[s.id] ?? s.replayUrl ?? ''}
+                              onChange={e => setReplayEdits(prev => ({ ...prev, [s.id]: e.target.value }))}
+                              placeholder="https://youtube.com/watch?v=…"
+                            />
+                            <button
+                              onClick={() => saveReplay(s)}
+                              disabled={savingReplay[s.id] || (replayEdits[s.id] ?? s.replayUrl ?? '') === (s.replayUrl ?? '')}
+                              style={{ padding: 'var(--space-1) var(--space-3)', background: 'var(--color-green-dark)', color: '#fff', border: 'none', borderRadius: 'var(--radius-sm)', cursor: 'pointer', fontSize: 'var(--font-size-sm)', fontWeight: 600, opacity: savingReplay[s.id] ? 0.6 : 1 }}
+                            >
+                              {savingReplay[s.id] ? 'Saving...' : s.replayUrl ? 'Update' : 'Add Replay'}
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+                        <span style={{ padding: '2px 10px', borderRadius: 999, background: cancelled ? '#fde8e8' : '#f3eefa', color: cancelled ? '#c33' : '#6A4C93', fontSize: 'var(--font-size-xs)', fontWeight: 600 }}>{cancelled ? 'Cancelled' : 'Completed'}</span>
+                        {s.replayUrl && (
+                          <a href={s.replayUrl} target="_blank" rel="noopener noreferrer" title="View replay" style={{ color: '#6A4C93' }}><FaExternalLinkAlt /></a>
+                        )}
                         <button onClick={() => startEdit(s)} style={{ background: '#e8f5e9', color: 'var(--color-green-dark)', border: 'none', borderRadius: 'var(--radius-sm)', padding: 'var(--space-1) var(--space-3)', cursor: 'pointer', fontSize: 'var(--font-size-sm)' }}><FaEdit /> Edit</button>
                         <button onClick={() => handleDelete(s.id)} style={{ background: '#fde8e8', color: '#c33', border: 'none', borderRadius: 'var(--radius-sm)', padding: 'var(--space-1) var(--space-3)', cursor: 'pointer', fontSize: 'var(--font-size-sm)' }}><FaTrash /> Del</button>
                       </div>

@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { FaPlay, FaClock, FaBolt, FaFire, FaHeart, FaMusic, FaDumbbell, FaExternalLinkAlt, FaEnvelope } from 'react-icons/fa'
+import { FaPlay, FaClock, FaBolt, FaFire, FaHeart, FaMusic, FaDumbbell, FaExternalLinkAlt, FaEnvelope, FaHistory, FaRedo } from 'react-icons/fa'
 import SEOHead from '@/components/SEOHead/SEOHead'
 import HeroBanner from '@/components/HeroBanner/HeroBanner'
 import LivePlayer from '@/components/LivePlayer/LivePlayer'
@@ -29,7 +29,23 @@ interface LiveSession {
   status: string
   streamId?: string
   hlsUrl?: string
+  broadcastStatus?: string
+  replayUrl?: string
 }
+
+interface OnAir {
+  id: string
+  streamId: string
+  peerId: string
+}
+
+const PAST_PAGE_SIZE = 6
+
+/** Peer id the broadcaster always claims for a session (mirrors server gymLive.ts). */
+const peerIdFor = (sessionId: string) => `isooko-live-${sessionId}`
+
+const startOf = (s: LiveSession) => new Date(s.scheduledAt).getTime()
+const endOf = (s: LiveSession) => startOf(s) + (s.duration || 60) * 60 * 1000
 
 const CATEGORY_ICONS: Record<string, React.ReactNode> = {
   strength: <FaDumbbell />,
@@ -118,8 +134,10 @@ export default function Gym() {
   const { t } = useTranslation('gym')
   const [workouts, setWorkouts] = useState<Workout[]>([])
   const [liveSessions, setLiveSessions] = useState<LiveSession[]>([])
+  const [onAir, setOnAir] = useState<OnAir[]>([])
   const [filter, setFilter] = useState<'all' | string>('all')
   const [loading, setLoading] = useState(true)
+  const [showAllPast, setShowAllPast] = useState(false)
   const [now, setNow] = useState(() => new Date())
 
   useEffect(() => {
@@ -131,32 +149,48 @@ export default function Gym() {
     Promise.all([
       fetch('/api/gym-workouts').then(r => r.json()),
       fetch('/api/gym-live-sessions').then(r => r.json()),
-    ]).then(([w, l]) => {
+      fetch('/api/gym-live/live').then(r => r.json()).catch(() => []),
+    ]).then(([w, l, live]) => {
       setWorkouts(Array.isArray(w) ? w : [])
       setLiveSessions(Array.isArray(l) ? l : [])
+      setOnAir(Array.isArray(live) ? live : [])
     }).catch(() => {}).finally(() => setLoading(false))
 
+    // Poll for broadcast state changes so a session that goes live (or ends)
+    // shows up for members without them having to reload the page.
     const poll = setInterval(() => {
       fetch('/api/gym-live-sessions').then(r => r.json()).then(l => {
         if (Array.isArray(l)) setLiveSessions(l)
       }).catch(() => {})
-    }, 10000)
+      fetch('/api/gym-live/live').then(r => r.json()).then(l => {
+        if (Array.isArray(l)) setOnAir(l)
+      }).catch(() => {})
+    }, 5000)
     return () => clearInterval(poll)
   }, [])
 
   const filtered = filter === 'all' ? workouts : workouts.filter(w => w.category === filter)
 
-  const activeSessions = liveSessions
-    .filter(s => {
-      const start = new Date(s.scheduledAt).getTime()
-      const end = start + (s.duration || 60) * 60 * 1000
-      return now.getTime() >= start && now.getTime() <= end && s.status !== 'cancelled'
-    })
-  const upcomingSessions = liveSessions
-    .filter(s => new Date(s.scheduledAt) > now && s.status !== 'cancelled')
-    .sort((a, b) => new Date(a.scheduledAt).getTime() - new Date(b.scheduledAt).getTime())
+  // Liveness comes from the broadcaster (server truth), not from the clock, so
+  // a session that starts late or runs past its slot stays joinable.
+  const liveIds = useMemo(() => new Set(onAir.map(o => o.id)), [onAir])
+  const peerFor = (s: LiveSession) => onAir.find(o => o.id === s.id)?.peerId || s.streamId || peerIdFor(s.id)
 
-  const scheduledSessions = [...activeSessions, ...upcomingSessions]
+  const playable = liveSessions.filter(s => s.status !== 'cancelled')
+
+  const liveNow = playable.filter(s => liveIds.has(s.id) || s.broadcastStatus === 'live')
+  const notYetArchived = (s: LiveSession) => !liveIds.has(s.id) && s.broadcastStatus !== 'live' && s.status !== 'completed'
+  const startingSoon = playable.filter(s => notYetArchived(s) && startOf(s) <= now.getTime() && endOf(s) >= now.getTime())
+  const upcomingSessions = playable
+    .filter(s => notYetArchived(s) && startOf(s) > now.getTime())
+    .sort((a, b) => startOf(a) - startOf(b))
+
+  const pastSessions = playable
+    .filter(s => notYetArchived(s) && (endOf(s) < now.getTime() || s.status === 'completed'))
+    .sort((a, b) => startOf(b) - startOf(a))
+
+  const scheduledSessions = [...liveNow, ...startingSoon, ...upcomingSessions]
+  const visiblePast = showAllPast ? pastSessions : pastSessions.slice(0, PAST_PAGE_SIZE)
 
   return (
     <>
@@ -182,7 +216,7 @@ export default function Gym() {
               {scheduledSessions.map(session => {
                 const sessionDate = new Date(session.scheduledAt)
                 const timeDiff = sessionDate.getTime() - now.getTime()
-                const isLive = now.getTime() >= sessionDate.getTime()
+                const isLive = liveIds.has(session.id) || session.broadcastStatus === 'live'
                 const startsWithin = !isLive && timeDiff <= 20000
                 const hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60))
                 const minsLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))
@@ -192,6 +226,10 @@ export default function Gym() {
                       {isLive ? (
                         <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-500 text-white text-xs font-bold uppercase tracking-wider animate-pulse">
                           {t('live.live')}
+                        </span>
+                      ) : timeDiff <= 0 ? (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500 text-white text-xs font-bold uppercase tracking-wider animate-pulse">
+                          {t('live.startingSoon')}
                         </span>
                       ) : (
                         <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-white text-xs font-bold uppercase tracking-wider ${startsWithin ? 'bg-amber-500 animate-pulse' : 'bg-[#4B9F46]'}`}>
@@ -211,8 +249,8 @@ export default function Gym() {
                     <p className="text-sm text-white/60 mb-4">
                       {sessionDate.toLocaleDateString()} · {sessionDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} · {session.duration} min
                     </p>
-                    {isLive && session.streamId ? (
-                      <LivePlayer peerId={session.streamId} title={session.title} />
+                    {isLive ? (
+                      <LivePlayer peerId={peerFor(session)} title={session.title} />
                     ) : (
                       <a
                         href={session.joinUrl}
@@ -228,6 +266,66 @@ export default function Gym() {
                 )
               })}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* Past Sessions */}
+      {pastSessions.length > 0 && (
+        <section id="past-sessions" className="section" style={{ background: 'var(--color-cream-dark)' }}>
+          <div className="container">
+            <div className="section-header">
+              <h2 className="section-title">{t('past.title')}</h2>
+              <p className="section-subtitle">{t('past.subtitle')}</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 'var(--space-6)' }}>
+              {visiblePast.map(session => {
+                const sessionDate = new Date(session.scheduledAt)
+                return (
+                  <article key={session.id} className="bg-white rounded-2xl p-6 shadow-sm flex flex-col gap-2 border border-[#e8e0d6]">
+                    <div className="flex items-center gap-2">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#17191F] text-white text-xs font-bold uppercase tracking-wider">
+                        <FaHistory aria-hidden="true" /> {t('past.completed')}
+                      </span>
+                      <span className="text-xs text-[#5C4A3E] flex items-center gap-1">
+                        <FaClock aria-hidden="true" /> {session.duration} {t('live.minutes')}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-bold text-[#17191F] leading-tight">{session.title}</h3>
+                    <p className="text-sm font-medium text-[#4B9F46]">{session.trainer}</p>
+                    <p className="text-xs text-[#5C4A3E]">
+                      {sessionDate.toLocaleDateString()} · {sessionDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </p>
+                    {session.description && (
+                      <p className="text-sm text-[#5C4A3E] leading-relaxed flex-1 line-clamp-3">{session.description}</p>
+                    )}
+                    {session.replayUrl ? (
+                      <a
+                        href={session.replayUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-full bg-[#4B9F46] text-white font-semibold text-sm no-underline hover:bg-[#3a7d37] transition-colors"
+                      >
+                        <FaRedo aria-hidden="true" /> {t('past.watchReplay')} <FaExternalLinkAlt aria-hidden="true" />
+                      </a>
+                    ) : (
+                      <p className="text-xs text-[#8a7a6b] self-start mt-1">{t('past.replayPending')}</p>
+                    )}
+                  </article>
+                )
+              })}
+            </div>
+            {pastSessions.length > PAST_PAGE_SIZE && (
+              <div style={{ display: 'flex', justifyContent: 'center', marginTop: 'var(--space-6)' }}>
+                <button
+                  onClick={() => setShowAllPast(v => !v)}
+                  className="btn"
+                  style={{ background: 'transparent', color: 'var(--color-green-dark)', borderColor: 'var(--color-green-dark)' }}
+                >
+                  {showAllPast ? t('past.showLess') : `${t('past.showAll')} (${pastSessions.length})`}
+                </button>
+              </div>
+            )}
           </div>
         </section>
       )}

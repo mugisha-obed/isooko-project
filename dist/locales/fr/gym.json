@@ -22,7 +22,17 @@
     "startsIn": "Commence dans",
     "countdown": "En direct dans",
     "onNow": "en cours",
+    "startingSoon": "Commence bientôt",
     "minutes": "min"
+  },
+  "past": {
+    "title": "Sessions Passées",
+    "subtitle": "Vous avez manqué une session ? Revoir les cours déjà dispensés.",
+    "completed": "Terminée",
+    "watchReplay": "Voir le Replay",
+    "replayPending": "Pas encore de replay pour cette session.",
+    "showAll": "Voir toutes les sessions passées",
+    "showLess": "Réduire"
   },
   "reminder": {
     "title": "Recevoir un rappel",

@@ -22,7 +22,17 @@
     "startsIn": "Starts in",
     "countdown": "Live in",
     "onNow": "on now",
+    "startingSoon": "Starting soon",
     "minutes": "min"
+  },
+  "past": {
+    "title": "Past Sessions",
+    "subtitle": "Missed a session? Catch up on the classes we've already run.",
+    "completed": "Completed",
+    "watchReplay": "Watch Replay",
+    "replayPending": "No replay available for this session yet.",
+    "showAll": "Show all past sessions",
+    "showLess": "Show fewer"
   },
   "reminder": {
     "title": "Get a reminder",
