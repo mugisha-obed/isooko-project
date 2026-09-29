@@ -268,6 +268,7 @@ alter table public.gym_live_sessions add column if not exists streamid text;
 alter table public.gym_live_sessions add column if not exists broadcaststatus text;
 alter table public.gym_live_sessions add column if not exists replay_url text;
 alter table public.gym_live_sessions add column if not exists ended_at text;
+alter table public.gym_live_sessions add column if not exists live_heartbeat_at text;
 
 create table if not exists public.gym_rsvps (
   id text primary key,

@@ -1,27 +1,35 @@
 import { useEffect, useRef, useState } from 'react'
 import Peer from 'peerjs'
+import { LIVE_ICE } from '@/lib/liveIce'
 
-const ICE = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] }
-
-const MAX_ATTEMPTS = 8
+const HINTS_BEFORE_WAITING = 6
 const BASE_RETRY_MS = 1500
+const MAX_RETRY_MS = 10000
+
+type PlayerStatus = 'connecting' | 'streaming' | 'waiting'
 
 export default function LivePlayer({ peerId, title }: { peerId: string; title: string }) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const streamRef = useRef<MediaStream | null>(null)
   const [playing, setPlaying] = useState(false)
-  const [status, setStatus] = useState<'connecting' | 'streaming' | 'waiting'>('connecting')
+  const [status, setStatus] = useState<PlayerStatus>('connecting')
+  const [detail, setDetail] = useState('')
+  const [attempt, setAttempt] = useState(0)
 
   // The peer connection opens as soon as this mounts, which is normally well
   // before the member taps to join. The incoming stream therefore has to be
   // buffered in a ref and attached to the <video> once it exists, otherwise
   // the event fires against a null ref and the video stays black forever.
+  //
+  // The trainer is often not broadcasting yet when a member opens the page, so
+  // dialling keeps retrying with a capped backoff instead of giving up. A member
+  // who taps while it is waiting restarts the attempts from scratch.
   useEffect(() => {
     let disposed = false
     let viewer: Peer | null = null
     let call: { close: () => void } | null = null
     let retryTimer: ReturnType<typeof setTimeout> | null = null
-    let attempt = 0
+    let tries = 0
 
     const teardown = () => {
       if (retryTimer) clearTimeout(retryTimer)
@@ -35,49 +43,53 @@ export default function LivePlayer({ peerId, title }: { peerId: string; title: s
     const connect = () => {
       if (disposed) return
       teardown()
-      attempt += 1
-      setStatus('connecting')
+      tries += 1
 
-      const peer = new Peer(crypto.randomUUID(), { config: ICE })
+      const peer = new Peer(crypto.randomUUID(), { config: LIVE_ICE })
       viewer = peer
 
-      // The broadcaster may not have registered its peer yet, so back off and
-      // redial instead of giving up on the first miss.
-      const retry = () => {
+      const retry = (reason?: string) => {
         if (disposed) return
-        if (attempt >= MAX_ATTEMPTS) {
-          setStatus('waiting')
-          return
-        }
-        retryTimer = setTimeout(connect, BASE_RETRY_MS * attempt)
+        if (reason) setDetail(reason)
+        if (tries >= HINTS_BEFORE_WAITING) setStatus('waiting')
+        const delay = Math.min(BASE_RETRY_MS * tries, MAX_RETRY_MS)
+        retryTimer = setTimeout(connect, delay)
       }
 
-      peer.on('error', retry)
+      peer.on('error', err => {
+        retry(err.type === 'peer-unavailable' || err.type === 'network' ? 'Waiting for the trainer to start broadcasting…' : undefined)
+      })
+
       peer.on('open', () => {
         if (disposed) return
         const activeCall = peer.call(peerId, null as unknown as MediaStream)
         if (!activeCall) {
-          retry()
+          retry('Waiting for the trainer to start broadcasting…')
           return
         }
         call = activeCall
+        setStatus('connecting')
+        setDetail('')
         activeCall.on('stream', stream => {
           if (disposed) return
           streamRef.current = stream
           setStatus('streaming')
+          setDetail('')
         })
-        activeCall.on('close', retry)
-        activeCall.on('error', retry)
+        activeCall.on('close', () => retry('The trainer’s broadcast ended. Reconnecting…'))
+        activeCall.on('error', () => retry('Could not reach the trainer. Reconnecting…'))
       })
     }
 
+    setStatus('connecting')
+    setDetail('')
     connect()
 
     return () => {
       disposed = true
       teardown()
     }
-  }, [peerId])
+  }, [peerId, attempt])
 
   // Attach the buffered stream whenever the <video> finally exists.
   useEffect(() => {
@@ -88,6 +100,10 @@ export default function LivePlayer({ peerId, title }: { peerId: string; title: s
   }, [playing, status])
 
   const ready = status === 'streaming'
+  const retryNow = () => {
+    streamRef.current = null
+    setAttempt(n => n + 1)
+  }
 
   return (
     <div
@@ -135,12 +151,20 @@ export default function LivePlayer({ peerId, title }: { peerId: string; title: s
             ▶
           </span>
           <span style={{ fontSize: 'var(--font-size-sm)', fontWeight: 600 }}>{title}</span>
-          {status === 'waiting' ? (
-            <span style={{ fontSize: 'var(--font-size-xs)', color: '#fca5a5' }}>
-              The trainer hasn't started broadcasting yet. Refresh this page in a moment.
-            </span>
-          ) : !playing ? (
+          {!playing ? (
             <span style={{ fontSize: 'var(--font-size-xs)', color: 'rgba(255,255,255,0.7)' }}>Tap to join the live session</span>
+          ) : status === 'waiting' ? (
+            <>
+              <span style={{ fontSize: 'var(--font-size-xs)', color: '#fca5a5', maxWidth: 280 }}>
+                {detail || 'The trainer hasn’t started broadcasting yet. Please wait a moment.'}
+              </span>
+              <button
+                onClick={retryNow}
+                style={{ padding: '6px 14px', borderRadius: 999, background: 'transparent', border: '1px solid rgba(255,255,255,0.4)', color: '#fff', fontSize: 'var(--font-size-xs)', fontWeight: 600, cursor: 'pointer' }}
+              >
+                Try again
+              </button>
+            </>
           ) : (
             <span style={{ fontSize: 'var(--font-size-xs)', color: 'rgba(255,255,255,0.7)' }}>Connecting to the trainer…</span>
           )}

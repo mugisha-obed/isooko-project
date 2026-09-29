@@ -98,6 +98,7 @@ const FIELD_MAP = {
     reminderminutes: 'reminderMinutes',
     replay_url: 'replayUrl',
     ended_at: 'endedAt',
+    live_heartbeat_at: 'liveHeartbeatAt',
 };
 function normalizeRow(row) {
     const out = {};

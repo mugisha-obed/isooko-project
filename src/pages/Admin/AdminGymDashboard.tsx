@@ -6,8 +6,7 @@ import {
   FaCalendarAlt, FaExternalLinkAlt, FaLink, FaPlus, FaTrash, FaEdit,
 } from 'react-icons/fa'
 import { api } from '../../api'
-
-const LIVE_ICE = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] }
+import { LIVE_ICE, HEARTBEAT_INTERVAL_MS, HEARTBEAT_TIMEOUT_MS } from '../../lib/liveIce'
 
 interface Workout {
   id: string
@@ -35,6 +34,7 @@ interface LiveSession {
   broadcastStatus?: string
   replayUrl?: string
   endedAt?: string
+  liveHeartbeatAt?: string
 }
 
 interface Rsvp {
@@ -70,11 +70,16 @@ function GoLiveModal({ session, onClose, onDone }: { session: LiveSession; onClo
   const streamRef = useRef<MediaStream | null>(null)
   const peerRef = useRef<Peer | null>(null)
   const liveCallsRef = useRef<number>(0)
+  const heartbeatRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const [state, setState] = useState<'preparing' | 'starting' | 'live' | 'stopping' | 'error'>('preparing')
   const [viewers, setViewers] = useState(0)
   const [error, setError] = useState('')
 
   const cleanup = () => {
+    if (heartbeatRef.current) {
+      clearInterval(heartbeatRef.current)
+      heartbeatRef.current = null
+    }
     streamRef.current?.getTracks().forEach(track => track.stop())
     streamRef.current = null
     if (peerRef.current) {
@@ -83,6 +88,20 @@ function GoLiveModal({ session, onClose, onDone }: { session: LiveSession; onClo
     }
     liveCallsRef.current = 0
     setViewers(0)
+  }
+
+  // Tells the server this browser is still actually broadcasting, so a crashed
+  // or closed trainer tab stops being advertised as a live session.
+  const startHeartbeat = () => {
+    const ping = () => {
+      api.create(`/api/gym-live/heartbeat/${session.id}`, {}).catch(() => {
+        setState('error')
+        setError('Lost the connection to the server. Press Stop Broadcast, then Go Live again.')
+        cleanup()
+      })
+    }
+    ping()
+    heartbeatRef.current = setInterval(ping, HEARTBEAT_INTERVAL_MS)
   }
 
   const begin = async () => {
@@ -118,6 +137,7 @@ function GoLiveModal({ session, onClose, onDone }: { session: LiveSession; onClo
         cleanup()
       })
 
+      startHeartbeat()
       onDone()
       setState('live')
     } catch (err) {
@@ -226,8 +246,13 @@ export default function AdminGymDashboard() {
   const windowEnd = (s: LiveSession) =>
     new Date(s.scheduledAt).getTime() + (s.duration || 60) * 60 * 1000
 
-  // On air means the broadcaster started, not that the clock says it should have.
-  const isOnAir = (s: LiveSession) => s.broadcastStatus === 'live' && s.status !== 'cancelled'
+  // On air means the broadcaster started and is still heartbeating, not that the
+  // clock says it should have. Mirrors the server check in routes/gymLive.ts.
+  const isOnAir = (s: LiveSession) => {
+    if (s.broadcastStatus !== 'live' || s.status === 'cancelled') return false
+    if (!s.liveHeartbeatAt) return false
+    return now.getTime() - new Date(s.liveHeartbeatAt).getTime() < HEARTBEAT_TIMEOUT_MS
+  }
 
   const activeSessions = sessions
     .filter(s => s.status !== 'cancelled' && (isOnAir(s) || (new Date(s.scheduledAt).getTime() <= now.getTime() && windowEnd(s) >= now.getTime())))

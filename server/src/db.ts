@@ -104,6 +104,7 @@ const FIELD_MAP: Record<string, string> = {
   reminderminutes: 'reminderMinutes',
   replay_url: 'replayUrl',
   ended_at: 'endedAt',
+  live_heartbeat_at: 'liveHeartbeatAt',
 }
 
 function normalizeRow(row: Record<string, unknown>): Record<string, unknown> {

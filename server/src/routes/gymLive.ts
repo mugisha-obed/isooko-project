@@ -13,15 +13,30 @@ interface LiveSession {
   streamId?: string
   hlsUrl?: string
   broadcastStatus?: string
+  liveHeartbeatAt?: string
 }
 
 export function peerIdFor(sessionId: string): string {
   return `isooko-live-${sessionId}`
 }
 
-/** A session is on air when the broadcaster has actually started streaming. */
+/**
+ * A broadcaster that closes the tab or loses network dies without ever calling
+ * /stop, so `broadcastStatus` alone would leave a phantom LIVE badge that no
+ * viewer can ever connect to. Liveness therefore also requires a recent
+ * heartbeat from the broadcasting browser.
+ */
+export const HEARTBEAT_TIMEOUT_MS = 45000
+
 export function isOnAir(session: LiveSession): boolean {
-  return session.broadcastStatus === 'live' && session.status !== 'cancelled'
+  if (session.broadcastStatus !== 'live' || session.status === 'cancelled') return false
+  // No heartbeat means the flag is unverified: either the broadcaster's tab was
+  // closed (leaving a LIVE badge nobody can connect to) or the flag predates
+  // heartbeats. Either way it is not on air, so it is hidden and the trainer
+  // simply presses Go Live again. A genuine broadcast heartbeats immediately
+  // on start, so this never hides a real one.
+  if (!session.liveHeartbeatAt) return false
+  return Date.now() - new Date(session.liveHeartbeatAt).getTime() < HEARTBEAT_TIMEOUT_MS
 }
 
 function endOfScheduledWindow(session: LiveSession): number {
@@ -48,10 +63,31 @@ router.post('/start/:sessionId', requireAdmin, async (req, res) => {
       streamId: peerId,
       broadcastStatus: 'live',
       status: 'active',
+      liveHeartbeatAt: new Date().toISOString(),
     })
 
     res.status(201).json({ peerId, streamId: peerId })
   } catch (error) {
+    res.status(500).json({ error: 'Internal server error' })
+  }
+})
+
+// Admin: the broadcasting browser keeps this alive while it is streaming. If it
+// stops arriving, the session is treated as no longer on air.
+router.post('/heartbeat/:sessionId', requireAdmin, async (req, res) => {
+  try {
+    const session = await getById<LiveSession>('gym-live-sessions', req.params.sessionId)
+    if (!session) {
+      res.status(404).json({ error: 'Session not found' })
+      return
+    }
+    if (session.broadcastStatus !== 'live') {
+      res.status(409).json({ error: 'Session is not broadcasting' })
+      return
+    }
+    await updateOne('gym-live-sessions', session.id, { liveHeartbeatAt: new Date().toISOString() })
+    res.json({ success: true })
+  } catch {
     res.status(500).json({ error: 'Internal server error' })
   }
 })
@@ -67,6 +103,7 @@ router.post('/stop/:sessionId', requireAdmin, async (req, res) => {
         broadcastStatus: 'stopped',
         status: 'completed',
         endedAt: new Date().toISOString(),
+        liveHeartbeatAt: '',
       })
     }
     res.json({ success: true })
