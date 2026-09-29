@@ -119,13 +119,20 @@ function GoLiveModal({ session, onClose, onDone }: { session: LiveSession; onClo
       }
 
       const info = await api.create<{ peerId: string }>(`/api/gym-live/start/${session.id}`, {})
+      console.log('[gym-live broadcaster] go live, peer id', info.peerId)
 
       const peer = new Peer(info.peerId, { config: LIVE_ICE })
       peerRef.current = peer
+      peer.on('open', id => console.log('[gym-live broadcaster] registered on broker as', id))
       peer.on('call', call => {
         liveCallsRef.current += 1
         setViewers(liveCallsRef.current)
+        console.log('[gym-live broadcaster] call received from member, answering')
         call.answer(stream)
+        const pc = (call as unknown as { _pc?: RTCPeerConnection })._pc
+        if (pc) {
+          pc.oniceconnectionstatechange = () => console.log('[gym-live broadcaster] ice', pc.iceConnectionState)
+        }
         call.on('close', () => {
           liveCallsRef.current = Math.max(0, liveCallsRef.current - 1)
           setViewers(liveCallsRef.current)

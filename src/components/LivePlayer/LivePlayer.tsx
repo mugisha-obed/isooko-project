@@ -8,12 +8,15 @@ const MAX_RETRY_MS = 10000
 
 type PlayerStatus = 'connecting' | 'streaming' | 'waiting'
 
+const log = (...args: unknown[]) => console.log('[gym-live viewer]', ...args)
+
 export default function LivePlayer({ peerId, title }: { peerId: string; title: string }) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const streamRef = useRef<MediaStream | null>(null)
   const [playing, setPlaying] = useState(false)
   const [status, setStatus] = useState<PlayerStatus>('connecting')
   const [detail, setDetail] = useState('')
+  const [ice, setIce] = useState('')
   const [attempt, setAttempt] = useState(0)
 
   // The peer connection opens as soon as this mounts, which is normally well
@@ -57,10 +60,12 @@ export default function LivePlayer({ peerId, title }: { peerId: string; title: s
       }
 
       peer.on('error', err => {
-        retry(err.type === 'peer-unavailable' || err.type === 'network' ? 'Waiting for the trainer to start broadcasting…' : undefined)
+        log('peer error', err.type, err.message)
+        retry(err.type === 'peer-unavailable' || err.type === 'network' ? 'Waiting for the trainer to start broadcasting…' : `Connection error: ${err.type}`)
       })
 
-      peer.on('open', () => {
+      peer.on('open', id => {
+        log('viewer peer open', id)
         if (disposed) return
         const activeCall = peer.call(peerId, null as unknown as MediaStream)
         if (!activeCall) {
@@ -70,14 +75,32 @@ export default function LivePlayer({ peerId, title }: { peerId: string; title: s
         call = activeCall
         setStatus('connecting')
         setDetail('')
+        log('call placed to', peerId)
+
+        // The real question is which network path ICE managed to build, so
+        // surface it instead of leaving a silent black box.
+        const pc = (activeCall as unknown as { _pc?: RTCPeerConnection })._pc
+        if (pc) {
+          pc.oniceconnectionstatechange = () => {
+            log('ice connection state', pc.iceConnectionState, 'gathering', pc.iceGatheringState)
+            setIce(`${pc.iceConnectionState}`)
+          }
+          pc.onicegatheringstatechange = () => log('ice gathering', pc.iceGatheringState)
+          pc.onicecandidate = e => log('candidate', e.candidate ? e.candidate.type : 'end-of-candidates')
+        }
+
         activeCall.on('stream', stream => {
           if (disposed) return
           streamRef.current = stream
           setStatus('streaming')
           setDetail('')
+          log('stream received', stream.getTracks().map(t => t.kind).join(','))
         })
         activeCall.on('close', () => retry('The trainer’s broadcast ended. Reconnecting…'))
-        activeCall.on('error', () => retry('Could not reach the trainer. Reconnecting…'))
+        activeCall.on('error', err => {
+          log('call error', err.type, err.message)
+          retry('Could not reach the trainer. Reconnecting…')
+        })
       })
     }
 
@@ -167,6 +190,12 @@ export default function LivePlayer({ peerId, title }: { peerId: string; title: s
             </>
           ) : (
             <span style={{ fontSize: 'var(--font-size-xs)', color: 'rgba(255,255,255,0.7)' }}>Connecting to the trainer…</span>
+          )}
+          {playing && (
+            <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', fontFamily: 'monospace', maxWidth: 300, wordBreak: 'break-word' }}>
+              attempt {attempt + 1}{ice ? ` · ice ${ice}` : ''}
+              {streamRef.current ? ` · ${streamRef.current.getTracks().length} track(s)` : ''}
+            </span>
           )}
         </div>
       )}
