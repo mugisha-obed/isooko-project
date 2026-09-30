@@ -6,7 +6,7 @@ import {
   FaCalendarAlt, FaExternalLinkAlt, FaLink, FaPlus, FaTrash, FaEdit,
 } from 'react-icons/fa'
 import { api } from '../../api'
-import { LIVE_ICE, HEARTBEAT_INTERVAL_MS, HEARTBEAT_TIMEOUT_MS } from '../../lib/liveIce'
+import { LIVE_ICE, HEARTBEAT_INTERVAL_MS, HEARTBEAT_TIMEOUT_MS, peerServerOptions } from '../../lib/liveIce'
 
 interface Workout {
   id: string
@@ -104,6 +104,73 @@ function GoLiveModal({ session, onClose, onDone }: { session: LiveSession; onClo
     heartbeatRef.current = setInterval(ping, HEARTBEAT_INTERVAL_MS)
   }
 
+  // Claims a peer id, registers the broadcaster on the signalling server and
+  // resolves once the peer is genuinely reachable by members.
+  //
+  // An 'unavailable-id' error means the id we were handed is still reserved by a
+  // socket the server has not reaped yet, so the only cure is a different id.
+  // /start mints one per call, hence the retry.
+  const registerPeer = async (stream: MediaStream, attempt = 1): Promise<Peer> => {
+    const info = await api.create<{ peerId: string }>(`/api/gym-live/start/${session.id}`, {})
+    const peerOpts = peerServerOptions()
+    console.log('[gym-live broadcaster] go live, peer id', info.peerId, 'signalling', `${peerOpts.secure ? 'wss' : 'ws'}://${peerOpts.host}:${peerOpts.port}${peerOpts.path}`)
+
+    const peer = new Peer(info.peerId, peerOpts)
+    peerRef.current = peer
+
+    // Register the incoming-call handler before waiting on 'open', so a member
+    // who joins the instant we come up is not missed.
+    peer.on('call', call => {
+      liveCallsRef.current += 1
+      setViewers(liveCallsRef.current)
+      console.log('[gym-live broadcaster] call received from member, answering')
+      call.answer(stream)
+      const pc = (call as unknown as { _pc?: RTCPeerConnection })._pc
+      if (pc) {
+        pc.oniceconnectionstatechange = () => console.log('[gym-live broadcaster] ice', pc.iceConnectionState)
+      }
+      call.on('close', () => {
+        liveCallsRef.current = Math.max(0, liveCallsRef.current - 1)
+        setViewers(liveCallsRef.current)
+      })
+    })
+
+    // Only announce the broadcast once the peer is genuinely registered. The
+    // ON AIR badge is driven by our own heartbeat, not by PeerJS, so without
+    // this wait the admin showed a live session that no member could reach.
+    let idTaken = false
+    await new Promise<void>((resolve, reject) => {
+      const fail = (message: string) => reject(new Error(message))
+      const timer = setTimeout(() => fail('Timed out reaching the signalling server. Check your internet connection and press Go Live again.'), 15000)
+      peer.on('open', id => {
+        clearTimeout(timer)
+        console.log('[gym-live broadcaster] registered on signalling server as', id)
+        resolve()
+      })
+      peer.on('error', err => {
+        clearTimeout(timer)
+        if (err.type === 'unavailable-id') {
+          idTaken = true
+          resolve()
+          return
+        }
+        fail('Could not reach the signalling server. Check your internet connection and press Go Live again.')
+      })
+    })
+
+    if (idTaken) {
+      peer.destroy()
+      if (peerRef.current === peer) peerRef.current = null
+      if (attempt < 3) {
+        console.warn('[gym-live broadcaster] peer id still reserved, retrying with a new one', attempt)
+        return registerPeer(stream, attempt + 1)
+      }
+      throw new Error('Another broadcast is already using this session. Close the other tab and try again.')
+    }
+
+    return peer
+  }
+
   const begin = async () => {
     setState('starting')
     setError('')
@@ -118,29 +185,16 @@ function GoLiveModal({ session, onClose, onDone }: { session: LiveSession; onClo
         videoRef.current.play().catch(() => {})
       }
 
-      const info = await api.create<{ peerId: string }>(`/api/gym-live/start/${session.id}`, {})
-      console.log('[gym-live broadcaster] go live, peer id', info.peerId)
+      const peer = await registerPeer(stream)
 
-      const peer = new Peer(info.peerId, { config: LIVE_ICE })
-      peerRef.current = peer
-      peer.on('open', id => console.log('[gym-live broadcaster] registered on broker as', id))
-      peer.on('call', call => {
-        liveCallsRef.current += 1
-        setViewers(liveCallsRef.current)
-        console.log('[gym-live broadcaster] call received from member, answering')
-        call.answer(stream)
-        const pc = (call as unknown as { _pc?: RTCPeerConnection })._pc
-        if (pc) {
-          pc.oniceconnectionstatechange = () => console.log('[gym-live broadcaster] ice', pc.iceConnectionState)
-        }
-        call.on('close', () => {
-          liveCallsRef.current = Math.max(0, liveCallsRef.current - 1)
-          setViewers(liveCallsRef.current)
-        })
-      })
+      // The handler inside registerPeer only covers startup: once the promise
+      // settles, a later failure (e.g. the socket dropping) would be swallowed.
+      // Surface it so the trainer is not left believing a dead stream is still
+      // live.
       peer.on('error', err => {
+        console.error('[gym-live broadcaster] signalling error while live', err)
         setState('error')
-        setError(err.type === 'unavailable-id' ? 'Another broadcast is already using this session. Close the other tab and try again.' : 'Broadcast connection failed. Press Go Live again to restart.')
+        setError('Lost the connection to the signalling server. Press Go Live again to restart the broadcast.')
         cleanup()
       })
 

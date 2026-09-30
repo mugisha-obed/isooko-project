@@ -1,9 +1,24 @@
 import { Router } from 'express';
+import { randomBytes } from 'crypto';
 import { getAll, getById, updateOne } from '../store.js';
 import { requireAdmin } from '../auth.js';
 const router = Router();
 export function peerIdFor(sessionId) {
     return `isooko-live-${sessionId}`;
+}
+/**
+ * A fresh peer id for one broadcast.
+ *
+ * The signalling server holds a claimed id until it notices the socket is gone
+ * (`alive_timeout`, 90s by default), so a broadcaster tab that was closed or
+ * crashed without a clean disconnect leaves `isooko-live-<sessionId>` reserved
+ * and the trainer's next Go Live fails with 'unavailable-id'. Deriving the id
+ * from a fixed string made every retry collide with that stale claim. Each
+ * /start now mints a unique id instead, and viewers read it back from
+ * streamId, so a stale reservation can never block a new broadcast.
+ */
+export function newPeerIdFor(sessionId) {
+    return `${peerIdFor(sessionId)}-${randomBytes(4).toString('hex')}`;
 }
 /**
  * A broadcaster that closes the tab or loses network dies without ever calling
@@ -41,7 +56,7 @@ router.post('/start/:sessionId', requireAdmin, async (req, res) => {
             res.status(400).json({ error: 'Cannot broadcast a cancelled session' });
             return;
         }
-        const peerId = peerIdFor(session.id);
+        const peerId = newPeerIdFor(session.id);
         await updateOne('gym-live-sessions', session.id, {
             streamId: peerId,
             broadcastStatus: 'live',

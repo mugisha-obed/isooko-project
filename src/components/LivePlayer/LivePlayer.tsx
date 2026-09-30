@@ -1,14 +1,30 @@
 import { useEffect, useRef, useState } from 'react'
 import Peer from 'peerjs'
-import { LIVE_ICE } from '@/lib/liveIce'
+import { LIVE_ICE, peerServerOptions } from '@/lib/liveIce'
 
 const HINTS_BEFORE_WAITING = 6
 const BASE_RETRY_MS = 1500
 const MAX_RETRY_MS = 10000
 
-type PlayerStatus = 'connecting' | 'streaming' | 'waiting'
+type PlayerStatus = 'connecting' | 'streaming' | 'waiting' | 'offline'
 
 const log = (...args: unknown[]) => console.log('[gym-live viewer]', ...args)
+
+/**
+ * Errors that mean the signalling socket itself is unreachable or rejected, as
+ * opposed to the trainer's peer simply not being registered yet.
+ *
+ * Retrying these in a tight loop only produces the same failure forever and
+ * leaves the member staring at "connecting", so they get surfaced instead. The
+ * usual cause in production is the site and the API living on different
+ * origins, which makes the WebSocket land on the static host with no /peerjs
+ * route — see peerServerOptions() in src/lib/liveIce.ts.
+ */
+const SIGNALLING_ERRORS = ['network', 'server-error', 'socket-error', 'socket-closed', 'disconnected', 'browser-incompatible']
+
+const isSignallingFailure = (type: string) => SIGNALLING_ERRORS.includes(type)
+
+const OFFLINE_MESSAGE = 'Could not reach the live streaming server. Check your connection and tap Try again.'
 
 export default function LivePlayer({ peerId, title }: { peerId: string; title: string }) {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -48,7 +64,7 @@ export default function LivePlayer({ peerId, title }: { peerId: string; title: s
       teardown()
       tries += 1
 
-      const peer = new Peer(crypto.randomUUID(), { config: LIVE_ICE })
+      const peer = new Peer(crypto.randomUUID(), peerServerOptions())
       viewer = peer
 
       const retry = (reason?: string) => {
@@ -59,9 +75,23 @@ export default function LivePlayer({ peerId, title }: { peerId: string; title: s
         retryTimer = setTimeout(connect, delay)
       }
 
+      // Stop instead of retrying: an unreachable signalling server cannot fix
+      // itself by being asked again, and silent retries hide the real cause.
+      const giveUp = (message: string) => {
+        if (disposed) return
+        log('signalling unreachable:', message)
+        setDetail(message)
+        setStatus('offline')
+        teardown()
+      }
+
       peer.on('error', err => {
         log('peer error', err.type, err.message)
-        retry(err.type === 'peer-unavailable' || err.type === 'network' ? 'Waiting for the trainer to start broadcasting…' : `Connection error: ${err.type}`)
+        if (isSignallingFailure(err.type)) {
+          giveUp(OFFLINE_MESSAGE)
+          return
+        }
+        retry(err.type === 'peer-unavailable' ? 'Waiting for the trainer to start broadcasting…' : `Connection error: ${err.type}`)
       })
 
       peer.on('open', id => {
@@ -99,6 +129,12 @@ export default function LivePlayer({ peerId, title }: { peerId: string; title: s
         activeCall.on('close', () => retry('The trainer’s broadcast ended. Reconnecting…'))
         activeCall.on('error', err => {
           log('call error', err.type, err.message)
+          // The socket is known-good at this point, so a failure here is about
+          // the media path (blocked network, no TURN route), not signalling.
+          if (isSignallingFailure(err.type)) {
+            giveUp(OFFLINE_MESSAGE)
+            return
+          }
           retry('Could not reach the trainer. Reconnecting…')
         })
       })
@@ -163,7 +199,7 @@ export default function LivePlayer({ peerId, title }: { peerId: string; title: s
               width: 64,
               height: 64,
               borderRadius: '50%',
-              background: status === 'waiting' ? '#4b5563' : '#dc2626',
+              background: status === 'waiting' || status === 'offline' ? '#4b5563' : '#dc2626',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -176,9 +212,9 @@ export default function LivePlayer({ peerId, title }: { peerId: string; title: s
           <span style={{ fontSize: 'var(--font-size-sm)', fontWeight: 600 }}>{title}</span>
           {!playing ? (
             <span style={{ fontSize: 'var(--font-size-xs)', color: 'rgba(255,255,255,0.7)' }}>Tap to join the live session</span>
-          ) : status === 'waiting' ? (
+          ) : status === 'waiting' || status === 'offline' ? (
             <>
-              <span style={{ fontSize: 'var(--font-size-xs)', color: '#fca5a5', maxWidth: 280 }}>
+              <span style={{ fontSize: 'var(--font-size-xs)', color: status === 'offline' ? '#fecaca' : '#fde68a', maxWidth: 280 }}>
                 {detail || 'The trainer hasn’t started broadcasting yet. Please wait a moment.'}
               </span>
               <button
